@@ -121,7 +121,7 @@ logs for error message.
 
 ### `wsserver:is_listen()`
 
-Returns whether server is running
+**Returns** whether server is running
 
 ### `wsserver:set_proxy_handshake(function(request, response))`
 
