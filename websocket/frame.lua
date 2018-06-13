@@ -190,6 +190,8 @@ local function decode_from(client, timeout)
         mask = { m1, m2, m3, m4 }
     end
 
+
+    -- TODO optimize frame body read loop
     local data = {}
     local maski = 1
     for i=1, payload do
