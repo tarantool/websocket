@@ -133,9 +133,15 @@ function wspeer.shutdown(self, code, reason, timeout)
 end
 
 function wspeer.close(self)
-    self.rawread_fiber:cancel()
-    self.peer:close()
-    rawset(self, 'peer', nil)
+    if self.rawread_fiber ~= nil then
+        self.rawread_fiber:cancel()
+        rawset(self, 'rawread_fiber', nil)
+    end
+
+    if self.peer ~= nil then
+        self.peer:close()
+        rawset(self, 'peer', nil)
+    end
 end
 
 function wspeer.is_closed(self)
@@ -197,8 +203,10 @@ function wsserver.close(self)
         rawset(self, 'listen_fiber', nil)
     end
 
-    self.ms:close()
-    rawset(self, 'ms', nil)
+    if self.ms ~= nil then
+        self.ms:close()
+        rawset(self, 'ms', nil)
+    end
 
     self.accept_channel:close()
     rawset(self, 'accept_channel', nil)
@@ -236,6 +244,7 @@ function wsserver.rawlisten(self)
     if self.ms == nil then
         log.info('Websocket server could not create socket %s:%d error %s',
                  self.host, self.port, errno.strerror())
+        self:close()
         return
     end
     self.ms:setsockopt('SOL_SOCKET', 'SO_REUSEADDR', true)
