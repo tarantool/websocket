@@ -91,11 +91,11 @@ end
 
 ### `websocket.new([host[, port[, options]]])`
 
-`host` default '127.0.0.1'
+Create new `wsserver` object with params
 
-`port` default 8080
-
-`options` default { `backlog` = 1024}
+  - `host` default '127.0.0.1'
+  - `port` default 8080
+  - `options` default { `backlog` = 1024}
 
 Returns: `wsserver` object
 
@@ -103,22 +103,57 @@ Returns: `wsserver` object
 
 ### `wsserver:listen()`
 
-Starts to listen incoming connections
+Starts to listen incoming connections.
 
-Make underground fiber
+**Side effects:**
 
-When new tcp/ip connection accepted, make http websocket handshake fiber.
+  - Make underground fiber to listen and accept incoming peers.
+  - Make http websocket handshake fiber, when new peer accepted.
 
-After handshake if `wsserver:accept()` is not pending, than discard peer.
+**Warning!!!**
+
+Peer discarded after handshake if no pending `wsserver:accept()`.
+
+Throw error if `wsserver` already listen.
+
+If error occurs during startup, check logs for error message.
 
 ### `wsserver:is_listen()`
 
-Return whether server is running
+Returns whether server is running
 
 ### `wsserver:set_proxy_handshake(function(request, response))`
 
 Set callback function to control handshake process. It is possible to return modified
-or custom response. Return object field code is
+or custom response. Returned object field `code` is used to determine success connection upgrading.
+
+If code == '101' than new `wspeer` will be returned.
+
+Request format is:
+
+``` lua
+{
+    method='GET', -- or any other
+    uri='ws://example.local/path/with/params?key=value',
+    version='HTTP/1.1',
+    headers={
+        '<lowcased header name>' = 'value'
+    }
+}
+```
+
+Response format is:
+
+``` lua
+{
+    version='HTTP/1.1',
+    code='101', -- or any other
+    status='Switching Protocols',
+    headers={
+        '<header name with case sensitivity>' = 'value'
+    }
+}
+```
 
 ### `wsserver:set_http_read_timeout(timeout)`
 
@@ -128,24 +163,34 @@ Set http read timeout. Used only for handshake process.
 
 Set http write timeout. Used only for handshake process.
 
-### `wsserver:accept()`
+### `wsserver:accept([timeout])`
 
 Accept new ready to use connection.
 
-Return `wspeer` object
+**Returns:**
+
+  - `wspeer` object if success.
+  - `nil` if timeout occurs.
 
 ### `wsserver:close()`
 
-Close server
+Close server.
 
-Keep opened already established `wspeer` connections.
+**Side effects:**
+
+  - Stop listening fiber.
+
+**Warning**
+
+Already established `wspeer` connections are kept alive.
 
 ## wspeer
 
-### `wspeer:read(timeout)`
+### `wspeer:read([timeout])`
 
-Return data frame in following format
+**Returns:**
 
+  - data frame in following format
 ``` lua
 {
     "opcode":frame.TEXT|frame.BINARY,
@@ -153,10 +198,9 @@ Return data frame in following format
     "data":string
 }
 ```
+  - nil if error or timeout
 
-Return tuple or nil
-
-### `wspeer:write(frame, timeout)`
+### `wspeer:write(frame[, timeout])`
 
 Send data frame. Frame structure the same as returned from `wspeer:read`:
 
@@ -168,15 +212,19 @@ Send data frame. Frame structure the same as returned from `wspeer:read`:
 }
 ```
 
+**Returns:**
+
+   - raw bytes size written
+   - nil if error
 
 ### `wspeer:shutdown(code, reason, timeout)`
 
 Graceful shutdown
 
-Return `true` graceful shutdown starts. Wait for `wspeer` closed state.
-No need to call `wspeer:close`.
+**Returns:**
 
-Return `false` if graceful shutdown impossible. Call `wspeer:close` immediately.
+    - `true` graceful shutdown starts. Wait for `wspeer` closed state. No need to call `wspeer:close`.
+    - `false` if graceful shutdown impossible. Call `wspeer:close` immediately.
 
 ### `wspeer:close()`
 
@@ -184,4 +232,4 @@ Immediately close `wspeer` connection. Any pending data discarded.
 
 ### `wspeer:is_closed()`
 
-Check if `wspeer` connection closed
+**Returns** whether `wspeer` connection is closed
