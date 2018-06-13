@@ -97,7 +97,7 @@ Create new `wsserver` object with params
   - `port` default 8080
   - `options` default { `backlog` = 1024}
 
-Returns: `wsserver` object
+**Returns** `wsserver` object
 
 ## wsserver
 
@@ -116,7 +116,8 @@ Peer discarded after handshake if no pending `wsserver:accept()`.
 
 Throw error if `wsserver` already listen.
 
-If error occurs during startup, check logs for error message.
+If error occurs during startup, check it using `wsserver:is_listen()` and
+logs for error message.
 
 ### `wsserver:is_listen()`
 
