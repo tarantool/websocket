@@ -70,7 +70,7 @@ end
 
 ## API
 
-Server
+## wsserver
 
 - [`new(host, port [,options])`](#)
 - [`listen()`](#)
@@ -79,13 +79,15 @@ Server
 - [`accept([timeout])`](#)
 - [`close()`](#)
 
-Peer
+## wspeer
 
 - [`read(timeout)`](#)
 - [`write(frame, timeout)`](#)
 - [`shutdown(timeout)`](#)
 - [`close()`](#)
 - [`is_closed()`](#)
+
+## Startup
 
 ### `websocket.new([host[, port[, options]]])`
 
@@ -105,9 +107,9 @@ Starts to listen incoming connections
 
 Make underground fiber
 
-Make http websocket handshake
+When new tcp/ip connection accepted, make http websocket handshake fiber.
 
-If `wsserver:accept()` is not pending, than discard peer
+After handshake if `wsserver:accept()` is not pending, than discard peer.
 
 ### `wsserver:is_listen()`
 
@@ -115,8 +117,16 @@ Return whether server is running
 
 ### `wsserver:set_proxy_handshake(function(request, response))`
 
-Set function to control handshake process. It is possible to return modified
-or custom response
+Set callback function to control handshake process. It is possible to return modified
+or custom response. Return object field code is
+
+### `wsserver:set_http_read_timeout(timeout)`
+
+Set http read timeout. Used only for handshake process.
+
+### `wsserver:set_http_write_timeout(timeout)`
+
+Set http write timeout. Used only for handshake process.
 
 ### `wsserver:accept()`
 
@@ -148,7 +158,7 @@ Return tuple or nil
 
 ### `wspeer:write(frame, timeout)`
 
-Send data frame
+Send data frame. Frame structure the same as returned from `wspeer:read`:
 
 ``` lua
 {
@@ -158,14 +168,20 @@ Send data frame
 }
 ```
 
+
 ### `wspeer:shutdown(code, reason, timeout)`
 
 Graceful shutdown
 
+Return `true` graceful shutdown starts. Wait for `wspeer` closed state.
+No need to call `wspeer:close`.
+
+Return `false` if graceful shutdown impossible. Call `wspeer:close` immediately.
+
 ### `wspeer:close()`
 
-Immediately closing
+Immediately close `wspeer` connection. Any pending data discarded.
 
 ### `wspeer:is_closed()`
 
-Check if connection closed
+Check if `wspeer` connection closed

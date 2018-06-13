@@ -36,7 +36,9 @@ function wspeer.rawread(self)
     while true do
         if not ping_sended then
             if fiber.time() - last_ping_sended > PING_FREQ then
-                -- log.info('Websocket peer sending ping request')
+                log.info('Websocket peer %s:%d sending ping request',
+                         self:peer()['host'],
+                         self:peer()['port'])
                 last_ping_sended = fiber.time()
                 local packet = frame.encode('', frame.PING, false, true)
                 self.peer:write(packet, nil)
@@ -46,25 +48,35 @@ function wspeer.rawread(self)
 
         local ready = self.peer:readable(PING_FREQ)
         if not ready and ping_sended then
-            -- log.info('Websocket peer ping timeout')
+            log.info('Websocket peer %s:%d ping timeout',
+                     self:peer()['host'],
+                     self:peer()['port'])
             break
         end
 
         local tuple = frame.decode_from(self.peer)
         if tuple == nil then
             -- eof
+            log.debug('Websocket peer %s:%d read eof',
+                      self:peer()['host'],
+                      self:peer()['port'])
             break
         end
 
         if tuple.opcode == frame.PING then
-            --log.info('Websocket peer ping request')
+            log.debug('Websocket peer %s:%d ping request',
+                      self:peer()['host'],
+                      self:peer()['port'])
             local packet = frame.encode(tuple.data, frame.PONG, false, true)
             self.peer:write(packet)
         elseif tuple.opcode == frame.PONG then
-            --log.info('Websocket peer pong response')
+            log.debug('Websocket peer %s:%d pong response',
+                      self:peer()['host'],
+                      self:peer()['port'])
             ping_sended = false
         elseif tuple.opcode == frame.CLOSE then
             if not self.close_sended then
+                rawset(self, 'close_sended', true)
                 local packet = frame.encode(tuple.data, frame.CLOSE, false, true)
                 self.peer:write(packet)
             end
@@ -73,7 +85,9 @@ function wspeer.rawread(self)
             if self.inside:has_readers() then
                 self.inside:put(tuple)
             else
-                log.info('Websocket peer discards packet because no active readers')
+                log.info('Websocket peer %s:%d discards packet because no active readers',
+                         self:peer()['host'],
+                         self:peer()['port'])
             end
         end
     end
@@ -82,13 +96,19 @@ function wspeer.rawread(self)
     self.peer:close()
     rawset(self, 'peer', nil)
 
-    --log.info('Websocket peer exit read loop')
+    log.debug('Websocket peer %s:%d exit read loop',
+              self:peer()['host'],
+              self:peer()['port'])
 end
 
 function wspeer.write(self, tuple, timeout)
     -- channel is closed
     if not self.peer then
-        return nil
+        return nil, "Peer is closed"
+    end
+
+    if tuple.op ~= frame.TEXT or tuple.op ~= frame.BINARY then
+        return nil, "You can send only text or binary frame"
     end
 
     local message = tuple.data
@@ -107,7 +127,9 @@ function wspeer.shutdown(self, code, reason, timeout)
                                  false, true)
     if self.peer:write(message, timeout) ~= nil then
         rawset(self, 'close_sended', true)
+        return true
     end
+    return false
 end
 
 function wspeer.close(self)
@@ -146,6 +168,8 @@ function wsserver.new(host, port, options)
 
     rawset(self, 'listening', false)
     rawset(self, 'ms', nil)
+    rawset(self, 'http_read_timeout', 120)
+    rawset(self, 'http_write_timeout', 120)
 
     return self
 end
@@ -199,11 +223,20 @@ function wsserver.set_proxy_handshake(self, proxy)
     rawset(self, 'proxy_handshake', proxy)
 end
 
+function wsserver.set_http_read_timeout(self, timeout)
+    rawset(self, 'http_read_timeout', timeout)
+end
+
+function wsserver.set_http_write_timeout(self, timeout)
+    rawset(self, 'http_write_timeout', timeout)
+end
+
 function wsserver.rawlisten(self)
     rawset(self, 'ms', socket('PF_INET', 'SOCK_STREAM', 'tcp'))
     if self.ms == nil then
-        error('Websocket server could not create socket %s:%d error %s',
-              self.host, self.port, errno.strerror())
+        log.info('Websocket server could not create socket %s:%d error %s',
+                 self.host, self.port, errno.strerror())
+        return
     end
     self.ms:setsockopt('SOL_SOCKET', 'SO_REUSEADDR', true)
     self.ms:nonblock(true)
@@ -228,6 +261,9 @@ function wsserver.rawlisten(self)
             peer:nonblock(true)
 
             fiber.create(wsserver.handshake_loop, self, peer)
+        else
+            log.debug('Websocket server %s:%d accept failed', self.host,
+                      self.port)
         end
     end
 
@@ -257,12 +293,12 @@ function wsserver.handshake_loop(self, peer)
         headers=''
     }
     while true do
-        local line = peer:read({delimiter='\r\n'})
+        local line = peer:read({delimiter='\r\n'}, self.http_read_timeout)
         if line == nil then
-            --log.info('Websocket server connection closed while handshake')
+            log.debug('Websocket server connection closed while handshake')
             break
         elseif #line == 0 then
-            --log.info('Websocket server eof from peer while handshake')
+            log.debug('Websocket server eof from peer while handshake')
             break
         end
         if httpstate == HTTPSTATE.REQUEST then
@@ -274,7 +310,7 @@ function wsserver.handshake_loop(self, peer)
             if line == '\r\n' then
                 local valid, err = handshake.validate_request(request)
                 if not valid then
-                    peer:write(err)
+                    peer:write(err, self.http_write_timeout)
                     break
                 end
                 response = handshake.accept_upgrade(request)
@@ -283,8 +319,8 @@ function wsserver.handshake_loop(self, peer)
                 end
                 local packet = handshake.reduce_response(response)
 
-                if peer:write(packet) == nil then
-                    --log.info('Websocket server could not write while handshake')
+                if peer:write(packet, self.http_write_timeout) == nil then
+                    log.debug('Websocket server could not write while handshake')
                     break
                 end
 
@@ -293,7 +329,7 @@ function wsserver.handshake_loop(self, peer)
             else
                 local _, _, name, value = line:find('^([^:]+)%s*:%s*(.+)')
                 if name == nil or value == nil then
-                    --log.info('Websocket server malformed handshake packet')
+                    log.debug('Websocket server malformed handshake packet')
                     break
                 end
                 request.headers[name:strip():lower()] = value:strip()
@@ -306,9 +342,13 @@ function wsserver.handshake_loop(self, peer)
             local newpeer = wspeer.new(peer, {request=request,
                                               response=response})
             self.accept_channel:put(newpeer)
+        else
+            log.info('Websocket server discards new peer because no accept listeners')
+            peer:shutdown(socket.SHUT_RDWR)
+            peer:close()
         end
     else
-        --log.info('Websocket peer closed while handshake')
+        log.debug('Websocket peer closed while handshake')
         peer:shutdown(socket.SHUT_RDWR)
         peer:close()
     end
