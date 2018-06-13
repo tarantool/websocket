@@ -168,6 +168,14 @@ Set http write timeout. Used only for handshake process.
 
 Accept new ready to use connection.
 
+**Side effects:**
+
+  - `wspeer` makes fiber to read and decode incoming frames, control ping/pong process.
+
+**Warning**
+
+Incoming websocket frames are discarded if no pending `wspeer:read` call.
+
 **Returns:**
 
   - `wspeer` object if success.
