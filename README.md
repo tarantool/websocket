@@ -232,12 +232,16 @@ Graceful shutdown
 
 **Returns:**
 
-    - `true` graceful shutdown starts. Wait for `wspeer` closed state. No need to call `wspeer:close`.
-    - `false` if graceful shutdown impossible. Call `wspeer:close` immediately.
+  - `true` graceful shutdown starts. Wait for `wspeer` closed state. No need to call `wspeer:close`.
+  - `false` if graceful shutdown impossible. Call `wspeer:close` immediately.
 
 ### `wspeer:close()`
 
 Immediately close `wspeer` connection. Any pending data discarded.
+
+**Side effects**
+
+  - Destroys background read fiber.
 
 ### `wspeer:is_closed()`
 
