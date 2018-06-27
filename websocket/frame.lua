@@ -23,11 +23,11 @@ local bit = require('bit')
 
 local write_int8 = string.char
 
-local write_int16 = function(v)
+local function write_int16(v)
     return string.char(bit.rshift(v, 8), bit.band(v, 0xFF))
 end
 
-local write_int32 = function(v)
+local function write_int32(v)
     return string.char(
         bit.band(bit.rshift(v, 24), 0xFF),
         bit.band(bit.rshift(v, 16), 0xFF),
@@ -55,7 +55,7 @@ local bit_0_3 = bits(0,1,2,3)
 local bit_0_6 = bits(0,1,2,3,4,5,6)
 
 -- TODO: improve performance
-local xor_mask = function(encoded,mask,payload)
+local function xor_mask(encoded,mask,payload)
     local transformed,transformed_arr = {},{}
     -- xor chunk-wise to prevent stack overflow.
     -- byte and char multiple in/out values
@@ -73,11 +73,11 @@ local xor_mask = function(encoded,mask,payload)
     return table.concat(transformed_arr)
 end
 
-local encode_header_small = function(header, payload)
+local function encode_header_small(header, payload)
     return string.char(header, payload)
 end
 
-local encode_header_medium = function(header, payload, len)
+local function encode_header_medium(header, payload, len)
     return string.char(header, payload, bit.band(bit.rshift(len, 8), 0xFF), bit.band(len, 0xFF))
 end
 
@@ -262,10 +262,13 @@ end
 
 
 return {
+    xor_mask = xor_mask,
+
     encode = encode,
     decode_from = decode_from,
     encode_close = encode_close,
     decode_close = decode_close,
+
     CONTINUATION = 0,
     TEXT = TEXT,
     BINARY = BINARY,
