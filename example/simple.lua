@@ -18,7 +18,7 @@ end)
 -- listen
 wsd:listen() -- makes underground fiber
 
--- wait fo new peers
+-- wait for new peers
 if wsd:is_listen() then
     local channel = wsd:accept() -- returns ready to use websocket channel
     -- makes underground fiber to read and decode websocket frames

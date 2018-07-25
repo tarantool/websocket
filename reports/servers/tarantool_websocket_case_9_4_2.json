@@ -1,0 +1,191 @@
+{
+   "agent": "Tarantool websocket",
+   "behavior": "OK",
+   "behaviorClose": "OK",
+   "case": 271,
+   "closedByMe": true,
+   "createStats": true,
+   "createWirelog": true,
+   "description": "Send fragmented binary message message with message payload of length 4 * 2**20 (4M). Sent out in fragments of 256.",
+   "droppedByMe": false,
+   "duration": 875,
+   "expectation": "Receive echo'ed binary message (with payload as sent).",
+   "expected": {},
+   "expectedClose": {
+      "closeCode": [
+         1000
+      ],
+      "closedByMe": true,
+      "requireClean": true
+   },
+   "failedByMe": false,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: C/hgFk7HueTLETWCiMkFVA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: wqwVDyui1XBsfQ+kCDoDRCX4X4s=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "id": "9.4.2",
+   "isServer": false,
+   "localCloseCode": 1000,
+   "localCloseReason": null,
+   "received": [],
+   "remoteCloseCode": null,
+   "remoteCloseReason": null,
+   "reportCompressionRatio": false,
+   "reportTime": true,
+   "result": "Received binary message of length 4194304.",
+   "resultClose": "Connection was properly closed",
+   "rxFrameStats": {
+      "0": 16384,
+      "2": 1,
+      "8": 1
+   },
+   "rxOctetStats": {
+      "2": 1,
+      "129": 1,
+      "260": 111,
+      "262": 1,
+      "520": 183,
+      "780": 301,
+      "1040": 392,
+      "1300": 341,
+      "1560": 323,
+      "1820": 187,
+      "2080": 88,
+      "2340": 61,
+      "2600": 38,
+      "2860": 21,
+      "3120": 11,
+      "3380": 13,
+      "3640": 9,
+      "3900": 5,
+      "4160": 6,
+      "4420": 3,
+      "4680": 3,
+      "4940": 3,
+      "5200": 3,
+      "5460": 2,
+      "5720": 2,
+      "5980": 2,
+      "6240": 4,
+      "6500": 1,
+      "6760": 1,
+      "7020": 1,
+      "7280": 1,
+      "7540": 1,
+      "7800": 3,
+      "8580": 2,
+      "8840": 2,
+      "9100": 1,
+      "10140": 2,
+      "10400": 2,
+      "10920": 1,
+      "11700": 2,
+      "12480": 1,
+      "12968": 1,
+      "13260": 1,
+      "13780": 1,
+      "14560": 1,
+      "15600": 1,
+      "17160": 1,
+      "17680": 3,
+      "20280": 1,
+      "21028": 1,
+      "22880": 1,
+      "24684": 1,
+      "24960": 1,
+      "26520": 1,
+      "29900": 1,
+      "31200": 1,
+      "34840": 1,
+      "35360": 2,
+      "35620": 1,
+      "36400": 1,
+      "37180": 1,
+      "44200": 1,
+      "45240": 1,
+      "48360": 1,
+      "55120": 1,
+      "60060": 1,
+      "60320": 1,
+      "60580": 1,
+      "65536": 5
+   },
+   "started": "2018-07-25T10:16:49.748Z",
+   "trafficStats": null,
+   "txFrameStats": {
+      "0": 16384,
+      "2": 1,
+      "8": 1
+   },
+   "txOctetStats": {
+      "6": 1,
+      "8": 1,
+      "240": 1,
+      "264": 16384
+   },
+   "wasClean": true,
+   "wasCloseHandshakeTimeout": false,
+   "wasNotCleanReason": null,
+   "wasOpenHandshakeTimeout": false,
+   "wasServerConnectionDropTimeout": false,
+   "wirelog": [
+      [
+         "TO",
+         [
+            240,
+            "474554202f20485454502f312e310d0a557365722d4167656e743a204175746f6261686e5465737453756974652f302e382e302d302e31302e390d0a486f7374 ..."
+         ],
+         false
+      ],
+      [
+         "RO",
+         [
+            129,
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a207771775644797569 ..."
+         ]
+      ],
+      [
+         "TI",
+         100
+      ],
+      [
+         "TF",
+         [
+            2,
+            "0x03e8"
+         ],
+         8,
+         true,
+         0,
+         "bc0f4645",
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            8,
+            "8882bc0f4645bfe7"
+         ],
+         false
+      ],
+      [
+         "RO",
+         [
+            2,
+            "8800"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         8,
+         true,
+         0,
+         false,
+         null
+      ]
+   ]
+}

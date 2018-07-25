@@ -52,6 +52,7 @@ end
 
 local bit_7 = bits(7)
 local bit_0_3 = bits(0,1,2,3)
+local bit_4_6 = bits(4,5,6)
 local bit_0_6 = bits(0,1,2,3,4,5,6)
 
 -- TODO: improve performance
@@ -141,34 +142,56 @@ end
 
 local function decode_from(client, timeout)
     local header, payload
+    header = client:read({chunk=1}, timeout)
+    if header == nil then
+        return nil
+    end
+    header = header:byte()
+    if header == nil then
+        return {}
+    end
+    local fin = bit.band(header, bit_7) > 0
+    local rsv = bit.band(header, bit_4_6)
+    local opcode = bit.band(header, bit_0_3)
 
-    header = client:read({chunk=1}, timeout):byte()
-    payload = client:read({chunk=1}, timeout):byte()
-    if header == nil or payload == nil then
+    payload = client:read({chunk=1}, timeout)
+    if payload == nil then
         -- eof
         return nil
     end
+    payload = payload:byte()
+    if payload == nil then
+        return {}
+    end
 
     local high, low
-    local fin = bit.band(header, bit_7) > 0
-    local opcode = bit.band(header, bit_0_3)
     local ismasked = bit.band(payload, bit_7) > 0
 
     payload = bit.band(payload,bit_0_6)
     if payload > 125 then
         if payload == 126 then
-            payload = client:read({chunk=2}, timeout):int16()
+            payload = client:read({chunk=2}, timeout)
             if payload == nil then
                 -- eof
                 return nil
             end
+            payload = payload:int16()
+            if payload == nil then
+                return {}
+            end
         elseif payload == 127 then
-            high = client:read({chunk=4}, timeout):int32()
-            low = client:read({chunk=4}, timeout):int32()
+            high = client:read({chunk=4}, timeout)
+            low = client:read({chunk=4}, timeout)
             if high == nil or low == nil then
                 return nil
             end
-            payload = high*2^32 + low
+            high = high:int32()
+            low = low:int32()
+            if high == nil or low == nil then
+                return {}
+            end
+
+            payload = tonumber64(high)*2^32 + low
             if payload < 0xffff or payload > 2^53 then
                 return nil
             end
@@ -180,16 +203,22 @@ local function decode_from(client, timeout)
     local m1,m2,m3,m4
     local mask
     if ismasked then
-        m1 = client:read({chunk=1}, timeout):byte()
-        m2 = client:read({chunk=1}, timeout):byte()
-        m3 = client:read({chunk=1}, timeout):byte()
-        m4 = client:read({chunk=1}, timeout):byte()
+        m1 = client:read({chunk=1}, timeout)
+        m2 = client:read({chunk=1}, timeout)
+        m3 = client:read({chunk=1}, timeout)
+        m4 = client:read({chunk=1}, timeout)
         if m1 == nil or m2 == nil or m3 == nil or m4 == nil then
             return nil
         end
+        m1 = m1:byte()
+        m2 = m2:byte()
+        m3 = m3:byte()
+        m4 = m4:byte()
+        if m1 == nil or m2 == nil or m3 == nil or m4 == nil then
+            return {}
+        end
         mask = { m1, m2, m3, m4 }
     end
-
 
     -- TODO optimize frame body read loop
     local data = {}
@@ -197,9 +226,13 @@ local function decode_from(client, timeout)
     for i=1, payload do
         local piece
         if mask then
-            piece = client:read({chunk=1}, timeout):byte()
+            piece = client:read({chunk=1}, timeout)
             if piece == nil then
                 return nil
+            end
+            piece = piece:byte()
+            if piece == nil then
+                return {}
             end
             piece = bit.bxor(piece, mask[maski])
             if maski == 4 then
@@ -208,25 +241,30 @@ local function decode_from(client, timeout)
                 maski = maski + 1
             end
         else
-            piece = client:read({chunk=1}, timeout):byte()
+            piece = client:read({chunk=1}, timeout)
             if piece == nil then
                 return nil
             end
+            piece = piece:byte()
+            if piece == nil then
+                return {}
+            end
         end
 
-        if opcode == TEXT then
-            piece = string.char(piece)
-        end
+        piece = string.char(piece)
         data[i] = piece
     end
+
+    data = table.concat(data)
     return {
         opcode = opcode,
         fin = fin,
-        data = table.concat(data)
+        data = data,
+        rsv = rsv,
     }
 end
 
-local encode_close = function(code,reason)
+local encode_close = function(code, reason)
     if code then
         local data = write_int16(code)
         if reason then

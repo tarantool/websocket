@@ -5,9 +5,14 @@ local socket = require('socket')
 local fiber = require('fiber')
 local log = require('log')
 
+local clock = require('clock')
+
 local handshake = require('websocket.handshake')
 local frame = require('websocket.frame')
 
+--[[
+    WebSocket Peer
+]]
 local wspeer = {
     __newindex = function(table, key, value)
         error("Attempt to modify read-only wspeer properties")
@@ -16,89 +21,224 @@ local wspeer = {
 
 wspeer.__index = wspeer
 
-function wspeer.new(peer, handshake_packets)
+function wspeer.new(peer, handshake_packets, ping_freq)
+    ping_freq = ping_freq or 15
+
     local self = setmetatable({}, wspeer)
 
     rawset(self, 'peer', peer)
+    local peeraddr = peer:peer()
+    if peeraddr ~= nil then
+        rawset(self, 'host', peeraddr['host'])
+        rawset(self, 'port', peeraddr['port'])
+    end
     rawset(self, 'handshake', handshake_packets)
+    rawset(self, 'ping_freq', ping_freq)
     rawset(self, 'close_sended', false)
     rawset(self, 'inside', fiber.channel())
     rawset(self, 'rawread_fiber', fiber.create(wspeer.rawread, self))
+    rawset(self, 'last_opcode', nil)
 
     return self
 end
 
 function wspeer.rawread(self)
-    local PING_FREQ = 15
-    local ping_sended = false
-    local last_ping_sended = fiber.time()
+    local status, err = pcall(function ()
+            local ping_sended = false
+            local last_ping_sended = fiber.time()
 
-    while true do
-        if not ping_sended then
-            if fiber.time() - last_ping_sended > PING_FREQ then
-                log.info('Websocket peer %s:%d sending ping request',
-                         self:peer()['host'],
-                         self:peer()['port'])
-                last_ping_sended = fiber.time()
-                local packet = frame.encode('', frame.PING, false, true)
-                self.peer:write(packet, nil)
-                ping_sended = true
+            while true do
+                if not ping_sended then
+                    if clock.time() - last_ping_sended > self.ping_freq then
+                        log.info('Websocket peer %s:%d sending ping request',
+                                 self['host'],
+                                 self['port'])
+                        last_ping_sended = fiber.time()
+                        local packet = frame.encode('', frame.PING, false, true)
+                        self.peer:write(packet)
+                        ping_sended = true
+                    end
+                end
+
+                local tuple = frame.decode_from(self.peer, self.ping_freq
+                                                    - (clock.time() - last_ping_sended))
+                if tuple == nil and self.peer:errno() == errno.ETIMEDOUT then
+                    if ping_sended then
+                        log.info('Websocket peer %s:%d ping timed out',
+                                 self['host'],
+                                 self['port'])
+
+                        local packet = frame.encode('', frame.CLOSE, false, true)
+                        self.peer:write(packet)
+                        rawset(self, 'close_sended', true)
+                        log.debug('Websocket peer close sended')
+                        break
+                    end
+                elseif tuple == nil then
+                    log.info('Websocket peer %s:%d hard error',
+                             self['host'],
+                             self['port'])
+
+                    local packet = frame.encode('', frame.CLOSE, false, true)
+                    self.peer:write(packet)
+                    rawset(self, 'close_sended', true)
+                    log.debug('Websocket peer close sended')
+                    break
+                end
+
+                if tuple.opcode == nil then
+                    -- eof
+                    log.info('Websocket peer %s:%d read eof',
+                             self['host'],
+                             self['port'])
+                    break
+                end
+
+                -- Validation
+                -- invalid frame
+                if tuple.opcode ~= frame.CONTINUATION
+                    and tuple.opcode ~= frame.TEXT and tuple.opcode ~= frame.BINARY
+                    and tuple.opcode ~= frame.CLOSE
+                    and tuple.opcode ~= frame.PING and tuple.opcode ~= frame.PONG
+                then
+                    log.info('Websocket peer frame opcode is invalid: %d', tuple.opcode)
+                    local packet = frame.encode('', frame.CLOSE, false, true)
+                    self.peer:write(packet)
+                    rawset(self, 'close_sended', true)
+                    log.debug('Websocket peer close sended')
+                    break
+                end
+
+                -- invalid control frame length
+                if tuple.opcode ~= frame.CONTINUATION
+                    and tuple.opcode ~= frame.TEXT and tuple.opcode ~= frame.BINARY
+                    and #tuple.data > 125
+                then
+                    log.info('Websocket peer control frame length greater than 125')
+                    local packet = frame.encode('', frame.CLOSE, false, true)
+                    self.peer:write(packet)
+                    rawset(self, 'close_sended', true)
+                    log.debug('Websocket peer close sended')
+                    break
+                end
+
+                -- invalid rsv
+                if tuple.rsv ~= 0 then
+                    log.info('Websocket peer frame rsv invalid')
+                    local packet = frame.encode('', frame.CLOSE, false, true)
+                    self.peer:write(packet)
+                    rawset(self, 'close_sended', true)
+                    log.debug('Websocket peer close sended')
+                    break
+                end
+
+                -- control message can not be fragmented
+                if tuple.opcode ~= frame.CONTINUATION
+                    and tuple.opcode ~= frame.TEXT and tuple.opcode ~= frame.BINARY
+                    and not tuple.fin
+                then
+                      log.info('Websocket peer fragmented control frame not allowed')
+                      local packet = frame.encode('', frame.CLOSE, false, true)
+                      self.peer:write(packet)
+                      rawset(self, 'close_sended', true)
+                      log.debug('Websocket peer close sended')
+                      break
+                end
+
+                -- fragmented messages opcode == 0
+                if tuple.opcode == frame.TEXT or tuple.opcode == frame.BINARY then
+                    if self.last_opcode ~= nil then
+                        log.info('Websocket peer fragmented frame should be continuation')
+                        local packet = frame.encode('', frame.CLOSE, false, true)
+                        self.peer:write(packet)
+                        rawset(self, 'close_sended', true)
+                        log.debug('Websocket peer close sended')
+                        break
+                    end
+                end
+
+                -- continuation frame without head frame
+                if tuple.opcode == frame.CONTINUATION then
+                    if self.last_opcode == nil then
+                        log.info('Websocket peer continuation frame without head frame')
+                        local packet = frame.encode('', frame.CLOSE, false, true)
+                        self.peer:write(packet)
+                        rawset(self, 'close_sended', true)
+                        log.debug('Websocket peer close sended')
+                        break
+                    end
+                end
+
+                -- utf8 invalid simple case
+                if tuple.opcode == frame.TEXT then
+                    if utf8.len(tuple.data) == nil then
+                        log.info('Websocket peer utf8 data invalid')
+                        local packet = frame.encode('', frame.CLOSE, false, true)
+                        self.peer:write(packet)
+                        rawset(self, 'close_sended', true)
+                        log.debug('Websocket peer close sended')
+                        break
+                    end
+                end
+
+                -- save/reset fragmented stream
+                if tuple.opcode == frame.TEXT or tuple.opcode == frame.BINARY then
+                    if self.last_opcode == nil then
+                        if not tuple.fin then
+                            rawset(self, 'last_opcode', tuple.opcode)
+                        end
+                    end
+                elseif tuple.opcode == frame.CONTINUATION then
+                    if tuple.fin then
+                        rawset(self, 'last_opcode', nil)
+                    end
+                end
+
+                -- Buiseness
+                if tuple.opcode == frame.PING then
+                    log.debug('Websocket peer %s:%d ping request',
+                              self['host'],
+                              self['port'])
+                    local packet = frame.encode(tuple.data, frame.PONG, false, true)
+                    self.peer:write(packet)
+                elseif tuple.opcode == frame.PONG then
+                    log.debug('Websocket peer %s:%d pong response',
+                              self['host'],
+                              self['port'])
+                    ping_sended = false
+                elseif tuple.opcode == frame.CLOSE then
+                    log.debug('Websocket peer close received')
+                    if not self.close_sended then
+                        local packet = frame.encode('', frame.CLOSE, false, true)
+                        self.peer:write(packet)
+                        rawset(self, 'close_sended', true)
+                        log.debug('Websocket peer close sended')
+                    end
+                    break
+                else
+                    self.inside:put(tuple)
+                end
             end
-        end
 
-        local ready = self.peer:readable(PING_FREQ)
-        if not ready and ping_sended then
-            log.info('Websocket peer %s:%d ping timeout',
-                     self:peer()['host'],
-                     self:peer()['port'])
-            break
-        end
+            log.info('Websocket peer %s:%d exit read loop',
+                     self['host'],
+                     self['port'])
 
-        local tuple = frame.decode_from(self.peer)
-        if tuple == nil then
-            -- eof
-            log.debug('Websocket peer %s:%d read eof',
-                      self:peer()['host'],
-                      self:peer()['port'])
-            break
-        end
+            self.peer:shutdown(socket.SHUT_RDWR) -- ignore result, anyway exit
+    end)
 
-        if tuple.opcode == frame.PING then
-            log.debug('Websocket peer %s:%d ping request',
-                      self:peer()['host'],
-                      self:peer()['port'])
-            local packet = frame.encode(tuple.data, frame.PONG, false, true)
-            self.peer:write(packet)
-        elseif tuple.opcode == frame.PONG then
-            log.debug('Websocket peer %s:%d pong response',
-                      self:peer()['host'],
-                      self:peer()['port'])
-            ping_sended = false
-        elseif tuple.opcode == frame.CLOSE then
-            if not self.close_sended then
-                rawset(self, 'close_sended', true)
-                local packet = frame.encode(tuple.data, frame.CLOSE, false, true)
-                self.peer:write(packet)
-            end
-            break
-        else
-            if self.inside:has_readers() then
-                self.inside:put(tuple)
-            else
-                log.info('Websocket peer %s:%d discards packet because no active readers',
-                         self:peer()['host'],
-                         self:peer()['port'])
-            end
-        end
+    if not status then
+        log.info(err)
     end
 
-    self.peer:shutdown(socket.SHUT_RDWR)
-    self.peer:close()
-    rawset(self, 'peer', nil)
+    if self.peer ~= nil then
+        self.peer:close()  -- ignore result, anyway exit
+        rawset(self, 'peer', nil)
+    end
 
-    log.debug('Websocket peer %s:%d exit read loop',
-              self:peer()['host'],
-              self:peer()['port'])
+    if self.inside ~= nil then
+        self.inside:close()
+    end
 end
 
 function wspeer.write(self, tuple, timeout)
@@ -107,14 +247,29 @@ function wspeer.write(self, tuple, timeout)
         return nil, "Peer is closed"
     end
 
-    if tuple.op ~= frame.TEXT or tuple.op ~= frame.BINARY then
-        return nil, "You can send only text or binary frame"
+    if type(tuple) == 'string' then
+        local message = tuple
+        tuple = {
+            opcode = frame.TEXT,
+            fin = true,
+            data = message
+        }
+    end
+
+    if tuple.opcode ~= frame.CONTINUATION and
+        tuple.opcode ~= frame.TEXT and tuple.opcode ~= frame.BINARY
+    then
+        return nil, 'You can send only text or binary frame'
     end
 
     local message = tuple.data
-    local packet = frame.encode(message, tuple.op, false, tuple.fin)
+    local packet = frame.encode(message, tuple.opcode, false, tuple.fin)
 
-    return self.peer:write(packet, timeout)
+    local rc = self.peer:write(packet, timeout)
+    if rc == nil then
+        return rc, self.peer:error()
+    end
+    return rc
 end
 
 function wspeer.read(self, timeout)
@@ -148,8 +303,18 @@ function wspeer.is_closed(self)
     return self.peer == nil
 end
 
-local wsserver = {
+function wspeer.error(self)
+    if self.peer == nil then
+        return 'No connection'
+    end
 
+    return self.peer:error()
+end
+
+--[[
+    WebSocket server
+]]
+local wsserver = {
     __newindex = function(table, key, value)
         error("Attempt to modify read-only wsserver properties")
     end,
@@ -163,19 +328,15 @@ function wsserver.new(host, port, options)
     port = port or 8080
     options = options or {}
 
-    if not options.backlog then
-        options.backlog = 1024
-    end
-
     rawset(self, 'host', host)
     rawset(self, 'port', port)
-
-    rawset(self, 'options', options)
+    rawset(self, 'backlog', options.backlog or 1024)
+    rawset(self, 'http_read_timeout', options.http_read_timeout or 120)
+    rawset(self, 'http_write_timeout', options.http_write_timeout or 120)
+    rawset(self, 'ping_freq', options.ping_freq or 30)
 
     rawset(self, 'listening', false)
     rawset(self, 'ms', nil)
-    rawset(self, 'http_read_timeout', 120)
-    rawset(self, 'http_write_timeout', 120)
 
     return self
 end
@@ -231,12 +392,20 @@ function wsserver.set_proxy_handshake(self, proxy)
     rawset(self, 'proxy_handshake', proxy)
 end
 
+function wsserver.set_backlog(self, backlog)
+    rawset(self, 'backlog', backlog)
+end
+
 function wsserver.set_http_read_timeout(self, timeout)
     rawset(self, 'http_read_timeout', timeout)
 end
 
 function wsserver.set_http_write_timeout(self, timeout)
     rawset(self, 'http_write_timeout', timeout)
+end
+
+function wsserver.set_ping_freq(self, frequency)
+    rawset(self, 'ping_freq', frequency)
 end
 
 function wsserver.rawlisten(self)
@@ -255,9 +424,10 @@ function wsserver.rawlisten(self)
         self:close()
         return
     end
-    if not self.ms:listen(self.options.backlog) then
-        log.info('Websocket server listen %s:%d with backlog error "%s"',
+    if not self.ms:listen(self.backlog) then
+        log.info('Websocket server listen %s:%d with backlog %d error "%s"',
                  self.host, self.port,
+                 self.backlog,
                  self.ms:error())
 
         self:close()
@@ -349,7 +519,8 @@ function wsserver.handshake_loop(self, peer)
     if success then
         if self.accept_channel:has_readers() then
             local newpeer = wspeer.new(peer, {request=request,
-                                              response=response})
+                                              response=response},
+                                       self.ping_freq)
             self.accept_channel:put(newpeer)
         else
             log.info('Websocket server discards new peer because no accept listeners')

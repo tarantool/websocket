@@ -24,6 +24,18 @@
   - no websocket extensions
   - no client
 
+## Tests
+
+
+``` shell
+# python2
+virtualenv test # -p python2
+cd test
+source bin/activate
+pip install autobahntestsuite
+wstest -m fuzzingclient -s fuzzingclient.json
+```
+
 ## Example
 
 ``` lua
@@ -94,7 +106,11 @@ Create new `wsserver` object with params
 
   - `host` default '127.0.0.1'
   - `port` default 8080
-  - `options` default { `backlog` = 1024}
+  - `options` default
+      - `backlog` = 1024 backlog
+      - `ping_freq` = 30 ping frequency
+      - `http_read_timeout` = 120 read timeout while http handshake
+      - `http_write_timeout` = 120 read timeout while http handshake
 
 **Returns** `wsserver` object
 
@@ -121,6 +137,10 @@ logs for error message.
 ### `wsserver:is_listen()`
 
 **Returns** whether server is running
+
+### `wsserver:set_backlog(backlog)`
+
+Sets backlog option for listen. Takes affect only before `listen()`
 
 ### `wsserver:set_proxy_handshake(function(request, response))`
 
@@ -162,6 +182,11 @@ Set http read timeout. Used only for handshake process.
 ### `wsserver:set_http_write_timeout(timeout)`
 
 Set http write timeout. Used only for handshake process.
+
+### `wsserver:set_ping_freq(seconds)`
+
+Sets ping frequency in seconds for websocket protocol.
+Takes affect for new accepted connections.
 
 ### `wsserver:accept([timeout])`
 
