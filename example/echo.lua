@@ -3,7 +3,7 @@
 local log = require('log')
 local fiber = require('fiber')
 local wsserver = require('websocket')
-
+local json = require('json')
 --------------------
 wsd = wsserver.new('127.0.0.1', 8080)
 
@@ -17,27 +17,17 @@ fiber.create(
             if channel ~= nil then
                 fiber.create(
                     function (channel)
-                        local buffer = {}
                         while true do
                             local message = channel:read()
                             if message == nil then
                                 log.info('Closed while read')
                                 break
                             end
-
-                            table.insert(buffer, message)
-
-                            if message.fin then
-                                for _, tosend in ipairs(buffer) do
-                                    log.info('sended back')
-                                    log.info(tosend)
-                                    local rc, err = channel:write(tosend)
-                                    if rc == nil then
-                                        log.info('Closed while write %s', err)
-                                        break
-                                    end
-                                end
-                                buffer = {}
+                            log.info('echo '..json.encode(message))
+                            local rc, err = channel:write(message)
+                            if rc == nil then
+                                log.info('Closed while write %s', err)
+                                break
                             end
                         end
                     end, channel)

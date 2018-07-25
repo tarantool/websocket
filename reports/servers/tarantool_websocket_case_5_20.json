@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Same as Case 5.19, but send all frames with SYNC = True.\n   Note, this does not change the octets sent in any way, only how the stream\n   is chopped up on the wire.",
    "droppedByMe": false,
-   "duration": 1003,
+   "duration": 1004,
    "expectation": "Same as Case 5.19. Implementations must be agnostic to how\n   octet stream is chopped up on wire (must be TCP clean).",
    "expected": {
       "OK": [
@@ -35,8 +35,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: kiAhziZTSUbc/FDeWoILcA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Ylj3ER1sAcSd8PGiSxdUp7+86xA=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: PSSybYadvkLZvi0X52m0Sw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Xm1HP/OmqRAYLEL4+/9bz/0y7ZE=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "5.20",
    "isServer": false,
    "localCloseCode": 1000,
@@ -70,12 +70,11 @@
    },
    "rxOctetStats": {
       "2": 1,
-      "11": 2,
+      "11": 5,
       "22": 1,
-      "33": 1,
       "129": 1
    },
-   "started": "2018-07-25T10:16:29.728Z",
+   "started": "2018-07-25T19:46:03.117Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 4,
@@ -106,7 +105,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20596c6a3345523173 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20586d3148502f4f6d ..."
          ]
       ],
       [
@@ -118,7 +117,7 @@
          1,
          false,
          0,
-         "a196bc24",
+         "20e4451e",
          null,
          null,
          true
@@ -127,7 +126,7 @@
          "TO",
          [
             15,
-            "0189a196bc24c7e4dd43ccf3d25090"
+            "018920e4451e469624794d812b6a11"
          ],
          true
       ],
@@ -140,7 +139,7 @@
          0,
          false,
          0,
-         "5915c57a",
+         "4e5f1869",
          null,
          null,
          true
@@ -154,7 +153,7 @@
          9,
          true,
          0,
-         "94f24008",
+         "c079b68a",
          null,
          null,
          true
@@ -168,7 +167,7 @@
          "TO",
          [
             15,
-            "00895915c57a3f67a41d3470ab0e6b"
+            "00894e5f1869282d790e233a761d7c"
          ],
          true
       ],
@@ -176,9 +175,47 @@
          "TO",
          [
             15,
-            "898994f24008e49d2e6ff9976039b5"
+            "8989c079b68ab016d8edad1c96bbe1"
          ],
          true
+      ],
+      [
+         "RO",
+         [
+            11,
+            "0109667261676d656e7431"
+         ]
+      ],
+      [
+         "RF",
+         [
+            9,
+            "fragment1"
+         ],
+         1,
+         false,
+         0,
+         false,
+         null
+      ],
+      [
+         "RO",
+         [
+            11,
+            "0009667261676d656e7432"
+         ]
+      ],
+      [
+         "RF",
+         [
+            9,
+            "fragment2"
+         ],
+         0,
+         false,
+         0,
+         false,
+         null
       ],
       [
          "RO",
@@ -212,7 +249,7 @@
          0,
          false,
          0,
-         "2ca87065",
+         "b4442437",
          null,
          null,
          true
@@ -221,7 +258,7 @@
          "TO",
          [
             15,
-            "00892ca870654ada110241cd1e111f"
+            "0089b4442437d2364550d9214a4387"
          ],
          true
       ],
@@ -234,7 +271,7 @@
          0,
          false,
          0,
-         "88b77ed7",
+         "cfb2a71d",
          null,
          null,
          true
@@ -248,7 +285,7 @@
          9,
          true,
          0,
-         "811b91c4",
+         "abe7beac",
          null,
          null,
          true
@@ -262,7 +299,7 @@
          0,
          true,
          0,
-         "5d2c9b01",
+         "1a2b94fe",
          null,
          null,
          true
@@ -275,7 +312,7 @@
          "TO",
          [
             15,
-            "008988b77ed7eec51fb0e5d210a3bc"
+            "0089cfb2a71da9c0c67aa2d7c969fb"
          ],
          true
       ],
@@ -283,7 +320,7 @@
          "TO",
          [
             15,
-            "8989811b91c4f174ffa3ec7eb1f6a0"
+            "8989abe7beacdb88d0cbc6829e9e8a"
          ],
          true
       ],
@@ -291,65 +328,15 @@
          "TO",
          [
             15,
-            "80895d2c9b013b5efa663049f57568"
+            "80891a2b94fe7c59f599774efa8a2f"
          ],
          true
-      ],
-      [
-         "RO",
-         [
-            11,
-            "8a09706f6e676d65203221"
-         ]
-      ],
-      [
-         "RF",
-         [
-            9,
-            "pongme 2!"
-         ],
-         10,
-         true,
-         0,
-         false,
-         null
       ],
       [
          "RO",
          [
             22,
-            "0109667261676d656e74310009667261676d656e7432"
-         ]
-      ],
-      [
-         "RF",
-         [
-            9,
-            "fragment1"
-         ],
-         1,
-         false,
-         0,
-         false,
-         null
-      ],
-      [
-         "RF",
-         [
-            9,
-            "fragment2"
-         ],
-         0,
-         false,
-         0,
-         false,
-         null
-      ],
-      [
-         "RO",
-         [
-            33,
-            "0009667261676d656e74330009667261676d656e74348009667261676d656e7435"
+            "0009667261676d656e74330009667261676d656e7434"
          ]
       ],
       [
@@ -377,6 +364,32 @@
          null
       ],
       [
+         "RO",
+         [
+            11,
+            "8a09706f6e676d65203221"
+         ]
+      ],
+      [
+         "RF",
+         [
+            9,
+            "pongme 2!"
+         ],
+         10,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "RO",
+         [
+            11,
+            "8009667261676d656e7435"
+         ]
+      ],
+      [
          "RF",
          [
             9,
@@ -397,7 +410,7 @@
          8,
          true,
          0,
-         "130edec6",
+         "ffda84fe",
          null,
          null,
          false
@@ -406,7 +419,7 @@
          "TO",
          [
             8,
-            "8882130edec610e6"
+            "8882ffda84fefc32"
          ],
          false
       ],

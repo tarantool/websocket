@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send close with invalid close code 2000",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 0,
    "expectation": "Clean close with protocol error code or drop TCP",
    "expected": {
       "OK": []
@@ -21,8 +21,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: nMJREdZDfvFNziqqcE/4ig==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: D2vJxFDPuC5kEauHHQAFdEpYuWI=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: T14yf1v3WRRfbWEeWd1Vxw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: rh54XjDyXW+LO+hMdEJtyMTsqNA=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.9.10",
    "isServer": false,
    "localCloseCode": 2000,
@@ -41,7 +41,7 @@
       "2": 1,
       "129": 1
    },
-   "started": "2018-07-25T10:16:37.072Z",
+   "started": "2018-07-25T19:46:09.487Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -68,7 +68,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204432764a78464450 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2072683534586a4479 ..."
          ]
       ],
       [
@@ -80,7 +80,7 @@
          8,
          true,
          0,
-         "128ac311",
+         "b80f80d9",
          null,
          null,
          false
@@ -89,7 +89,7 @@
          "TO",
          [
             8,
-            "8882128ac311155a"
+            "8882b80f80d9bfdf"
          ],
          false
       ],

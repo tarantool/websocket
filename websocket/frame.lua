@@ -264,7 +264,7 @@ local function decode_from(client, timeout)
     }
 end
 
-local encode_close = function(code, reason)
+local function encode_close(code, reason)
     if code then
         local data = write_int16(code)
         if reason then
@@ -275,17 +275,17 @@ local encode_close = function(code, reason)
     return ''
 end
 
-local read_n_bytes = function(str, pos, n)
+local function read_n_bytes(str, pos, n)
     pos = pos or 1
     return pos+n, string.byte(str, pos, pos + n - 1)
 end
 
-local read_int16 = function(str, pos)
+local function read_int16(str, pos)
     local new_pos, a, b = read_n_bytes(str, pos, 2)
     return new_pos, bit.lshift(a, 8) + b
 end
 
-local decode_close = function(data)
+local function decode_close(data)
     local _, code, reason
     if data then
         if #data > 1 then

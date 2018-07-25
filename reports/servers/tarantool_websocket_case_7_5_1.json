@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send a close frame with invalid UTF8 payload",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 0,
    "expectation": "Clean close with protocol error or invalid utf8 code or dropped TCP.",
    "expected": {
       "OK": []
@@ -22,8 +22,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: xhu5FCxUjgk96mfTILSHvw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: zShNlA7exZ+SqDyg09uGlXAM7eA=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: F/8rCAV7a9RAFPHjt1NIfg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: k1MIypzVTCptgdjGnGkRczQWKv8=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.5.1",
    "isServer": false,
    "localCloseCode": 1000,
@@ -42,7 +42,7 @@
       "2": 1,
       "129": 1
    },
-   "started": "2018-07-25T10:16:37.037Z",
+   "started": "2018-07-25T19:46:09.441Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -69,7 +69,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a207a53684e6c413765 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a206b314d4979707a56 ..."
          ]
       ],
       [
@@ -81,7 +81,7 @@
          8,
          true,
          0,
-         "4f1c7720",
+         "8002d53e",
          null,
          null,
          false
@@ -90,7 +90,7 @@
          "TO",
          [
             28,
-            "88964f1c77204cf4b99aaea1ceefccd2cbeefaf1d7a02a781e542a78"
+            "88968002d53e83ea1b8461bf6cf103cc69f035ef75bee566bc4ae566"
          ],
          false
       ],

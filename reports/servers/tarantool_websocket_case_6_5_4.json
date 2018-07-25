@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send a text message with payload which is valid UTF-8 in one fragment.<br><br>Payload: 0x68656c6c6ff0a4ada2776f726c64",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 3,
    "expectation": "The message is echo'ed back to us.",
    "expected": {
       "OK": [
@@ -27,8 +27,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 8n9gkW8k+0yNfqV2/g2dmg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: NKvYJpicCr+/FtoezMz4OAyXTLw=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: MCgZL8BAdvCbA0xlLFit4A==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 7Khb1UIooBzoT6w6/mDgu8DzhJg=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.5.4",
    "isServer": false,
    "localCloseCode": 1000,
@@ -55,7 +55,7 @@
       "16": 1,
       "129": 1
    },
-   "started": "2018-07-25T10:16:36.781Z",
+   "started": "2018-07-25T19:46:09.168Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1,
@@ -84,7 +84,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204e4b76594a706963 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20374b68623155496f ..."
          ]
       ],
       [
@@ -96,7 +96,7 @@
          1,
          true,
          0,
-         "b82d69fe",
+         "680a4dc2",
          null,
          null,
          false
@@ -105,7 +105,7 @@
          "TO",
          [
             20,
-            "818eb82d69fed0480592d7ddcd531a5a068cd449"
+            "818e680a4dc2006f21ae07fae96fca7d22b0046e"
          ],
          false
       ],
@@ -141,7 +141,7 @@
          8,
          true,
          0,
-         "b2038d91",
+         "0d005934",
          null,
          null,
          false
@@ -150,7 +150,7 @@
          "TO",
          [
             8,
-            "8882b2038d91b1eb"
+            "88820d0059340ee8"
          ],
          false
       ],
