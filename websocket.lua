@@ -489,8 +489,9 @@ function wsserver.handshake_loop(self, peer)
             break
         end
         if httpstate == HTTPSTATE.REQUEST then
+            local i, j
             -- Method SP Request-URI SP HTTP-Version CRLF
-            _, _, request.method, request.uri, request.version =
+            i, j, request.method, request.uri, request.version =
                 line:find('^([^%s]+)%s([^%s]+)%s([^%s]+)')
             httpstate = HTTPSTATE.HEADERS
         elseif httpstate == HTTPSTATE.HEADERS then
