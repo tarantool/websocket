@@ -289,7 +289,7 @@ local function decode_close(data)
     local _, code, reason
     if data then
         if #data > 1 then
-            _,code = read_int16(data,1)
+            _, code = read_int16(data,1)
         end
         if #data > 2 then
             reason = data:sub(3)

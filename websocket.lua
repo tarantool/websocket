@@ -9,6 +9,7 @@ local clock = require('clock')
 
 local handshake = require('websocket.handshake')
 local frame = require('websocket.frame')
+local utf8_validator = require('websocket.utf8_validator')
 
 --[[
     WebSocket Peer
@@ -35,8 +36,10 @@ function wspeer.new(peer, handshake_packets, ping_freq)
     rawset(self, 'handshake', handshake_packets)
     rawset(self, 'ping_freq', ping_freq)
     rawset(self, 'close_sended', false)
+    rawset(self, 'close_received', false)
     rawset(self, 'inside', fiber.channel())
     rawset(self, 'last_opcode', nil)
+    rawset(self, 'last_ping_sended', clock.time())
 
     -- should be last one
     rawset(self, 'rawread_fiber', fiber.create(wspeer.rawread, self))
@@ -60,23 +63,24 @@ function wspeer.rawread(self)
 
     local status, err = pcall(function ()
             local ping_sended = false
-            local last_ping_sended = fiber.time()
+            rawset(self, 'last_ping_sended', clock.time())
 
             while true do
                 if not ping_sended then
-                    if clock.time() - last_ping_sended > self.ping_freq then
+                    if clock.time() - self.last_ping_sended > self.ping_freq then
                         log.info('Websocket peer %s:%d sending ping request',
                                  self['host'],
                                  self['port'])
-                        last_ping_sended = fiber.time()
+                        rawset(self, 'last_ping_sended', clock.time())
                         local packet = frame.encode('', frame.PING, false, true)
                         self.peer:write(packet)
                         ping_sended = true
                     end
                 end
 
-                local tuple = frame.decode_from(self.peer, self.ping_freq
-                                                    - (clock.time() - last_ping_sended))
+                local rest_timeout = self.ping_freq - (clock.time() - self.last_ping_sended)
+                local tuple = frame.decode_from(self.peer, rest_timeout)
+
                 if self.peer == nil then
                     -- already closed
                     break
@@ -88,7 +92,7 @@ function wspeer.rawread(self)
                     send_close(1002, 'ping timed out')
                     break
                 elseif tuple == nil then
-                    send_close(100, 'hard error')
+                    send_close(1002, 'hard error')
                     break
                 end
 
@@ -153,23 +157,35 @@ function wspeer.rawread(self)
 
                 -- utf8 invalid simple case
                 if tuple.opcode == frame.TEXT then
-                    if utf8.len(tuple.data) == nil then
+                    if utf8_validator(tuple.data) == false then
                         send_close(1007, 'utf8 data invalid')
                         break
                     end
                 end
 
-                -- utf8 chunk invalid
-                -- if tuple.opcode == frame.CONTINUATION
-                --     and self.last_opcode == frame.TEXT
-                -- then
-                --     if self.last_text then
-                --         if utf8.len(self.last_text .. tuple.data) == nil then
-                --             send_close(1007, 'utf8 data invalid')
-                --             break
-                --         end
-                --     end
-                -- end
+                -- close invalid
+                if tuple.opcode == frame.CLOSE then
+                    -- not enough data
+                    if tuple.data and #tuple.data == 1 then
+                        send_close(1002, 'invalid close frame')
+                        break
+                    end
+                    -- invalid utf8
+                    if tuple.data and #tuple.data > 1 then
+                        local code, reason = frame.decode_close(tuple.data)
+                        if code < 1000 or code == 1004
+                            or code == 1005
+                            or code == 1006
+                            or (code > 1013 and code < 3000)
+                            or code > 4999
+                        then
+                            send_close(1002, 'close code invalid')
+                        end
+                        if reason ~= nil and utf8_validator(reason) == false then
+                            send_close(1007, 'utf8 data invalid')
+                        end
+                    end
+                end
 
                 -- save/reset fragmented stream
                 if tuple.opcode == frame.TEXT or tuple.opcode == frame.BINARY then
@@ -181,24 +197,6 @@ function wspeer.rawread(self)
                         rawset(self, 'last_opcode', nil)
                     end
                 end
-
-                -- if self.last_opcode == frame.TEXT then
-                --     if tuple.fin then
-                --         rawset(self, 'last_text', nil)
-                --     else
-                --         local data = self.last_text or ''
-                --         data = data .. tuple.data
-                --         local pos, code = utf8.next(data)
-                --         local lastpos = 1
-
-                --         while pos ~= nil do
-                --             lastpos = pos
-                --             pos, code = utf8.next(data, pos)
-                --         end
-
-                --         rawset(self, 'last_text', data:sub(lastpos))
-                --     end
-                -- end
 
                 -- Buiseness
                 if tuple.opcode == frame.PING then
@@ -214,10 +212,9 @@ function wspeer.rawread(self)
                     ping_sended = false
                 elseif tuple.opcode == frame.CLOSE then
                     log.debug('Websocket peer close received')
+                    rawset(self,'close_received', true)
                     if not self.close_sended then
-                        local packet = frame.encode('', frame.CLOSE, false, true)
-                        self.peer:write(packet)
-                        rawset(self, 'close_sended', true)
+                        send_close(1000, '')
                         log.debug('Websocket peer close sended')
                     end
                     break
@@ -226,7 +223,7 @@ function wspeer.rawread(self)
                 end
             end
 
-            log.info('Websocket peer %s:%d exit read loop',
+            log.debug('Websocket peer %s:%d exit read loop',
                      self['host'],
                      self['port'])
 
