@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send ping with small binary (non UTF-8) payload.",
    "droppedByMe": false,
-   "duration": 2,
+   "duration": 1,
    "expectation": "Pong with payload echo'ed is sent in reply to Ping. Clean close with normal code.",
    "expected": {
       "OK": [
@@ -26,8 +26,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: Ljk4MMAEOLU0si0E88S+sA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: FvFiKZga6m7a5pQV/NQSdq6JaNQ=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: m2kT/qrQNAp0d8dxRxNk0Q==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: b7qpwRM7JzLsKuILyEfOucpb2Fg=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "2.3",
    "isServer": false,
    "localCloseCode": 1000,
@@ -38,7 +38,7 @@
          "0x00fffefdfcfb00ff"
       ]
    ],
-   "remoteCloseCode": null,
+   "remoteCloseCode": 1000,
    "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": false,
@@ -49,11 +49,11 @@
       "10": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "4": 1,
       "10": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:01.975Z",
+   "started": "2018-08-02T11:13:50.302Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1,
@@ -82,7 +82,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20467646694b5a6761 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a206237717077524d37 ..."
          ]
       ],
       [
@@ -94,7 +94,7 @@
          9,
          true,
          0,
-         "88390811",
+         "a96ad167",
          null,
          null,
          false
@@ -103,7 +103,7 @@
          "TO",
          [
             14,
-            "89888839081188c6f6ec74c208ee"
+            "8988a96ad167a9952f9a5591d198"
          ],
          false
       ],
@@ -139,7 +139,7 @@
          8,
          true,
          0,
-         "acdc5168",
+         "45880873",
          null,
          null,
          false
@@ -148,22 +148,22 @@
          "TO",
          [
             8,
-            "8882acdc5168af34"
+            "8882458808734660"
          ],
          false
       ],
       [
          "RO",
          [
-            2,
-            "8800"
+            4,
+            "880203e8"
          ]
       ],
       [
          "RF",
          [
-            0,
-            ""
+            2,
+            "0x03e8"
          ],
          8,
          true,

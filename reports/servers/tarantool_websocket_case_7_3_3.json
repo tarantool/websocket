@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send a close frame with payload length 2 (regular close with a code)",
    "droppedByMe": false,
-   "duration": 0,
+   "duration": 1,
    "expectation": "Clean close with normal code.",
    "expected": {
       "OK": []
@@ -21,14 +21,14 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: Ul2VPYyro0FhHxDRWQpE9g==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 5l9Srdnmkdzp2L3Yd/fZ7cNSjls=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: z9Yj2VejmEZA1Q3Iup4tGg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Uwsn2ZBAKzuXrBxcOQ9w4lsHgBM=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.3.3",
    "isServer": false,
    "localCloseCode": 1000,
    "localCloseReason": null,
    "received": [],
-   "remoteCloseCode": null,
+   "remoteCloseCode": 1000,
    "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": false,
@@ -38,10 +38,10 @@
       "8": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "4": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:09.435Z",
+   "started": "2018-08-02T11:13:57.769Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -68,7 +68,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20356c395372646e6d ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205577736e325a4241 ..."
          ]
       ],
       [
@@ -80,7 +80,7 @@
          8,
          true,
          0,
-         "976e4c74",
+         "0adb886e",
          null,
          null,
          false
@@ -89,7 +89,7 @@
          "TO",
          [
             8,
-            "8882976e4c749486"
+            "88820adb886e0933"
          ],
          false
       ],
@@ -100,15 +100,15 @@
       [
          "RO",
          [
-            2,
-            "8800"
+            4,
+            "880203e8"
          ]
       ],
       [
          "RF",
          [
-            0,
-            ""
+            2,
+            "0x03e8"
          ],
          8,
          true,

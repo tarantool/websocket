@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send frame with reserved non-control <b>Opcode = 4</b> and non-empty payload.",
    "droppedByMe": false,
-   "duration": 3,
+   "duration": 1,
    "expectation": "The connection is failed immediately.",
    "expected": {
       "OK": []
@@ -21,8 +21,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: JYyPBOkAn5AUoDn14imQ7Q==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Arf/VfPUAEgfItUniV6td0S+u5M=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: j8DEty1QstddaaRJ/wzFaA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: B1qvjXyJAolB04kQXgjeaI+ikAo=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "4.1.2",
    "isServer": false,
    "localCloseCode": 1000,
@@ -41,7 +41,7 @@
       "21": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:02.043Z",
+   "started": "2018-08-02T11:13:50.365Z",
    "trafficStats": null,
    "txFrameStats": {
       "4": 1,
@@ -70,7 +70,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204172662f56665055 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20423171766a58794a ..."
          ]
       ],
       [
@@ -82,7 +82,7 @@
          4,
          true,
          0,
-         "32107c81",
+         "c4a2cd4c",
          null,
          null,
          false
@@ -91,7 +91,7 @@
          "TO",
          [
             29,
-            "849732107c8140750fe4406619e5127f0ce25d7419a1427105ed5d7118"
+            "8497c4a2cd4cb6c7be29b6d4a828e4cdbd2fabc6a86cb4c3b420abc3a9"
          ],
          false
       ],
@@ -127,7 +127,7 @@
          8,
          true,
          0,
-         "dfc28013",
+         "9f417c42",
          null,
          null,
          false
@@ -136,7 +136,7 @@
          "TO",
          [
             8,
-            "8882dfc28013dc2a"
+            "88829f417c429ca9"
          ],
          false
       ]

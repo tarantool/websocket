@@ -1,9 +1,9 @@
 {
    "agent": "Tarantool websocket",
-   "behavior": "OK",
-   "behaviorClose": "OK",
+   "behavior": "FAILED",
+   "behaviorClose": "FAILED",
    "case": 74,
-   "closedByMe": false,
+   "closedByMe": true,
    "createStats": true,
    "createWirelog": true,
    "description": "Send invalid UTF-8 text message in 3 fragments (frames).\nFirst frame payload is valid, then wait, then 2nd frame which contains the payload making the sequence invalid, then wait, then 3rd frame with rest.\nNote that PART1 and PART3 are valid UTF-8 in themselves, PART2 is a 0x110000 encoded as in the UTF-8 integer encoding scheme, but the codepoint is invalid (out of range).\n<br><br>MESSAGE PARTS:<br>\nPART1 = cebae1bdb9cf83cebcceb5<br>\nPART2 = f4908080<br>\nPART3 = 656469746564<br>\n",
@@ -36,35 +36,37 @@
       "closedByWrongEndpointIsFatal": true,
       "requireClean": false
    },
-   "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: vRXT5KwjiPD2DpcaQ+acgw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: yfM1vEWbl5OL8sCJOiBP9fSQUvw=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "failedByMe": true,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: JT94F35Ks6CDkbhy2y8olA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: lJN7Ho9dsMfOIwz8UdI9CrY91W8=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.4.1",
    "isServer": false,
-   "localCloseCode": 1000,
-   "localCloseReason": null,
+   "localCloseCode": 1007,
+   "localCloseReason": "encountered invalid UTF-8 while processing text message at payload octet index 12",
    "received": [
       [
          "timeout",
          "A"
       ]
    ],
-   "remoteCloseCode": 1007,
-   "remoteCloseReason": "utf8 data invalid",
+   "remoteCloseCode": 1000,
+   "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": false,
    "result": "Actual events match at least one expected.",
-   "resultClose": "Connection was properly closed",
+   "resultClose": "The connection was failed by the wrong endpoint",
    "rxFrameStats": {
+      "0": 1,
       "1": 1,
       "8": 1
    },
    "rxOctetStats": {
+      "4": 1,
+      "6": 1,
       "13": 1,
-      "21": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:04.141Z",
+   "started": "2018-08-02T11:13:52.467Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 1,
@@ -72,9 +74,9 @@
       "8": 1
    },
    "txOctetStats": {
-      "8": 1,
       "10": 1,
       "17": 1,
+      "89": 1,
       "240": 1
    },
    "wasClean": true,
@@ -95,7 +97,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2079664d3176455762 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a206c4a4e37486f3964 ..."
          ]
       ],
       [
@@ -107,7 +109,7 @@
          1,
          false,
          0,
-         "8999b46c",
+         "7aac90b0",
          null,
          null,
          false
@@ -116,7 +118,7 @@
          "TO",
          [
             17,
-            "018b8999b46c472355d1305637a2355701"
+            "018b7aac90b0b416710dc363137ec66225"
          ],
          false
       ],
@@ -157,7 +159,7 @@
          0,
          false,
          0,
-         "df03efc8",
+         "d042d637",
          null,
          null,
          false
@@ -166,7 +168,7 @@
          "TO",
          [
             10,
-            "0084df03efc82b936f48"
+            "0084d042d63724d256b7"
          ],
          false
       ],
@@ -178,32 +180,20 @@
       [
          "RO",
          [
-            21,
-            "881303ef75746638206461746120696e76616c6964"
+            6,
+            "0004f4908080"
          ]
-      ],
-      [
-         "RF",
-         [
-            19,
-            "0x03ef75746638206461746120696e76616c6964"
-         ],
-         8,
-         true,
-         0,
-         false,
-         null
       ],
       [
          "TF",
          [
-            2,
-            "0x03e8"
+            83,
+            "0x03ef656e636f756e746572656420696e76616c6964205554462d38207768696c652070726f63657373696e672074657874206d65737361676520617420706179 ..."
          ],
          8,
          true,
          0,
-         "209b6b9d",
+         "d48e6740",
          null,
          null,
          false
@@ -211,10 +201,41 @@
       [
          "TO",
          [
-            8,
-            "8882209b6b9d2373"
+            89,
+            "88d3d48e6740d761022eb7e1122ea0eb1525b0ae0e2ea2ef0b29b0ae321492a35f60a3e60e2cb1ae1732bbed0233a7e70927f4fa0238a0ae0a25a7fd0627b1ae ..."
          ],
          false
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         0,
+         false,
+         0,
+         false,
+         null
+      ],
+      [
+         "RO",
+         [
+            4,
+            "880203e8"
+         ]
+      ],
+      [
+         "RF",
+         [
+            2,
+            "0x03e8"
+         ],
+         8,
+         true,
+         0,
+         false,
+         null
       ]
    ]
 }

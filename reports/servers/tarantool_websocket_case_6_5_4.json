@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send a text message with payload which is valid UTF-8 in one fragment.<br><br>Payload: 0x68656c6c6ff0a4ada2776f726c64",
    "droppedByMe": false,
-   "duration": 3,
+   "duration": 1,
    "expectation": "The message is echo'ed back to us.",
    "expected": {
       "OK": [
@@ -27,8 +27,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: MCgZL8BAdvCbA0xlLFit4A==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 7Khb1UIooBzoT6w6/mDgu8DzhJg=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 8XUpaIYPAGDod8G8HxsYXQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: SPAxAqpwtDskExEO139+dKvcj9I=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.5.4",
    "isServer": false,
    "localCloseCode": 1000,
@@ -40,7 +40,7 @@
          false
       ]
    ],
-   "remoteCloseCode": null,
+   "remoteCloseCode": 1000,
    "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": false,
@@ -51,11 +51,11 @@
       "8": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "4": 1,
       "16": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:09.168Z",
+   "started": "2018-08-02T11:13:57.494Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1,
@@ -84,7 +84,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20374b68623155496f ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205350417841717077 ..."
          ]
       ],
       [
@@ -96,7 +96,7 @@
          1,
          true,
          0,
-         "680a4dc2",
+         "010c592d",
          null,
          null,
          false
@@ -105,7 +105,7 @@
          "TO",
          [
             20,
-            "818e680a4dc2006f21ae07fae96fca7d22b0046e"
+            "818e010c592d696935416efcfd80a37b365f6d68"
          ],
          false
       ],
@@ -141,7 +141,7 @@
          8,
          true,
          0,
-         "0d005934",
+         "2ba5c311",
          null,
          null,
          false
@@ -150,22 +150,22 @@
          "TO",
          [
             8,
-            "88820d0059340ee8"
+            "88822ba5c311284d"
          ],
          false
       ],
       [
          "RO",
          [
-            2,
-            "8800"
+            4,
+            "880203e8"
          ]
       ],
       [
          "RF",
          [
-            0,
-            ""
+            2,
+            "0x03e8"
          ],
          8,
          true,

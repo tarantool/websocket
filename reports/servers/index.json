@@ -3,1674 +3,1674 @@
       "1.1.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 3,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_1.json"
       },
       "1.1.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_2.json"
       },
       "1.1.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_3.json"
       },
       "1.1.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_4.json"
       },
       "1.1.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_5.json"
       },
       "1.1.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 7,
-         "remoteCloseCode": null,
+         "duration": 11,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_6.json"
       },
       "1.1.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 6,
-         "remoteCloseCode": null,
+         "duration": 10,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_7.json"
       },
       "1.1.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 11,
-         "remoteCloseCode": null,
+         "duration": 12,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_1_8.json"
       },
       "1.2.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_1.json"
       },
       "1.2.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_2.json"
       },
       "1.2.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_3.json"
       },
       "1.2.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_4.json"
       },
       "1.2.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_5.json"
       },
       "1.2.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 26,
-         "remoteCloseCode": null,
+         "duration": 30,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_6.json"
       },
       "1.2.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 26,
-         "remoteCloseCode": null,
+         "duration": 27,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_7.json"
       },
       "1.2.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 27,
-         "remoteCloseCode": null,
+         "duration": 29,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_1_2_8.json"
       },
       "10.1.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 11,
-         "remoteCloseCode": null,
+         "duration": 9,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_10_1_1.json"
       },
       "12.1.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_1.json"
       },
       "12.1.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_10.json"
       },
       "12.1.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_11.json"
       },
       "12.1.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_12.json"
       },
       "12.1.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_13.json"
       },
       "12.1.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_14.json"
       },
       "12.1.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_15.json"
       },
       "12.1.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_16.json"
       },
       "12.1.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_17.json"
       },
       "12.1.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_18.json"
       },
       "12.1.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_2.json"
       },
       "12.1.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_3.json"
       },
       "12.1.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_4.json"
       },
       "12.1.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_5.json"
       },
       "12.1.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_6.json"
       },
       "12.1.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_7.json"
       },
       "12.1.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_8.json"
       },
       "12.1.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_1_9.json"
       },
       "12.2.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_1.json"
       },
       "12.2.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_10.json"
       },
       "12.2.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_11.json"
       },
       "12.2.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_12.json"
       },
       "12.2.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_13.json"
       },
       "12.2.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_14.json"
       },
       "12.2.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_15.json"
       },
       "12.2.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_16.json"
       },
       "12.2.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_17.json"
       },
       "12.2.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_18.json"
       },
       "12.2.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_2.json"
       },
       "12.2.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_3.json"
       },
       "12.2.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_4.json"
       },
       "12.2.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_5.json"
       },
       "12.2.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_6.json"
       },
       "12.2.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_7.json"
       },
       "12.2.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_8.json"
       },
       "12.2.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_2_9.json"
       },
       "12.3.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_1.json"
       },
       "12.3.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_10.json"
       },
       "12.3.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_11.json"
       },
       "12.3.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_12.json"
       },
       "12.3.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_13.json"
       },
       "12.3.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_14.json"
       },
       "12.3.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_15.json"
       },
       "12.3.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_16.json"
       },
       "12.3.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_17.json"
       },
       "12.3.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_18.json"
       },
       "12.3.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_2.json"
       },
       "12.3.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_3.json"
       },
       "12.3.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_4.json"
       },
       "12.3.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_5.json"
       },
       "12.3.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_6.json"
       },
       "12.3.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_7.json"
       },
       "12.3.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_8.json"
       },
       "12.3.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_3_9.json"
       },
       "12.4.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_1.json"
       },
       "12.4.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_10.json"
       },
       "12.4.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_11.json"
       },
       "12.4.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_12.json"
       },
       "12.4.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_13.json"
       },
       "12.4.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_14.json"
       },
       "12.4.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_15.json"
       },
       "12.4.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_16.json"
       },
       "12.4.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_17.json"
       },
       "12.4.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_18.json"
       },
       "12.4.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_2.json"
       },
       "12.4.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_3.json"
       },
       "12.4.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_4.json"
       },
       "12.4.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_5.json"
       },
       "12.4.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_6.json"
       },
       "12.4.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_7.json"
       },
       "12.4.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_8.json"
       },
       "12.4.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_4_9.json"
       },
       "12.5.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_1.json"
       },
       "12.5.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_10.json"
       },
       "12.5.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_11.json"
       },
       "12.5.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_12.json"
       },
       "12.5.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_13.json"
       },
       "12.5.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_14.json"
       },
       "12.5.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_15.json"
       },
       "12.5.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_16.json"
       },
       "12.5.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_17.json"
       },
       "12.5.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_18.json"
       },
       "12.5.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_2.json"
       },
       "12.5.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_3.json"
       },
       "12.5.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_4.json"
       },
       "12.5.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_5.json"
       },
       "12.5.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_6.json"
       },
       "12.5.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_7.json"
       },
       "12.5.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_8.json"
       },
       "12.5.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_12_5_9.json"
       },
       "13.1.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_1.json"
       },
       "13.1.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_10.json"
       },
       "13.1.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 2,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_11.json"
       },
       "13.1.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_12.json"
       },
       "13.1.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_13.json"
       },
       "13.1.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_14.json"
       },
       "13.1.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_15.json"
       },
       "13.1.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_16.json"
       },
       "13.1.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_17.json"
       },
       "13.1.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_18.json"
       },
       "13.1.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_2.json"
       },
       "13.1.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_3.json"
       },
       "13.1.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_4.json"
       },
       "13.1.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_5.json"
       },
       "13.1.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_6.json"
       },
       "13.1.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_7.json"
       },
       "13.1.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_8.json"
       },
       "13.1.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_1_9.json"
       },
       "13.2.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_1.json"
       },
       "13.2.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_10.json"
       },
       "13.2.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_11.json"
       },
       "13.2.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_12.json"
       },
       "13.2.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_13.json"
       },
       "13.2.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_14.json"
       },
       "13.2.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_15.json"
       },
       "13.2.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_16.json"
       },
       "13.2.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_17.json"
       },
       "13.2.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_18.json"
       },
       "13.2.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_2.json"
       },
       "13.2.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_3.json"
       },
       "13.2.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_4.json"
       },
       "13.2.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_5.json"
       },
       "13.2.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_6.json"
       },
       "13.2.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_7.json"
       },
       "13.2.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_8.json"
       },
       "13.2.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_2_9.json"
       },
       "13.3.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_1.json"
       },
       "13.3.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_10.json"
       },
       "13.3.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_11.json"
       },
       "13.3.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_12.json"
       },
       "13.3.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_13.json"
       },
       "13.3.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_14.json"
       },
       "13.3.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_15.json"
       },
       "13.3.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_16.json"
       },
       "13.3.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_17.json"
       },
       "13.3.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_18.json"
       },
       "13.3.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_2.json"
       },
       "13.3.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_3.json"
       },
       "13.3.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_4.json"
       },
       "13.3.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_5.json"
       },
       "13.3.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_6.json"
       },
       "13.3.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_7.json"
       },
       "13.3.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_8.json"
       },
       "13.3.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_3_9.json"
       },
       "13.4.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_1.json"
       },
       "13.4.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_10.json"
       },
       "13.4.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_11.json"
       },
       "13.4.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_12.json"
       },
       "13.4.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_13.json"
       },
       "13.4.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_14.json"
       },
       "13.4.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_15.json"
       },
       "13.4.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_16.json"
       },
       "13.4.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_17.json"
       },
       "13.4.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_18.json"
       },
       "13.4.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_2.json"
       },
       "13.4.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_3.json"
       },
       "13.4.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_4.json"
       },
       "13.4.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_5.json"
       },
       "13.4.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_6.json"
       },
       "13.4.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_7.json"
       },
       "13.4.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_8.json"
       },
       "13.4.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_4_9.json"
       },
       "13.5.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_1.json"
       },
       "13.5.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_10.json"
       },
       "13.5.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_11.json"
       },
       "13.5.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_12.json"
       },
       "13.5.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_13.json"
       },
       "13.5.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_14.json"
       },
       "13.5.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_15.json"
       },
       "13.5.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_16.json"
       },
       "13.5.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_17.json"
       },
       "13.5.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_18.json"
       },
       "13.5.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_2.json"
       },
       "13.5.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_3.json"
       },
       "13.5.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_4.json"
       },
       "13.5.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_5.json"
       },
       "13.5.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_6.json"
       },
       "13.5.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_7.json"
       },
       "13.5.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_8.json"
       },
       "13.5.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_5_9.json"
       },
       "13.6.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_1.json"
       },
       "13.6.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_10.json"
       },
       "13.6.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_11.json"
       },
       "13.6.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_12.json"
       },
       "13.6.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_13.json"
       },
       "13.6.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_14.json"
       },
       "13.6.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_15.json"
       },
       "13.6.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_16.json"
       },
       "13.6.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_17.json"
       },
       "13.6.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_18.json"
       },
       "13.6.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_2.json"
       },
       "13.6.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_3.json"
       },
       "13.6.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_4.json"
       },
       "13.6.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_5.json"
       },
       "13.6.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_6.json"
       },
       "13.6.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_7.json"
       },
       "13.6.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_8.json"
       },
       "13.6.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_6_9.json"
       },
       "13.7.1": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_1.json"
       },
       "13.7.10": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_10.json"
       },
       "13.7.11": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_11.json"
       },
       "13.7.12": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_12.json"
       },
       "13.7.13": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_13.json"
       },
       "13.7.14": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_14.json"
       },
       "13.7.15": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_15.json"
       },
       "13.7.16": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_16.json"
       },
       "13.7.17": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_17.json"
       },
       "13.7.18": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_18.json"
       },
       "13.7.2": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_2.json"
       },
       "13.7.3": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_3.json"
       },
       "13.7.4": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_4.json"
       },
       "13.7.5": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_5.json"
       },
       "13.7.6": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_6.json"
       },
       "13.7.7": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_7.json"
       },
       "13.7.8": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_8.json"
       },
       "13.7.9": {
          "behavior": "UNIMPLEMENTED",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_13_7_9.json"
       },
       "2.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_1.json"
       },
       "2.10": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 3,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_10.json"
       },
       "2.11": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 13,
-         "remoteCloseCode": null,
+         "duration": 16,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_11.json"
       },
       "2.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_2.json"
       },
       "2.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_3.json"
       },
       "2.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_4.json"
       },
       "2.5": {
@@ -1683,42 +1683,42 @@
       "2.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 11,
-         "remoteCloseCode": null,
+         "duration": 10,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_6.json"
       },
       "2.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_7.json"
       },
       "2.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_8.json"
       },
       "2.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_2_9.json"
       },
       "3.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 3,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_3_1.json"
       },
       "3.2": {
          "behavior": "NON-STRICT",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 2,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_3_2.json"
       },
@@ -1753,28 +1753,28 @@
       "3.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 0,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_3_7.json"
       },
       "4.1.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
+         "duration": 0,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_4_1_1.json"
       },
       "4.1.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 3,
+         "duration": 1,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_4_1_2.json"
       },
       "4.1.3": {
          "behavior": "NON-STRICT",
          "behaviorClose": "OK",
-         "duration": 2,
+         "duration": 1,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_4_1_3.json"
       },
@@ -1788,14 +1788,14 @@
       "4.1.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 4,
+         "duration": 5,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_4_1_5.json"
       },
       "4.2.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 2,
          "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_4_2_1.json"
       },
@@ -1901,7 +1901,7 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1003,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_19.json"
       },
       "5.2": {
@@ -1915,49 +1915,49 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1004,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_20.json"
       },
       "5.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_3.json"
       },
       "5.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_4.json"
       },
       "5.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 3,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_5.json"
       },
       "5.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_6.json"
       },
       "5.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_7.json"
       },
       "5.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 6,
-         "remoteCloseCode": null,
+         "duration": 5,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_5_8.json"
       },
       "5.9": {
@@ -1971,21 +1971,21 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_1_1.json"
       },
       "6.1.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_1_2.json"
       },
       "6.1.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_1_3.json"
       },
       "6.10.1": {
@@ -2013,34 +2013,34 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_11_1.json"
       },
       "6.11.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_11_2.json"
       },
       "6.11.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_11_3.json"
       },
       "6.11.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_11_4.json"
       },
       "6.11.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 0,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_11_5.json"
       },
@@ -2061,7 +2061,7 @@
       "6.12.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_12_3.json"
       },
@@ -2075,21 +2075,21 @@
       "6.12.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_12_5.json"
       },
       "6.12.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 3,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_12_6.json"
       },
       "6.12.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_12_7.json"
       },
@@ -2285,7 +2285,7 @@
       "6.18.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_18_3.json"
       },
@@ -2306,7 +2306,7 @@
       "6.19.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_19_1.json"
       },
@@ -2342,21 +2342,21 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_2_1.json"
       },
       "6.2.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_2_2.json"
       },
       "6.2.3": {
-         "behavior": "FAILED",
-         "behaviorClose": "FAILED",
-         "duration": 2,
-         "remoteCloseCode": 1007,
+         "behavior": "OK",
+         "behaviorClose": "OK",
+         "duration": 3,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_2_3.json"
       },
       "6.2.4": {
@@ -2411,28 +2411,28 @@
       "6.20.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_20_7.json"
       },
       "6.21.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_21_1.json"
       },
       "6.21.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_21_2.json"
       },
       "6.21.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_21_3.json"
       },
@@ -2453,7 +2453,7 @@
       "6.21.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_21_6.json"
       },
@@ -2475,287 +2475,287 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_1.json"
       },
       "6.22.10": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_10.json"
       },
       "6.22.11": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_11.json"
       },
       "6.22.12": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_12.json"
       },
       "6.22.13": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_13.json"
       },
       "6.22.14": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_14.json"
       },
       "6.22.15": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_15.json"
       },
       "6.22.16": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_16.json"
       },
       "6.22.17": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_17.json"
       },
       "6.22.18": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_18.json"
       },
       "6.22.19": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_19.json"
       },
       "6.22.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_2.json"
       },
       "6.22.20": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_20.json"
       },
       "6.22.21": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_21.json"
       },
       "6.22.22": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_22.json"
       },
       "6.22.23": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_23.json"
       },
       "6.22.24": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_24.json"
       },
       "6.22.25": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_25.json"
       },
       "6.22.26": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_26.json"
       },
       "6.22.27": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_27.json"
       },
       "6.22.28": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_28.json"
       },
       "6.22.29": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_29.json"
       },
       "6.22.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_3.json"
       },
       "6.22.30": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_30.json"
       },
       "6.22.31": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_31.json"
       },
       "6.22.32": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_32.json"
       },
       "6.22.33": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_33.json"
       },
       "6.22.34": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_34.json"
       },
       "6.22.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_4.json"
       },
       "6.22.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_5.json"
       },
       "6.22.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_6.json"
       },
       "6.22.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_7.json"
       },
       "6.22.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_8.json"
       },
       "6.22.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_22_9.json"
       },
       "6.23.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_1.json"
       },
       "6.23.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_2.json"
       },
       "6.23.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_3.json"
       },
       "6.23.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_4.json"
       },
       "6.23.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_5.json"
       },
       "6.23.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_6.json"
       },
       "6.23.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_23_7.json"
       },
       "6.3.1": {
@@ -2773,10 +2773,10 @@
          "reportfile": "tarantool_websocket_case_6_3_2.json"
       },
       "6.4.1": {
-         "behavior": "OK",
-         "behaviorClose": "OK",
+         "behavior": "FAILED",
+         "behaviorClose": "FAILED",
          "duration": 1002,
-         "remoteCloseCode": 1007,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_4_1.json"
       },
       "6.4.2": {
@@ -2789,14 +2789,14 @@
       "6.4.3": {
          "behavior": "NON-STRICT",
          "behaviorClose": "OK",
-         "duration": 2008,
+         "duration": 2007,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_4_3.json"
       },
       "6.4.4": {
          "behavior": "NON-STRICT",
          "behaviorClose": "OK",
-         "duration": 2004,
+         "duration": 2003,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_4_4.json"
       },
@@ -2804,35 +2804,35 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_5_1.json"
       },
       "6.5.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_5_2.json"
       },
       "6.5.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 3,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_5_3.json"
       },
       "6.5.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 3,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_5_4.json"
       },
       "6.5.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_5_5.json"
       },
       "6.6.1": {
@@ -2845,7 +2845,7 @@
       "6.6.10": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_6_10.json"
       },
@@ -2853,14 +2853,14 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_6_11.json"
       },
       "6.6.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_6_2.json"
       },
       "6.6.3": {
@@ -2881,7 +2881,7 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_6_5.json"
       },
       "6.6.6": {
@@ -2895,13 +2895,13 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_6_7.json"
       },
       "6.6.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
+         "duration": 0,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_6_8.json"
       },
@@ -2909,35 +2909,35 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_6_9.json"
       },
       "6.7.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_7_1.json"
       },
       "6.7.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_7_2.json"
       },
       "6.7.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_7_3.json"
       },
       "6.7.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_7_4.json"
       },
       "6.8.1": {
@@ -2950,7 +2950,7 @@
       "6.8.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
+         "duration": 1,
          "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_6_8_2.json"
       },
@@ -2958,119 +2958,119 @@
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_9_1.json"
       },
       "6.9.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_9_2.json"
       },
       "6.9.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_9_3.json"
       },
       "6.9.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_6_9_4.json"
       },
       "7.1.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_1.json"
       },
       "7.1.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_2.json"
       },
       "7.1.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_3.json"
       },
       "7.1.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_4.json"
       },
       "7.1.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 2,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_5.json"
       },
       "7.1.6": {
          "behavior": "INFORMATIONAL",
          "behaviorClose": "INFORMATIONAL",
-         "duration": 30,
-         "remoteCloseCode": null,
+         "duration": 41,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_1_6.json"
       },
       "7.13.1": {
          "behavior": "INFORMATIONAL",
          "behaviorClose": "INFORMATIONAL",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_13_1.json"
       },
       "7.13.2": {
          "behavior": "INFORMATIONAL",
          "behaviorClose": "INFORMATIONAL",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_13_2.json"
       },
       "7.3.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_3_1.json"
       },
       "7.3.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_3_2.json"
       },
       "7.3.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_3_3.json"
       },
       "7.3.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_3_4.json"
       },
       "7.3.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_3_5.json"
       },
       "7.3.6": {
@@ -3083,554 +3083,554 @@
       "7.5.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1007,
          "reportfile": "tarantool_websocket_case_7_5_1.json"
       },
       "7.7.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_1.json"
       },
       "7.7.10": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_10.json"
       },
       "7.7.11": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_11.json"
       },
       "7.7.12": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_12.json"
       },
       "7.7.13": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_13.json"
       },
       "7.7.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_2.json"
       },
       "7.7.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 0,
-         "remoteCloseCode": null,
+         "duration": 1,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_3.json"
       },
       "7.7.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_4.json"
       },
       "7.7.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_5.json"
       },
       "7.7.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_6.json"
       },
       "7.7.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_7.json"
       },
       "7.7.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_8.json"
       },
       "7.7.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_7_7_9.json"
       },
       "7.9.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_1.json"
       },
       "7.9.10": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_10.json"
       },
       "7.9.11": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_11.json"
       },
       "7.9.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_2.json"
       },
       "7.9.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_3.json"
       },
       "7.9.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_4.json"
       },
       "7.9.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_5.json"
       },
       "7.9.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 1,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_6.json"
       },
       "7.9.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_7.json"
       },
       "7.9.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1,
-         "remoteCloseCode": null,
+         "duration": 0,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_8.json"
       },
       "7.9.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 0,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1002,
          "reportfile": "tarantool_websocket_case_7_9_9.json"
       },
       "9.1.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 6,
-         "remoteCloseCode": null,
+         "duration": 10,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_1.json"
       },
       "9.1.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 20,
-         "remoteCloseCode": null,
+         "duration": 36,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_2.json"
       },
       "9.1.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 87,
-         "remoteCloseCode": null,
+         "duration": 138,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_3.json"
       },
       "9.1.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 308,
-         "remoteCloseCode": null,
+         "duration": 522,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_4.json"
       },
       "9.1.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 588,
-         "remoteCloseCode": null,
+         "duration": 1088,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_5.json"
       },
       "9.1.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1194,
-         "remoteCloseCode": null,
+         "duration": 2143,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_1_6.json"
       },
       "9.2.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 31,
-         "remoteCloseCode": null,
+         "duration": 25,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_1.json"
       },
       "9.2.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 21,
-         "remoteCloseCode": null,
+         "duration": 19,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_2.json"
       },
       "9.2.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 76,
-         "remoteCloseCode": null,
+         "duration": 72,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_3.json"
       },
       "9.2.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 311,
-         "remoteCloseCode": null,
+         "duration": 289,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_4.json"
       },
       "9.2.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 619,
-         "remoteCloseCode": null,
+         "duration": 608,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_5.json"
       },
       "9.2.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1280,
-         "remoteCloseCode": null,
+         "duration": 1245,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_2_6.json"
       },
       "9.3.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2854,
-         "remoteCloseCode": null,
+         "duration": 2575,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_1.json"
       },
       "9.3.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1087,
-         "remoteCloseCode": null,
+         "duration": 912,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_2.json"
       },
       "9.3.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 654,
-         "remoteCloseCode": null,
+         "duration": 476,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_3.json"
       },
       "9.3.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 578,
-         "remoteCloseCode": null,
+         "duration": 359,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_4.json"
       },
       "9.3.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 554,
-         "remoteCloseCode": null,
+         "duration": 346,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_5.json"
       },
       "9.3.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 416,
-         "remoteCloseCode": null,
+         "duration": 242,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_6.json"
       },
       "9.3.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 379,
-         "remoteCloseCode": null,
+         "duration": 227,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_7.json"
       },
       "9.3.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 361,
-         "remoteCloseCode": null,
+         "duration": 259,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_8.json"
       },
       "9.3.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 237,
-         "remoteCloseCode": null,
+         "duration": 455,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_3_9.json"
       },
       "9.4.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 2547,
-         "remoteCloseCode": null,
+         "duration": 2421,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_1.json"
       },
       "9.4.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 888,
-         "remoteCloseCode": null,
+         "duration": 870,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_2.json"
       },
       "9.4.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 470,
-         "remoteCloseCode": null,
+         "duration": 483,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_3.json"
       },
       "9.4.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 356,
-         "remoteCloseCode": null,
+         "duration": 367,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_4.json"
       },
       "9.4.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 326,
-         "remoteCloseCode": null,
+         "duration": 332,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_5.json"
       },
       "9.4.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 244,
-         "remoteCloseCode": null,
+         "duration": 238,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_6.json"
       },
       "9.4.7": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 212,
-         "remoteCloseCode": null,
+         "duration": 208,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_7.json"
       },
       "9.4.8": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 201,
-         "remoteCloseCode": null,
+         "duration": 199,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_8.json"
       },
       "9.4.9": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 224,
-         "remoteCloseCode": null,
+         "duration": 218,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_4_9.json"
       },
       "9.5.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1088,
-         "remoteCloseCode": null,
+         "duration": 1123,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_1.json"
       },
       "9.5.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 560,
-         "remoteCloseCode": null,
+         "duration": 605,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_2.json"
       },
       "9.5.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 293,
-         "remoteCloseCode": null,
+         "duration": 345,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_3.json"
       },
       "9.5.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 160,
-         "remoteCloseCode": null,
+         "duration": 216,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_4.json"
       },
       "9.5.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 91,
-         "remoteCloseCode": null,
+         "duration": 150,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_5.json"
       },
       "9.5.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 64,
-         "remoteCloseCode": null,
+         "duration": 122,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_5_6.json"
       },
       "9.6.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 1083,
-         "remoteCloseCode": null,
+         "duration": 1072,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_1.json"
       },
       "9.6.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 563,
-         "remoteCloseCode": null,
+         "duration": 552,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_2.json"
       },
       "9.6.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 303,
-         "remoteCloseCode": null,
+         "duration": 282,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_3.json"
       },
       "9.6.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 169,
-         "remoteCloseCode": null,
+         "duration": 161,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_4.json"
       },
       "9.6.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
          "duration": 95,
-         "remoteCloseCode": null,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_5.json"
       },
       "9.6.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 68,
-         "remoteCloseCode": null,
+         "duration": 67,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_6_6.json"
       },
       "9.7.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 196,
-         "remoteCloseCode": null,
+         "duration": 201,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_1.json"
       },
       "9.7.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 197,
-         "remoteCloseCode": null,
+         "duration": 211,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_2.json"
       },
       "9.7.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 219,
-         "remoteCloseCode": null,
+         "duration": 222,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_3.json"
       },
       "9.7.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 254,
-         "remoteCloseCode": null,
+         "duration": 277,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_4.json"
       },
       "9.7.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 358,
-         "remoteCloseCode": null,
+         "duration": 499,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_5.json"
       },
       "9.7.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 745,
-         "remoteCloseCode": null,
+         "duration": 1085,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_7_6.json"
       },
       "9.8.1": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 188,
-         "remoteCloseCode": null,
+         "duration": 191,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_1.json"
       },
       "9.8.2": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 201,
-         "remoteCloseCode": null,
+         "duration": 215,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_2.json"
       },
       "9.8.3": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 208,
-         "remoteCloseCode": null,
+         "duration": 226,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_3.json"
       },
       "9.8.4": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 245,
-         "remoteCloseCode": null,
+         "duration": 242,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_4.json"
       },
       "9.8.5": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 337,
-         "remoteCloseCode": null,
+         "duration": 355,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_5.json"
       },
       "9.8.6": {
          "behavior": "OK",
          "behaviorClose": "OK",
-         "duration": 733,
-         "remoteCloseCode": null,
+         "duration": 728,
+         "remoteCloseCode": 1000,
          "reportfile": "tarantool_websocket_case_9_8_6.json"
       }
    }

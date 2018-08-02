@@ -27,8 +27,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: zs2yqfMlSgeuQsg1odCJNA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 1rT+MvGNQVTn8agm+dWQu61v4mM=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: wAiG0yRL62DfNeA0v6j20w==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: S615UgDhh4KgqNCMr5q7Y0N489M=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.2.2",
    "isServer": false,
    "localCloseCode": 1000,
@@ -40,7 +40,7 @@
          false
       ]
    ],
-   "remoteCloseCode": null,
+   "remoteCloseCode": 1000,
    "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": false,
@@ -52,11 +52,11 @@
       "8": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "4": 1,
       "33": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:04.131Z",
+   "started": "2018-08-02T11:13:52.456Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 1,
@@ -87,7 +87,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a203172542b4d76474e ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205336313555674468 ..."
          ]
       ],
       [
@@ -99,7 +99,7 @@
          1,
          false,
          0,
-         "12038e02",
+         "77038851",
          null,
          null,
          false
@@ -108,7 +108,7 @@
          "TO",
          [
             21,
-            "018f12038e025a66e26e7d2e4cb752c011c1a4c02a"
+            "018f770388513f66e43d182e4ae437c01792c1c02c"
          ],
          false
       ],
@@ -121,7 +121,7 @@
          0,
          true,
          0,
-         "6355ba91",
+         "ac692efe",
          null,
          null,
          false
@@ -130,7 +130,7 @@
          "TO",
          [
             20,
-            "808e6355ba91a0e97931a0f497c4371397a94274"
+            "808eac692efe6fd5ed5e6fc803abf82f03c68d48"
          ],
          false
       ],
@@ -178,7 +178,7 @@
          8,
          true,
          0,
-         "6edf5dcd",
+         "9bd97d91",
          null,
          null,
          false
@@ -187,22 +187,22 @@
          "TO",
          [
             8,
-            "88826edf5dcd6d37"
+            "88829bd97d919831"
          ],
          false
       ],
       [
          "RO",
          [
-            2,
-            "8800"
+            4,
+            "880203e8"
          ]
       ],
       [
          "RF",
          [
-            0,
-            ""
+            2,
+            "0x03e8"
          ],
          8,
          true,

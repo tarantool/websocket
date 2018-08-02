@@ -22,8 +22,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: JC7blmGzLc3trFN74iDa/A==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: IYIdLtHkxWY9Y9l+qVt3+OLw1+A=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: jwftAsX1g/AsHlILmF25zg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: aVeGVGaO6ceZObOQ31Ho94F1Djk=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.13.1",
    "isServer": false,
    "localCloseCode": 1000,
@@ -42,7 +42,7 @@
       "21": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:09.239Z",
+   "started": "2018-08-02T11:13:57.555Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1,
@@ -71,7 +71,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20495949644c74486b ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20615665475647614f ..."
          ]
       ],
       [
@@ -83,7 +83,7 @@
          1,
          true,
          0,
-         "8833d53c",
+         "5b5ce45c",
          null,
          null,
          false
@@ -92,7 +92,7 @@
          "TO",
          [
             68,
-            "81be8833d53c4813141c4a13161c4c13101c4e13121c40131c1c42131e1c4413181c46131a1c5813041c5a13061c5c13001c5e13021c50130c1c52130e1c5413 ..."
+            "81be5b5ce45c9b7c257c997c277c9f7c217c9d7c237c937c2d7c917c2f7c977c297c957c2b7c8b7c357c897c377c8f7c317c8d7c337c837c3d7c817c3f7c877c ..."
          ],
          false
       ],
@@ -128,7 +128,7 @@
          8,
          true,
          0,
-         "f5b27826",
+         "861aac4e",
          null,
          null,
          false
@@ -137,7 +137,7 @@
          "TO",
          [
             8,
-            "8882f5b27826f65a"
+            "8882861aac4e85f2"
          ],
          false
       ]

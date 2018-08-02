@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send small text message with <b>RSV = 1</b>.",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 3,
    "expectation": "The connection is failed immediately (1002/protocol error), since RSV must be 0, when no extension defining RSV meaning has been negotiated.",
    "expected": {
       "OK": []
@@ -21,8 +21,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: rereCf04ZHhND/QYC0gdFw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: oBiOSskUrKf8cnRJghAQ1/mJNv8=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: k7vY9BvAzMYtZoZ/1grnQQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 08F20oNhM00VfLy4JiPs9dQZuTY=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "3.1",
    "isServer": false,
    "localCloseCode": 1000,
@@ -41,7 +41,7 @@
       "25": 1,
       "129": 1
    },
-   "started": "2018-07-25T19:46:02.022Z",
+   "started": "2018-08-02T11:13:50.343Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1,
@@ -70,7 +70,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a206f42694f53736b55 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2030384632306f4e68 ..."
          ]
       ],
       [
@@ -82,7 +82,7 @@
          1,
          true,
          1,
-         "fbbd638e",
+         "685d0f21",
          null,
          null,
          false
@@ -91,7 +91,7 @@
          "TO",
          [
             19,
-            "918dfbbd638eb3d80fe2949143f994cf0feada"
+            "918d685d0f212038634d07712f56072f634549"
          ],
          false
       ],
@@ -127,7 +127,7 @@
          8,
          true,
          0,
-         "5b0b02db",
+         "5c8cf7e0",
          null,
          null,
          false
@@ -136,7 +136,7 @@
          "TO",
          [
             8,
-            "88825b0b02db58e3"
+            "88825c8cf7e05f64"
          ],
          false
       ]

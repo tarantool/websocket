@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send 1000 text messages of payload size 4096 to measure implementation/network RTT (round trip time) / latency.",
    "droppedByMe": false,
-   "duration": 745,
+   "duration": 1085,
    "expectation": "Receive echo'ed text messages (with payload as sent). Timeout case after 480 secs.",
    "expected": {},
    "expectedClose": {
@@ -19,14 +19,14 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 9Dqgy5/o7pdtRXhp1Lsi0g==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: p6q4EBYaUT6Q41dvhv6fTEo+XRw=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: CvZDcQa/Y/ZXizvXSD7cfA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Y0g3wH7wdN9RBvt3oo6Atom/GoQ=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "9.7.6",
    "isServer": false,
    "localCloseCode": 1000,
    "localCloseReason": null,
    "received": [],
-   "remoteCloseCode": null,
+   "remoteCloseCode": 1000,
    "remoteCloseReason": null,
    "reportCompressionRatio": false,
    "reportTime": true,
@@ -37,11 +37,11 @@
       "8": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "4": 1,
       "129": 1,
       "4100": 1000
    },
-   "started": "2018-07-25T19:46:32.439Z",
+   "started": "2018-08-02T11:14:21.443Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1000,
@@ -70,7 +70,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a207036713445425961 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205930673377483777 ..."
          ]
       ],
       [
@@ -94,7 +94,7 @@
          8,
          true,
          0,
-         "1ff5e069",
+         "d0e0cf2d",
          null,
          null,
          false
@@ -103,22 +103,22 @@
          "TO",
          [
             8,
-            "88821ff5e0691c1d"
+            "8882d0e0cf2dd308"
          ],
          false
       ],
       [
          "RO",
          [
-            2,
-            "8800"
+            4,
+            "880203e8"
          ]
       ],
       [
          "RF",
          [
-            0,
-            ""
+            2,
+            "0x03e8"
          ],
          8,
          true,
