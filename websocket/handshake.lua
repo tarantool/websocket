@@ -22,14 +22,14 @@ local digest = require('digest')
 
 local guid = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
 
-local sec_websocket_accept = function(sec_websocket_key)
+local function sec_websocket_accept(sec_websocket_key)
     local a = sec_websocket_key..guid
     local sha1 = digest.sha1(a)
     assert((#sha1 % 2) == 0)
     return digest.base64_encode(sha1)
 end
 
-local upgrade_request = function(req)
+local function upgrade_request(req)
     local lines = {
         ('GET %s HTTP/1.1'):format(req.uri or ''),
         ('Host: %s'):format(req.host),
@@ -57,8 +57,9 @@ local function validate_request(request)
         or not headers['connection']
         or not headers['connection']:lower():match('upgrade')
         or not headers['sec-websocket-key']
-    or headers['sec-websocket-version'] ~= '13' then
-        return false, 'HTTP/1.1 400 Bad Request\r\n\r\n'
+        or headers['sec-websocket-version'] ~= '13'
+    then
+        return false, 'HTTP/1.1 400 Bad Request\r\nConnection: close\r\n\r\n'
     end
     return true
 end

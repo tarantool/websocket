@@ -20,6 +20,16 @@
 
 -- Following Websocket RFC: http://tools.ietf.org/html/rfc6455
 local bit = require('bit')
+local clock = require('clock')
+
+local function slice_wait(timeout, starttime)
+    if timeout == nil then
+        return nil
+    end
+
+    return timeout - (clock.time() - starttime)
+end
+
 
 local write_int8 = string.char
 
@@ -139,30 +149,35 @@ function string.int32(self)
         d
 end
 
-
+--[[
+    returns:
+      {opcode=number,fin=boolean,data=string,rsv=number} on success
+      {} on eof
+      nil on timeout or hard error, check it with client:errno()
+]]
 local function decode_from(client, timeout)
+    local starttime = clock.time()
+
     local header, payload
     header = client:read({chunk=1}, timeout)
     if header == nil then
-        return nil
-    end
-    header = header:byte()
-    if header == nil then
+        return nil, client:error()
+    elseif header == '' then
         return {}
     end
+    header = header:byte()
+
     local fin = bit.band(header, bit_7) > 0
     local rsv = bit.band(header, bit_4_6)
     local opcode = bit.band(header, bit_0_3)
 
-    payload = client:read({chunk=1}, timeout)
+    payload = client:read({chunk=1}, slice_wait(timeout, starttime))
     if payload == nil then
-        -- eof
-        return nil
-    end
-    payload = payload:byte()
-    if payload == nil then
+        return nil, client:error()
+    elseif payload == '' then
         return {}
     end
+    payload = payload:byte()
 
     local high, low
     local ismasked = bit.band(payload, bit_7) > 0
@@ -170,92 +185,82 @@ local function decode_from(client, timeout)
     payload = bit.band(payload,bit_0_6)
     if payload > 125 then
         if payload == 126 then
-            payload = client:read({chunk=2}, timeout)
+            payload = client:read({chunk=2}, slice_wait(timeout, starttime))
             if payload == nil then
-                -- eof
-                return nil
-            end
-            payload = payload:int16()
-            if payload == nil then
+                return nil, client:error()
+            elseif payload == '' then
                 return {}
             end
+            payload = payload:int16()
         elseif payload == 127 then
-            high = client:read({chunk=4}, timeout)
-            low = client:read({chunk=4}, timeout)
+            high = client:read({chunk=4}, slice_wait(timeout, starttime))
+            low = client:read({chunk=4}, slice_wait(timeout, starttime))
             if high == nil or low == nil then
-                return nil
+                return nil, client:error()
+            elseif high == '' or low == '' then
+                return {}
             end
             high = high:int32()
             low = low:int32()
-            if high == nil or low == nil then
-                return {}
-            end
 
             payload = tonumber64(high)*2^32 + low
             if payload < 0xffff or payload > 2^53 then
-                return nil
+                return nil, 'Invalid payload frame size'
             end
         else
-            return nil
+            error('NOTREACHED')
         end
     end
 
     local m1,m2,m3,m4
     local mask
     if ismasked then
-        m1 = client:read({chunk=1}, timeout)
-        m2 = client:read({chunk=1}, timeout)
-        m3 = client:read({chunk=1}, timeout)
-        m4 = client:read({chunk=1}, timeout)
-        if m1 == nil or m2 == nil or m3 == nil or m4 == nil then
-            return nil
-        end
-        m1 = m1:byte()
-        m2 = m2:byte()
-        m3 = m3:byte()
-        m4 = m4:byte()
-        if m1 == nil or m2 == nil or m3 == nil or m4 == nil then
+        local stringmask = client:read({chunk=4}, slice_wait(timeout, starttime))
+        if stringmask == nil then
+            return nil, client:error()
+        elseif stringmask == '' then
             return {}
         end
+        m1 = stringmask:byte(1)
+        m2 = stringmask:byte(2)
+        m3 = stringmask:byte(3)
+        m4 = stringmask:byte(4)
         mask = { m1, m2, m3, m4 }
     end
 
     -- TODO optimize frame body read loop
     local data = {}
     local maski = 1
-    for i=1, payload do
-        local piece
-        if mask then
-            piece = client:read({chunk=1}, timeout)
+    if mask then
+        for i=1, payload do
+            local piece
+            piece = client:read({chunk=1}, slice_wait(timeout, starttime))
             if piece == nil then
-                return nil
-            end
-            piece = piece:byte()
-            if piece == nil then
+                return nil, client:error()
+            elseif piece == '' then
                 return {}
             end
+            piece = piece:byte()
             piece = bit.bxor(piece, mask[maski])
             if maski == 4 then
                 maski = 1
             else
                 maski = maski + 1
             end
-        else
-            piece = client:read({chunk=1}, timeout)
-            if piece == nil then
-                return nil
-            end
-            piece = piece:byte()
-            if piece == nil then
-                return {}
-            end
-        end
 
-        piece = string.char(piece)
-        data[i] = piece
+            piece = string.char(piece)
+            data[i] = piece
+        end
+        data = table.concat(data)
+    else
+        data = client:read({chunk=payload}, slice_wait(timeout, starttime))
+        if data == nil then
+            return nil, client:error()
+        elseif data == '' then
+            return {}
+        end
     end
 
-    data = table.concat(data)
     return {
         opcode = opcode,
         fin = fin,
@@ -300,6 +305,8 @@ end
 
 
 return {
+    slice_wait = slice_wait,
+
     xor_mask = xor_mask,
 
     encode = encode,
