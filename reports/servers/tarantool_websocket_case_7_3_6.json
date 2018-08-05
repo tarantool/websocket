@@ -1,14 +1,14 @@
 {
    "agent": "Tarantool websocket",
    "behavior": "OK",
-   "behaviorClose": "OK",
+   "behaviorClose": "FAILED BY CLIENT",
    "case": 221,
    "closedByMe": true,
    "createStats": true,
    "createWirelog": true,
    "description": "Send a close frame with close code and close reason which is too long (124) - total frame payload 126 octets",
-   "droppedByMe": false,
-   "duration": 1,
+   "droppedByMe": true,
+   "duration": 1001,
    "expectation": "Clean close with protocol error code or dropped TCP connection.",
    "expected": {
       "OK": []
@@ -20,9 +20,9 @@
       "closedByMe": true,
       "requireClean": false
    },
-   "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 47B0lmhEK/Obz4I8GqHtPg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: gZLObAHldwydvtSyN/x/k1QVjjY=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "failedByMe": true,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: agQwdlvscPLhDFZKy1soUQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: PHt/mrgthyXRFfKfo1ozYQJ4k+s=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.3.6",
    "isServer": false,
    "localCloseCode": 1000,
@@ -33,7 +33,7 @@
    "reportCompressionRatio": false,
    "reportTime": false,
    "result": "Actual events match at least one expected.",
-   "resultClose": "Connection was properly closed",
+   "resultClose": "It is preferred that the server close the TCP connection",
    "rxFrameStats": {
       "8": 1
    },
@@ -41,7 +41,7 @@
       "46": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:57.773Z",
+   "started": "2018-08-04T16:49:58.216Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -68,7 +68,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20675a4c4f6241486c ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205048742f6d726774 ..."
          ]
       ],
       [
@@ -80,7 +80,7 @@
          8,
          true,
          0,
-         "47c19361",
+         "ee9f171d",
          null,
          null,
          false
@@ -89,7 +89,7 @@
          "TO",
          [
             134,
-            "88fe007e47c193614429b94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b6debb94b ..."
+            "88fe007eee9f171ded773d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37c4b53d37 ..."
          ],
          false
       ],
@@ -115,6 +115,9 @@
          0,
          false,
          null
+      ],
+      [
+         "KLE"
       ]
    ]
 }

@@ -1,6 +1,6 @@
 {
    "agent": "Tarantool websocket",
-   "behavior": "NON-STRICT",
+   "behavior": "OK",
    "behaviorClose": "OK",
    "case": 29,
    "closedByMe": false,
@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send small text message, then send again with <b>RSV = 2</b>, then send Ping.",
    "droppedByMe": false,
-   "duration": 2,
+   "duration": 1,
    "expectation": "Echo for first message is received, but then connection is failed immediately, since RSV must be 0, when no extension defining RSV meaning has been negotiated. The Pong is not received.",
    "expected": {
       "NON-STRICT": [],
@@ -28,13 +28,19 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: d4YVMhLkMgXkJee+EgPf6g==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: KDrmDxcCI5nfs9jVj9FQFhKjESs=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: mrME5ZCTthxu5BDitcIw4A==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 2o4I054jTbUApN8V8ZODGaOFYAk=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "3.2",
    "isServer": false,
    "localCloseCode": 1000,
    "localCloseReason": null,
-   "received": [],
+   "received": [
+      [
+         "message",
+         "Hello, world!",
+         false
+      ]
+   ],
    "remoteCloseCode": 1002,
    "remoteCloseReason": "frame rsv invalid: 32",
    "reportCompressionRatio": false,
@@ -42,13 +48,15 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
+      "1": 1,
       "8": 1
    },
    "rxOctetStats": {
+      "15": 1,
       "25": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:50.349Z",
+   "started": "2018-08-04T16:49:49.761Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 2,
@@ -79,7 +87,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204b44726d44786343 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20326f34493035346a ..."
          ]
       ],
       [
@@ -91,7 +99,7 @@
          1,
          true,
          0,
-         "ff211ab5",
+         "28bf74cc",
          null,
          null,
          false
@@ -100,7 +108,7 @@
          "TO",
          [
             19,
-            "818dff211ab5b74476d9900d3ac2905376d1de"
+            "818d28bf74cc60da18a0479354bb47cd18a809"
          ],
          false
       ],
@@ -113,7 +121,7 @@
          1,
          true,
          2,
-         "3834d5a7",
+         "29d04b5e",
          null,
          null,
          false
@@ -122,7 +130,7 @@
          "TO",
          [
             19,
-            "a18d3834d5a77051b9cb5718f5d05746b9c319"
+            "a18d29d04b5e61b5273246fc6b2946a2273a08"
          ],
          false
       ],
@@ -135,7 +143,7 @@
          9,
          true,
          0,
-         "514add06",
+         "f0e43db3",
          null,
          null,
          false
@@ -144,13 +152,32 @@
          "TO",
          [
             6,
-            "8980514add06"
+            "8980f0e43db3"
          ],
          false
       ],
       [
          "KL",
          1
+      ],
+      [
+         "RO",
+         [
+            15,
+            "810d48656c6c6f2c20776f726c6421"
+         ]
+      ],
+      [
+         "RF",
+         [
+            13,
+            "Hello, world!"
+         ],
+         1,
+         true,
+         0,
+         false,
+         null
       ],
       [
          "RO",
@@ -180,7 +207,7 @@
          8,
          true,
          0,
-         "da65ec6c",
+         "193cf248",
          null,
          null,
          false
@@ -189,7 +216,7 @@
          "TO",
          [
             8,
-            "8882da65ec6cd98d"
+            "8882193cf2481ad4"
          ],
          false
       ]

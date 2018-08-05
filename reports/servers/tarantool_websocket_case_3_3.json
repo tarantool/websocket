@@ -1,6 +1,6 @@
 {
    "agent": "Tarantool websocket",
-   "behavior": "NON-STRICT",
+   "behavior": "OK",
    "behaviorClose": "OK",
    "case": 30,
    "closedByMe": false,
@@ -28,13 +28,19 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 2iVNpKciUz3A7hDZOiFQNA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 6swnCLJd3vI2y0KpOMwOU7vc8uk=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: XTWQ7gDreIgm5RA3ONX7vw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Qv6NEc8xJks59yqY64dL5NSpNik=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "3.3",
    "isServer": false,
    "localCloseCode": 1000,
    "localCloseReason": null,
-   "received": [],
+   "received": [
+      [
+         "message",
+         "Hello, world!",
+         false
+      ]
+   ],
    "remoteCloseCode": 1002,
    "remoteCloseReason": "frame rsv invalid: 48",
    "reportCompressionRatio": false,
@@ -42,13 +48,14 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
+      "1": 1,
       "8": 1
    },
    "rxOctetStats": {
-      "25": 1,
+      "40": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:50.353Z",
+   "started": "2018-08-04T16:49:49.763Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 2,
@@ -79,7 +86,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a203673776e434c4a64 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205176364e45633878 ..."
          ]
       ],
       [
@@ -91,7 +98,7 @@
          1,
          true,
          0,
-         "050cd190",
+         "fcf3f4f0",
          null,
          null,
          true
@@ -100,7 +107,7 @@
          "TO",
          [
             19,
-            "818d050cd1904d69bdfc6a20f1e76a7ebdf424"
+            "818dfcf3f4f0b496989c93dfd48793819894dd"
          ],
          true
       ],
@@ -113,7 +120,7 @@
          1,
          true,
          3,
-         "da4698c8",
+         "d1dc93b1",
          null,
          null,
          true
@@ -127,7 +134,7 @@
          9,
          true,
          0,
-         "7659fce1",
+         "a3901148",
          null,
          null,
          true
@@ -140,7 +147,7 @@
          "TO",
          [
             19,
-            "b18dda4698c89223f4a4b56ab8bfb534f4acfb"
+            "b18dd1dc93b199b9ffddbef0b3c6beaeffd5f0"
          ],
          true
       ],
@@ -148,16 +155,28 @@
          "TO",
          [
             6,
-            "89807659fce1"
+            "8980a3901148"
          ],
          true
       ],
       [
          "RO",
          [
-            25,
-            "881703ea6672616d652072737620696e76616c69643a203438"
+            40,
+            "810d48656c6c6f2c20776f726c6421881703ea6672616d652072737620696e76616c69643a203438"
          ]
+      ],
+      [
+         "RF",
+         [
+            13,
+            "Hello, world!"
+         ],
+         1,
+         true,
+         0,
+         false,
+         null
       ],
       [
          "RF",
@@ -180,7 +199,7 @@
          8,
          true,
          0,
-         "9427914b",
+         "60374cd8",
          null,
          null,
          false
@@ -189,7 +208,7 @@
          "TO",
          [
             8,
-            "88829427914b97cf"
+            "888260374cd863df"
          ],
          false
       ]

@@ -1,14 +1,14 @@
 {
    "agent": "Tarantool websocket",
    "behavior": "OK",
-   "behaviorClose": "OK",
+   "behaviorClose": "FAILED BY CLIENT",
    "case": 217,
    "closedByMe": true,
    "createStats": true,
    "createWirelog": true,
    "description": "Send a close frame with payload length 1",
-   "droppedByMe": false,
-   "duration": 1,
+   "droppedByMe": true,
+   "duration": 1001,
    "expectation": "Clean close with protocol error or drop TCP.",
    "expected": {
       "OK": []
@@ -20,9 +20,9 @@
       "closedByMe": true,
       "requireClean": false
    },
-   "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: mTdfuFH2BJDa7cMHydMlmw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: NCVV3XeYSPYqUc07Ucg+U8agyEw=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "failedByMe": true,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 6ImI0AT7+WaAeYNC0ZSPGw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: TSItKTJgJDdTT7S+k+1An9+AsDE=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.3.2",
    "isServer": false,
    "localCloseCode": null,
@@ -33,7 +33,7 @@
    "reportCompressionRatio": false,
    "reportTime": false,
    "result": "Actual events match at least one expected.",
-   "resultClose": "Connection was properly closed",
+   "resultClose": "It is preferred that the server close the TCP connection",
    "rxFrameStats": {
       "8": 1
    },
@@ -41,7 +41,7 @@
       "23": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:57.768Z",
+   "started": "2018-08-04T16:49:57.207Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -68,7 +68,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204e43565633586559 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20545349744b544a67 ..."
          ]
       ],
       [
@@ -80,7 +80,7 @@
          8,
          true,
          0,
-         "366648b9",
+         "2e6abfde",
          null,
          null,
          false
@@ -89,7 +89,7 @@
          "TO",
          [
             7,
-            "8881366648b957"
+            "88812e6abfde4f"
          ],
          false
       ],
@@ -115,6 +115,9 @@
          0,
          false,
          null
+      ],
+      [
+         "KLE"
       ]
    ]
 }

@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send text Message fragmented into 2 fragments, one ping with payload in-between. Octets are sent in frame-wise chops.",
    "droppedByMe": false,
-   "duration": 2,
+   "duration": 1,
    "expectation": "A pong is received, then the message is echo'ed back to us.",
    "expected": {
       "OK": [
@@ -31,8 +31,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: WdAdOt5BBWkPGYFc3Jx3Jg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: Jrzg6qRYSsbvuINyKx/nLm1mv0k=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: NjOogFTCAyeWyO83wkIo1g==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: HQsAQgpXks0zcbrngsFF9RfK2qo=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "5.7",
    "isServer": false,
    "localCloseCode": 1000,
@@ -62,11 +62,10 @@
    },
    "rxOctetStats": {
       "4": 1,
-      "14": 1,
-      "22": 1,
+      "36": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:50.410Z",
+   "started": "2018-08-04T16:49:49.819Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 1,
@@ -98,7 +97,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204a727a6736715259 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204851734151677058 ..."
          ]
       ],
       [
@@ -110,7 +109,7 @@
          1,
          false,
          0,
-         "be210528",
+         "fedc91d5",
          null,
          null,
          true
@@ -119,7 +118,7 @@
          "TO",
          [
             15,
-            "0189be210528d853644fd3446b5c8f"
+            "0189fedc91d598aef0b293b9ffa1cf"
          ],
          true
       ],
@@ -132,7 +131,7 @@
          9,
          true,
          0,
-         "0d82e9e4",
+         "83dc43eb",
          null,
          null,
          true
@@ -146,7 +145,7 @@
          0,
          true,
          0,
-         "a2fcb223",
+         "12c40933",
          null,
          null,
          true
@@ -159,7 +158,7 @@
          "TO",
          [
             18,
-            "898c0d82e9e47deb87832df2889d61ed8880"
+            "898c83dc43ebf3b52d8ca3ac2292efb3228f"
          ],
          true
       ],
@@ -167,34 +166,15 @@
          "TO",
          [
             15,
-            "8089a2fcb223c48ed344cf99dc5790"
+            "808912c4093374b668547fa1674720"
          ],
          true
       ],
       [
          "RO",
          [
-            14,
-            "8a0c70696e67207061796c6f6164"
-         ]
-      ],
-      [
-         "RF",
-         [
-            12,
-            "ping payload"
-         ],
-         10,
-         true,
-         0,
-         false,
-         null
-      ],
-      [
-         "RO",
-         [
-            22,
-            "0109667261676d656e74318009667261676d656e7432"
+            36,
+            "0109667261676d656e74318a0c70696e67207061796c6f61648009667261676d656e7432"
          ]
       ],
       [
@@ -205,6 +185,18 @@
          ],
          1,
          false,
+         0,
+         false,
+         null
+      ],
+      [
+         "RF",
+         [
+            12,
+            "ping payload"
+         ],
+         10,
+         true,
          0,
          false,
          null
@@ -230,7 +222,7 @@
          8,
          true,
          0,
-         "a45cf236",
+         "c1a5d352",
          null,
          null,
          false
@@ -239,7 +231,7 @@
          "TO",
          [
             8,
-            "8882a45cf236a7b4"
+            "8882c1a5d352c24d"
          ],
          false
       ],

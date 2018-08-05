@@ -1,14 +1,14 @@
 {
    "agent": "Tarantool websocket",
    "behavior": "OK",
-   "behaviorClose": "OK",
+   "behaviorClose": "FAILED BY CLIENT",
    "case": 222,
    "closedByMe": true,
    "createStats": true,
    "createWirelog": true,
    "description": "Send a close frame with invalid UTF8 payload",
-   "droppedByMe": false,
-   "duration": 1,
+   "droppedByMe": true,
+   "duration": 1006,
    "expectation": "Clean close with protocol error or invalid utf8 code or dropped TCP.",
    "expected": {
       "OK": []
@@ -21,28 +21,28 @@
       "closedByMe": true,
       "requireClean": false
    },
-   "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: eVq41xc58FHoG+pOwze99Q==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: i4t0oqWh4uXdemOWKuh5ix++JFA=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "failedByMe": true,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: 7zfG4fCv96WL79ysq06mRA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: LvL9r9hoKI5hsttCGN4OjOu5utE=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.5.1",
    "isServer": false,
    "localCloseCode": 1000,
    "localCloseReason": "cebae1bdb9cf83cebcceb5eda080656469746564",
    "received": [],
    "remoteCloseCode": 1007,
-   "remoteCloseReason": "utf8 data invalid",
+   "remoteCloseReason": "utf8 data in close frame invalid",
    "reportCompressionRatio": false,
    "reportTime": false,
    "result": "Actual events match at least one expected.",
-   "resultClose": "Connection was properly closed",
+   "resultClose": "It is preferred that the server close the TCP connection",
    "rxFrameStats": {
       "8": 1
    },
    "rxOctetStats": {
-      "21": 1,
+      "36": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:57.774Z",
+   "started": "2018-08-04T16:49:59.219Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -69,7 +69,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20693474306f715768 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204c764c397239686f ..."
          ]
       ],
       [
@@ -81,7 +81,7 @@
          8,
          true,
          0,
-         "e46d0be5",
+         "71630b28",
          null,
          null,
          false
@@ -90,7 +90,7 @@
          "TO",
          [
             28,
-            "8896e46d0be5e785c55f05d0b22a67a3b72b5180ab65810962918109"
+            "889671630b28728bc59290deb2e7f2adb7e6c48eaba81407625c1407"
          ],
          false
       ],
@@ -101,21 +101,24 @@
       [
          "RO",
          [
-            21,
-            "881303ef75746638206461746120696e76616c6964"
+            36,
+            "882203ef75746638206461746120696e20636c6f7365206672616d6520696e76616c6964"
          ]
       ],
       [
          "RF",
          [
-            19,
-            "0x03ef75746638206461746120696e76616c6964"
+            34,
+            "0x03ef75746638206461746120696e20636c6f7365206672616d6520696e76616c6964"
          ],
          8,
          true,
          0,
          false,
          null
+      ],
+      [
+         "KLE"
       ]
    ]
 }

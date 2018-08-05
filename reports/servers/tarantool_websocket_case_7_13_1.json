@@ -7,8 +7,8 @@
    "createStats": true,
    "createWirelog": true,
    "description": "Send close with close code 5000",
-   "droppedByMe": false,
-   "duration": 0,
+   "droppedByMe": true,
+   "duration": 1003,
    "expectation": "Actual events are undefined by the spec.",
    "expected": {
       "OK": []
@@ -22,9 +22,9 @@
       "closedByMe": true,
       "requireClean": false
    },
-   "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: iys9Xrs9UQNH3MgixxJoaw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: c+0V7FsqQ2iE0f7PIlF8F9uz1B4=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "failedByMe": true,
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: aAlCV1O1I3Y5zBiXPp8gmA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: iCisEmAxhxf1xNWH9m6JUaxphxc=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.13.1",
    "isServer": false,
    "localCloseCode": 5000,
@@ -35,7 +35,7 @@
    "reportCompressionRatio": false,
    "reportTime": false,
    "result": "Actual events are undefined by the spec.",
-   "resultClose": "Connection was properly closed",
+   "resultClose": "It is preferred that the server close the TCP connection",
    "rxFrameStats": {
       "8": 1
    },
@@ -43,7 +43,7 @@
       "22": 1,
       "129": 1
    },
-   "started": "2018-08-02T11:13:57.810Z",
+   "started": "2018-08-04T16:50:11.297Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -70,7 +70,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20632b305637467371 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2069436973456d4178 ..."
          ]
       ],
       [
@@ -82,7 +82,7 @@
          8,
          true,
          0,
-         "da3d32c1",
+         "fe2a238b",
          null,
          null,
          false
@@ -91,7 +91,7 @@
          "TO",
          [
             8,
-            "8882da3d32c1c9b5"
+            "8882fe2a238beda2"
          ],
          false
       ],
@@ -117,6 +117,9 @@
          0,
          false,
          null
+      ],
+      [
+         "KLE"
       ]
    ]
 }

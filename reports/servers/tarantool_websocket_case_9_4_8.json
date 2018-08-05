@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send fragmented binary message message with message payload of length 4 * 2**20 (4M). Sent out in fragments of 1M.",
    "droppedByMe": false,
-   "duration": 199,
+   "duration": 207,
    "expectation": "Receive echo'ed binary message (with payload as sent).",
    "expected": {},
    "expectedClose": {
@@ -19,8 +19,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: fH03P/CXXJTvOG1EM8PAaQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: WTzSQOomZzF9Q/46TI9iGmZrVLk=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: m8HXBit2GA3/LqZIA9I2mw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 2wykxJr3Q3PV4unaI7vqJKn93bM=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "9.4.8",
    "isServer": false,
    "localCloseCode": 1000,
@@ -39,14 +39,12 @@
    },
    "rxOctetStats": {
       "4": 1,
-      "10": 2,
+      "10": 3,
       "12": 1,
       "129": 1,
-      "31520": 1,
-      "34026": 1,
-      "65536": 63
+      "65536": 64
    },
-   "started": "2018-08-02T11:14:14.807Z",
+   "started": "2018-08-04T16:50:30.459Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 4,
@@ -77,7 +75,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2057547a53514f6f6d ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a203277796b784a7233 ..."
          ]
       ],
       [
@@ -93,7 +91,7 @@
          8,
          true,
          0,
-         "f085f234",
+         "8b05cd95",
          null,
          null,
          false
@@ -102,7 +100,7 @@
          "TO",
          [
             8,
-            "8882f085f234f36d"
+            "88828b05cd9588ed"
          ],
          false
       ],
