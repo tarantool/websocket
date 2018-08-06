@@ -9,7 +9,7 @@ socket.tcp_server(
     '0.0.0.0',
     8080,
     function(sock)
-        local wspeer = websocket.new(sock)
+        local wspeer = websocket.new(sock, 15)
 
         while true do
             local message, err = wspeer:read()

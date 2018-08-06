@@ -1,5 +1,6 @@
 #!/usr/bin/env tarantool
 
+local errno = require('errno')
 local socket = require('socket')
 local log = require('log')
 
@@ -151,11 +152,11 @@ end
 
 function wspeer.shutdown(self, code, reason, timeout)
     local starttime = clock.time()
-    log.info('Websocket peer %s:%d close frame with code %d reason %s',
-             self['host'],
-             self['port'],
-             code,
-             reason)
+    log.debug('Websocket peer %s:%d close frame with code %d reason %s',
+              self['host'],
+              self['port'],
+              code,
+              reason)
     local packet = frame.encode(frame.encode_close(code, reason),
                                 frame.CLOSE, false, true)
     local rc = self.peer:write(packet, frame.slice_wait(timeout))
@@ -167,7 +168,7 @@ function wspeer.shutdown(self, code, reason, timeout)
     rawset(self, 'closed_by_me', not self.close_received)
 
     if not self.close_received then
-        while true  do
+        while true do
             local tuple = frame.decode_from(self.peer, frame.slice_wait(timeout, starttime))
             if tuple == nil then
                 log.debug('Read failed while close handshake')
@@ -208,16 +209,14 @@ function wspeer.check_ping_pong(self, timeout)
         return true
     end
 
-    if self.last_ping_sended == nil then
-        rawset(self, 'last_ping_sended', clock.time())
-    end
-
-    if clock.time() - self.last_ping_sended < self.ping_freq then
+    if self.last_ping_sended ~= nil
+        and clock.time() - self.last_ping_sended < self.ping_freq
+    then
         return true
     end
 
     if not self.ping_sended then
-        log.info('Websocket peer %s:%d sending ping request',
+        log.debug('Websocket peer %s:%d sending ping request',
                  self['host'],
                  self['port'])
         rawset(self, 'last_ping_sended', clock.time())
@@ -338,25 +337,46 @@ end
 function wspeer.read(self, timeout)
     local starttime = clock.time()
 
-    local tuple
-
     local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
     if not rc then
         return nil, err
     end
 
+    local err
+    local tuple
     while true do
-        local rc, err = self:check_ping_pong(frame.slice_wait(timeout, starttime))
-        if rc == nil then
-            return rc, err
-        end
 
-        tuple = frame.decode_from(self.peer, frame.slice_wait(timeout, starttime))
-        if tuple == nil then
-            return nil, 'Connection error'
-        elseif tuple.opcode == nil then
-            return tuple
-        end
+        repeat
+            local rc, err = self:check_ping_pong(frame.slice_wait(timeout, starttime))
+            if rc == nil then
+                return rc, err
+            end
+
+            local corrected = frame.slice_wait(timeout, starttime)
+            if corrected == nil and self.ping_freq ~= nil then
+                corrected = self.ping_freq
+            elseif corrected > self.ping_freq then
+                corrected = self.ping_freq
+            end
+
+            tuple, err = frame.decode_from(self.peer, corrected)
+
+            if tuple == nil then
+                if self.peer:errno() == errno.ETIMEDOUT then
+                    if frame.slice_wait(timeout, starttime) == nil then
+                        --continue
+                    elseif frame.slice_wait(timeout, starttime) > 0 then
+                        --continue
+                    else
+                        return nil, self.peer:error()
+                    end
+                else
+                    return nil, self.peer:error()
+                end
+            elseif tuple.opcode == nil then
+                return tuple
+            end
+        until tuple ~= nil
 
         local rc, err = self:validate(tuple)
         if not rc then
@@ -414,6 +434,11 @@ function wspeer.write(self, tuple, timeout)
     local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
     if not rc then
         return nil, err
+    end
+
+    local rc, err = self:check_ping_pong(frame.slice_wait(timeout, starttime))
+    if rc == nil then
+        return rc, err
     end
 
     local message = tuple.data
