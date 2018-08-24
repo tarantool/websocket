@@ -5,6 +5,7 @@ local socket = require('socket')
 local log = require('log')
 
 local clock = require('clock')
+local digest = require('digest')
 
 local handshake = require('websocket.handshake')
 local frame = require('websocket.frame')
@@ -15,9 +16,6 @@ local HTTPSTATE = {
     HEADERS = 2,
 }
 
---[[
-    WebSocket Peer
-]]
 local wspeer = {
     __newindex = function(table, key, value)
         error("Attempt to modify read-only wspeer properties")
@@ -26,7 +24,7 @@ local wspeer = {
 
 wspeer.__index = wspeer
 
-function wspeer.new(peer, ping_freq, handshaked)
+function wspeer.new(peer, ping_freq, is_client, handshaked, client_request)
     local self = setmetatable({}, wspeer)
 
     peer:nonblock(true)
@@ -34,9 +32,12 @@ function wspeer.new(peer, ping_freq, handshaked)
 
     local peeraddr = peer:peer()
     if peeraddr ~= nil then
-        rawset(self, 'host', peeraddr['host'])
-        rawset(self, 'port', peeraddr['port'])
+        rawset(self, 'peerhost', peeraddr['host'])
+        rawset(self, 'peerport', peeraddr['port'])
     end
+    rawset(self, 'is_client', is_client)
+    rawset(self, 'client_request', client_request)
+
     rawset(self, 'handshake_packets', nil)
     rawset(self, 'handshaked', handshaked)
 
@@ -150,15 +151,87 @@ function wspeer.check_handshake(self, timeout)
     -- NOTREACHED
 end
 
+function wspeer.check_client_handshake(self, timeout)
+    local starttime = clock.time()
+
+    if self.handshaked then
+        return true
+    end
+
+    rawset(self, 'httpstate', HTTPSTATE.RESPONSE)
+
+    local request = table.copy(self.client_request)
+    request.key = request.key or digest.base64_encode(digest.urandom(16))
+
+    local response = {
+        version='',
+        code='',
+        status='',
+        headers={}
+    }
+
+    local rc = self.peer:write(handshake.upgrade_request(request),
+                               frame.slice_wait(timeout, starttime))
+    if rc == nil then
+        return false, 'Connection closed: error'
+    end
+    if rc == 0 then
+        return false, 'Connection closed: eof'
+    end
+
+    while true do
+        local line = self.peer:read({delimiter='\r\n'},
+            frame.slice_wait(timeout, starttime))
+        if line == nil then
+            log.debug('Read failed while handshake')
+            return nil, self.peer:error()
+        elseif line == '' then
+            log.debug('Read eof while handshake')
+            return nil, 'Connection closed: eof'
+        end
+        if self.httpstate == HTTPSTATE.RESPONSE then
+            local i, j
+            -- Method SP Request-URI SP HTTP-Version CRLF
+            i, j, response.version, response.code, response.reason =
+                line:find('^([^%s]+)%s([^%s]+)%s([^\r\n]*)')
+            rawset(self, 'httpstate', HTTPSTATE.HEADERS)
+        elseif self.httpstate == HTTPSTATE.HEADERS then
+            if line == '\r\n' then
+                if response.code == '101' then
+                    local respkey = handshake.sec_websocket_accept(request.key)
+                    if respkey == response.headers['sec-websocket-accept'] then
+                        rawset(self, 'handshaked', true)
+                        return true
+                    end
+                end
+                log.debug('Websocket handshake response error')
+                self.peer:shutdown(socket.SHUT_RDWR,
+                                   frame.slice_wait(timeout, starttime))
+                return false, 'Handshake error'
+            else
+                local _, _, name, value = line:find('^([^:]+)%s*:%s*(.+)')
+                if name == nil or value == nil then
+                    log.debug('Websocket malformed handshake packet')
+                    self.peer:shutdown(socket.SHUT_RDWR,
+                                       frame.slice_wait(timeout, starttime))
+                    return false, 'Malformed packet'
+                end
+                response.headers[name:strip():lower()] = value:strip()
+            end
+        end
+    end
+    -- NOTREACHED
+end
+
 function wspeer.shutdown(self, code, reason, timeout)
     local starttime = clock.time()
     log.debug('Websocket peer %s:%d close frame with code %d reason %s',
-              self['host'],
-              self['port'],
+              self['peerhost'],
+              self['peerport'],
               code,
               reason)
     local packet = frame.encode(frame.encode_close(code, reason),
-                                frame.CLOSE, false, true)
+                                frame.CLOSE, self.is_client, true)
     local rc = self.peer:write(packet, frame.slice_wait(timeout))
     if not rc then
         return nil, self.peer:error()
@@ -217,10 +290,10 @@ function wspeer.check_ping_pong(self, timeout)
 
     if not self.ping_sended then
         log.debug('Websocket peer %s:%d sending ping request',
-                 self['host'],
-                 self['port'])
+                 self['peerhost'],
+                 self['peerport'])
         rawset(self, 'last_ping_sended', clock.time())
-        local packet = frame.encode('', frame.PING, false, true)
+        local packet = frame.encode('', frame.PING, self.is_client, true)
         local rc = self.peer:write(packet, frame.slice_wait(timeout, starttime))
         if not rc then
             return nil, 'Connection write error'
@@ -337,15 +410,21 @@ end
 function wspeer.read(self, timeout)
     local starttime = clock.time()
 
-    local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
-    if not rc then
-        return nil, err
+    if self.is_client then
+        local rc, err = self:check_client_handshake(frame.slice_wait(timeout, starttime))
+        if not rc then
+            return nil, err
+        end
+    else
+        local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
+        if not rc then
+            return nil, err
+        end
     end
 
     local err
     local tuple
     while true do
-
         repeat
             local rc, err = self:check_ping_pong(frame.slice_wait(timeout, starttime))
             if rc == nil then
@@ -387,22 +466,22 @@ function wspeer.read(self, timeout)
         -- Buiseness
         if tuple.opcode == frame.PING then
             log.debug('Websocket peer %s:%d ping request',
-                      self['host'],
-                      self['port'])
-            local packet = frame.encode(tuple.data, frame.PONG, false, true)
+                      self['peerhost'],
+                      self['peerport'])
+            local packet = frame.encode(tuple.data, frame.PONG, self.is_client, true)
             local rc = self.peer:write(packet, frame.slice_wait(timeout, starttime))
             if not rc then
                 return nil, 'Write pong failed'
             end
         elseif tuple.opcode == frame.PONG then
             log.debug('Websocket peer %s:%d pong response',
-                      self['host'],
-                      self['port'])
+                      self['peerhost'],
+                      self['peerport'])
             rawset(self, 'ping_sended', false)
         elseif tuple.opcode == frame.CLOSE then
             log.debug('Websocket peer close received')
 
-            rawset(self,'close_received', true)
+            rawset(self, 'close_received', true)
 
             self:shutdown(1000, '', frame.slice_wait(timeout, starttime))
             return nil, 'Close handshaked'
@@ -431,9 +510,16 @@ function wspeer.write(self, tuple, timeout)
         return nil, 'You can send only text or binary frame'
     end
 
-    local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
-    if not rc then
-        return nil, err
+    if self.is_client then
+        local rc, err = self:check_client_handshake(frame.slice_wait(timeout, starttime))
+        if not rc then
+            return nil, err
+        end
+    else
+        local rc, err = self:check_handshake(frame.slice_wait(timeout, starttime))
+        if not rc then
+            return nil, err
+        end
     end
 
     local rc, err = self:check_ping_pong(frame.slice_wait(timeout, starttime))
@@ -442,7 +528,7 @@ function wspeer.write(self, tuple, timeout)
     end
 
     local message = tuple.data
-    local packet = frame.encode(message, tuple.opcode, false, tuple.fin)
+    local packet = frame.encode(message, tuple.opcode, self.is_client, tuple.fin)
 
     local rc = self.peer:write(packet, frame.slice_wait(timeout, starttime))
     if rc == nil then

@@ -30,21 +30,34 @@ local function sec_websocket_accept(sec_websocket_key)
 end
 
 local function upgrade_request(req)
+    req = req or {}
+
+    local key = digest.base64_encode(digest.urandom(14))
     local lines = {
-        ('GET %s HTTP/1.1'):format(req.uri or ''),
-        ('Host: %s'):format(req.host),
+        ('GET %s HTTP/1.1'):format(req.uri or '/'),
         'Upgrade: websocket',
         'Connection: Upgrade',
-        ('Sec-WebSocket-Key: %s'):format(req.key),
-        ('Sec-WebSocket-Protocol: %s'):format(table.concat(req.protocols,', ')),
+        ('Sec-WebSocket-Key: %s'):format(req.key or key),
         'Sec-WebSocket-Version: 13',
     }
+    if req.protocols ~= nil then
+        table.insert(lines,
+                     ('Sec-WebSocket-Protocol: %s')
+                         :format(table.concat(req.protocols,', ')))
+    end
     if req.origin then
         table.insert(lines, ('Origin: %s'):format(req.origin))
     end
-    if req.port and req.port ~= 80 then
-        lines[2] = ('Host: %s:%d'):format(req.host, req.port)
+    if req.host then
+        local host
+        if req.port and req.port ~= 80 then
+            host = ('Host: %s:%d'):format(req.host, req.port)
+        else
+            host = ('Host: %s'):format(req.host)
+        end
+        table.insert(lines, host)
     end
+
     table.insert(lines,'\r\n')
     return table.concat(lines,'\r\n')
 end
