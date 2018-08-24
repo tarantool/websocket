@@ -439,7 +439,6 @@ function wspeer.read(self, timeout)
             end
 
             tuple, err = frame.decode_from(self.peer, corrected)
-
             if tuple == nil then
                 if self.peer:errno() == errno.ETIMEDOUT then
                     if frame.slice_wait(timeout, starttime) == nil then

@@ -256,7 +256,7 @@ local function decode_from(client, timeout)
         data = client:read({chunk=payload}, slice_wait(timeout, starttime))
         if data == nil then
             return nil, client:error()
-        elseif data == '' then
+        elseif data == '' and payload ~= 0 then
             return {}
         end
     end
