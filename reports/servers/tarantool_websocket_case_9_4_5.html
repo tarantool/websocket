@@ -202,7 +202,7 @@ pre.wirelog_tcp_closed_by_peer {color: #fff; margin: 0; background-color: #000; 
       <center><a href="http://autobahn.ws/testsuite" title="Autobahn WebSocket Testsuite"><img src="http://autobahn.ws/static/img/ws_protocol_test_report.png"          border="0" width="820" height="46" alt="Autobahn WebSocket Testsuite Report"></img></a></center>
       <center><a href="http://autobahn.ws"           title="Autobahn WebSocket">          <img src="http://autobahn.ws/static/img/ws_protocol_test_report_autobahn.png" border="0" width="300" height="68" alt="Autobahn WebSocket">                 </img></a></center>
       <br/>
-      <p class="case case_ok">Tarantool websocket - <span style="font-size: 1.3em;"><b>Case 9.4.5</b></span> : Pass - <span style="font-size: 0.9em;"><b>346</b> ms @ 2018-08-04T16:50:29.625Z</a></p>
+      <p class="case case_ok">Tarantool websocket - <span style="font-size: 1.3em;"><b>Case 9.4.5</b></span> : Pass - <span style="font-size: 0.9em;"><b>758</b> ms @ 2018-08-28T11:52:16.544Z</a></p>
       <p class="case_text_block case_desc"><b>Case Description</b><br/><br/>Send fragmented binary message message with message payload of length 4 * 2**20 (4M). Sent out in fragments of 16k.</p>
       <p class="case_text_block case_expect"><b>Case Expectation</b><br/><br/>Receive echo'ed binary message (with payload as sent).</p>
 
@@ -216,15 +216,15 @@ pre.wirelog_tcp_closed_by_peer {color: #fff; margin: 0; background-color: #000; 
       <h2>Opening Handshake</h2>
       <pre class="http_dump">GET / HTTP/1.1
 User-Agent: AutobahnTestSuite/0.8.0-0.10.9
-Host: 127.0.0.1:8080
+Host: 127.0.0.1:8443
 Upgrade: WebSocket
 Connection: Upgrade
 Pragma: no-cache
 Cache-Control: no-cache
-Sec-WebSocket-Key: dTeVd8RCW9A7I4MxvniCcw==
+Sec-WebSocket-Key: qRXYOPLXWboTSKEUUHdMhw==
 Sec-WebSocket-Version: 13</pre>
       <pre class="http_dump">HTTP/1.1 101 Switching Protocols
-Sec-WebSocket-Accept: V67ZZEaF0oFW6HV9MeMklgMFmCs=
+Sec-WebSocket-Accept: RWX6b8/+1fi0z3tu/zeywj2M1qA=
 Upgrade: websocket
 Connection: Upgrade</pre>
       <br/><hr/>
@@ -249,20 +249,20 @@ Connection: Upgrade</pre>
       <h3>Octets Received by Chop Size</h3>
       <table>
          <tr class="stats_header"><td>Chop Size</td><td>Count</td><td>Octets</td></tr>
-         <tr class="stats_row"><td>4</td><td>1</td><td>4</td></tr>
+         <tr class="stats_row"><td>2</td><td>2</td><td>4</td></tr>
+         <tr class="stats_row"><td>4</td><td>257</td><td>1028</td></tr>
          <tr class="stats_row"><td>129</td><td>1</td><td>129</td></tr>
-         <tr class="stats_row"><td>16388</td><td>255</td><td>4178940</td></tr>
-         <tr class="stats_row"><td>16390</td><td>1</td><td>16390</td></tr>
-         <tr class="stats_total"><td>Total</td><td>258</td><td>4195463</td></tr>
+         <tr class="stats_row"><td>16384</td><td>256</td><td>4194304</td></tr>
+         <tr class="stats_total"><td>Total</td><td>516</td><td>4195465</td></tr>
       </table>
       <h3>Octets Transmitted by Chop Size</h3>
       <table>
          <tr class="stats_header"><td>Chop Size</td><td>Count</td><td>Octets</td></tr>
-         <tr class="stats_row"><td>6</td><td>1</td><td>6</td></tr>
+         <tr class="stats_row"><td>6</td><td>2</td><td>12</td></tr>
          <tr class="stats_row"><td>8</td><td>1</td><td>8</td></tr>
          <tr class="stats_row"><td>240</td><td>1</td><td>240</td></tr>
          <tr class="stats_row"><td>16392</td><td>256</td><td>4196352</td></tr>
-         <tr class="stats_total"><td>Total</td><td>259</td><td>4196606</td></tr>
+         <tr class="stats_total"><td>Total</td><td>260</td><td>4196612</td></tr>
       </table>
       <h3>Frames Received by Opcode</h3>
       <table>
@@ -270,7 +270,8 @@ Connection: Upgrade</pre>
          <tr class="stats_row"><td>0</td><td>256</td></tr>
          <tr class="stats_row"><td>2</td><td>1</td></tr>
          <tr class="stats_row"><td>8</td><td>1</td></tr>
-         <tr class="stats_total"><td>Total</td><td>258</td></tr>
+         <tr class="stats_row"><td>9</td><td>1</td></tr>
+         <tr class="stats_total"><td>Total</td><td>259</td></tr>
       </table>
       <h3>Frames Transmitted by Opcode</h3>
       <table>
@@ -278,7 +279,8 @@ Connection: Upgrade</pre>
          <tr class="stats_row"><td>0</td><td>256</td></tr>
          <tr class="stats_row"><td>2</td><td>1</td></tr>
          <tr class="stats_row"><td>8</td><td>1</td></tr>
-         <tr class="stats_total"><td>Total</td><td>258</td></tr>
+         <tr class="stats_row"><td>10</td><td>1</td></tr>
+         <tr class="stats_total"><td>Total</td><td>259</td></tr>
       </table>
       <br/><hr/>
       <h2>Wire Log</h2>
@@ -286,11 +288,11 @@ Connection: Upgrade</pre>
          <pre class="wirelog_tx_octets">000 TX OCTETS: 474554202f20485454502f312e310d0a557365722d4167656e743a204175746f6261686e5465737453756974652f302e382e</pre>
          <pre class="wirelog_tx_octets">               302d302e31302e390d0a486f7374 ...</pre>
          <pre class="wirelog_rx_octets">001 RX OCTETS: 485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163</pre>
-         <pre class="wirelog_rx_octets">               636570743a205636375a5a456146 ...</pre>
+         <pre class="wirelog_rx_octets">               636570743a205257583662382f2b ...</pre>
          <pre class="wirelog_kill_after">002 CLOSE CONNECTION AFTER 100.000000 sec</pre>
-         <pre class="wirelog_tx_frame">003 TX FRAME : OPCODE=8, FIN=True, RSV=0, PAYLOAD-LEN=2, MASK=bca7d668, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=None, SYNC=False</pre>
+         <pre class="wirelog_tx_frame">003 TX FRAME : OPCODE=8, FIN=True, RSV=0, PAYLOAD-LEN=2, MASK=ce18dbbe, PAYLOAD-REPEAT-LEN=None, CHOPSIZE=None, SYNC=False</pre>
          <pre class="wirelog_tx_frame">               0x03e8</pre>
-         <pre class="wirelog_tx_octets">004 TX OCTETS: 8882bca7d668bf4f</pre>
+         <pre class="wirelog_tx_octets">004 TX OCTETS: 8882ce18dbbecdf0</pre>
          <pre class="wirelog_rx_octets">005 RX OCTETS: 880203e8</pre>
          <pre class="wirelog_rx_frame">006 RX FRAME : OPCODE=8, FIN=True, RSV=0, PAYLOAD-LEN=2, MASKED=False, MASK=None</pre>
          <pre class="wirelog_rx_frame">               0x03e8</pre>

@@ -21,8 +21,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: Xv0eIXNriXMeLh3edJ33kA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 5CREmYJiU4LlJdCHJhbJfmiEy44=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: NpxvA4pG+EaG0eK8NCH9bg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 2XatuM/RjCJToTPYabGhJ4aRxoo=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "5.18",
    "isServer": false,
    "localCloseCode": 1000,
@@ -36,19 +36,24 @@
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
       "1": 1,
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
-      "54": 1,
+      "2": 1,
+      "11": 1,
+      "43": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:49.850Z",
+   "started": "2018-08-28T11:51:20.778Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 2,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
+      "6": 1,
       "8": 1,
       "15": 2,
       "240": 1
@@ -71,7 +76,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20354352456d594a69 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2032586174754d2f52 ..."
          ]
       ],
       [
@@ -83,7 +88,7 @@
          1,
          false,
          0,
-         "5c50ef2b",
+         "f649d577",
          null,
          null,
          false
@@ -92,7 +97,7 @@
          "TO",
          [
             15,
-            "01895c50ef2b3a228e4c3135815f6d"
+            "0189f649d577903bb4109b2cbb03c7"
          ],
          false
       ],
@@ -105,7 +110,7 @@
          1,
          true,
          0,
-         "136d1662",
+         "0234161e",
          null,
          null,
          false
@@ -114,7 +119,7 @@
          "TO",
          [
             15,
-            "8189136d1662751f77057e08781621"
+            "81890234161e644677796f51786a30"
          ],
          false
       ],
@@ -125,8 +130,49 @@
       [
          "RO",
          [
-            54,
-            "0109667261676d656e7431882903ea667261676d656e746564206672616d652073686f756c6420626520636f6e74696e756174696f6e"
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "TF",
+         [
+            0,
+            ""
+         ],
+         10,
+         true,
+         0,
+         "9ff29ad4",
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            6,
+            "8a809ff29ad4"
+         ],
+         false
+      ],
+      [
+         "RO",
+         [
+            11,
+            "0109667261676d656e7431"
          ]
       ],
       [
@@ -140,6 +186,13 @@
          0,
          false,
          null
+      ],
+      [
+         "RO",
+         [
+            43,
+            "882903ea667261676d656e746564206672616d652073686f756c6420626520636f6e74696e756174696f6e"
+         ]
       ],
       [
          "RF",
@@ -162,7 +215,7 @@
          8,
          true,
          0,
-         "d47e39bf",
+         "c7bd23da",
          null,
          null,
          false
@@ -171,7 +224,7 @@
          "TO",
          [
             8,
-            "8882d47e39bfd796"
+            "8882c7bd23dac455"
          ],
          false
       ]

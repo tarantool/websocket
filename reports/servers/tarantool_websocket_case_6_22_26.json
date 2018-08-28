@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send a text message with payload which is valid UTF-8 in one fragment.<br><br>Payload: 0xf38fbfbf",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 2,
    "expectation": "The message is echo'ed back to us.",
    "expected": {
       "OK": [
@@ -27,8 +27,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: y4e94Dtruds6dpkq/B6X/w==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: uW/hijgv+tYI0hioxEaxgcmGHF4=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: OhIgy2mCpCzWI+g/wGP41w==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 0Nx9PAhHk9ity8NBPUhlfTfW/Qc=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.22.26",
    "isServer": false,
    "localCloseCode": 1000,
@@ -48,20 +48,24 @@
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
       "1": 1,
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "4": 1,
       "6": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:57.126Z",
+   "started": "2018-08-28T11:51:28.343Z",
    "trafficStats": null,
    "txFrameStats": {
       "1": 1,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
+      "6": 1,
       "8": 1,
       "10": 1,
       "240": 1
@@ -84,7 +88,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2075572f68696a6776 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20304e783950416848 ..."
          ]
       ],
       [
@@ -96,7 +100,7 @@
          1,
          true,
          0,
-         "c8568d17",
+         "ab0d4634",
          null,
          null,
          false
@@ -105,13 +109,54 @@
          "TO",
          [
             10,
-            "8184c8568d173bd932a8"
+            "8184ab0d46345882f98b"
          ],
          false
       ],
       [
          "KL",
          0.5
+      ],
+      [
+         "RO",
+         [
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "TF",
+         [
+            0,
+            ""
+         ],
+         10,
+         true,
+         0,
+         "40c5bab8",
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            6,
+            "8a8040c5bab8"
+         ],
+         false
       ],
       [
          "RO",
@@ -141,7 +186,7 @@
          8,
          true,
          0,
-         "522c61a9",
+         "cbe4fb57",
          null,
          null,
          false
@@ -150,7 +195,7 @@
          "TO",
          [
             8,
-            "8882522c61a951c4"
+            "8882cbe4fb57c80c"
          ],
          false
       ],

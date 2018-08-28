@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send binary message message with payload of length 1 * 2**20 (1M). Sent out data in chops of 64 octets.",
    "droppedByMe": false,
-   "duration": 1091,
+   "duration": 1347,
    "expectation": "Receive echo'ed binary message (with payload as sent).",
    "expected": {},
    "expectedClose": {
@@ -19,8 +19,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: //v+yqKX+4KDhcZTXzNdcQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: PXlKXdwYnZFxV8bj/RRIJR2vavQ=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: MaB9d7H3bR9HDs1qIXcNow==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: xU6CjcEnY/Apah6d656CJiqjPkY=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "9.6.1",
    "isServer": false,
    "localCloseCode": 1000,
@@ -34,21 +34,25 @@
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
       "2": 1,
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "4": 1,
       "10": 1,
       "129": 1,
-      "65536": 16
+      "16384": 64
    },
-   "started": "2018-08-04T16:50:33.535Z",
+   "started": "2018-08-28T11:52:22.774Z",
    "trafficStats": null,
    "txFrameStats": {
       "2": 1,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
+      "6": 1,
       "8": 1,
       "14": 1,
       "64": 16384,
@@ -72,7 +76,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2050586c4b58647759 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20785536436a63456e ..."
          ]
       ],
       [
@@ -88,7 +92,7 @@
          8,
          true,
          0,
-         "ea24a520",
+         "271bdbcf",
          null,
          null,
          false
@@ -97,7 +101,7 @@
          "TO",
          [
             8,
-            "8882ea24a520e9cc"
+            "8882271bdbcf24f3"
          ],
          false
       ],

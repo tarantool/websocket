@@ -2,7 +2,7 @@
     "servers": [
         {
             "agent": "Tarantool websocket",
-            "url": "ws://127.0.0.1:8080"
+            "url": "wss://127.0.0.1:8443"
         }
     ],
     "cases": ["*"],

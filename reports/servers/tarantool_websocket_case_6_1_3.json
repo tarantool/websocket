@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send fragmented text message, 3 fragments, first and last of length 0, middle non-empty.",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 2,
    "expectation": "A message is echo'ed back to us (with payload = payload of middle fragment).",
    "expected": {
       "OK": [
@@ -27,8 +27,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: aumUKdXTwVPy2x07CohDTg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: OTUns9QhByCIMCdgbdchTgZpKjY=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: GHjQLkdtRRsjRbx4mVFtkg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: YDWDrGLmSx5629Y/b79Ayl3K+FM=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.1.3",
    "isServer": false,
    "localCloseCode": 1000,
@@ -49,23 +49,25 @@
    "rxFrameStats": {
       "0": 2,
       "1": 1,
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
-      "2": 1,
+      "2": 3,
       "4": 1,
-      "24": 1,
+      "22": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:51.867Z",
+   "started": "2018-08-28T11:51:22.808Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 2,
       "1": 1,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
-      "6": 2,
+      "6": 3,
       "8": 1,
       "26": 1,
       "240": 1
@@ -88,7 +90,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204f54556e73395168 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205944574472474c6d ..."
          ]
       ],
       [
@@ -100,7 +102,7 @@
          1,
          false,
          0,
-         "a0ce8bd1",
+         "9ef90c22",
          null,
          null,
          false
@@ -109,7 +111,7 @@
          "TO",
          [
             6,
-            "0180a0ce8bd1"
+            "01809ef90c22"
          ],
          false
       ],
@@ -122,7 +124,7 @@
          0,
          false,
          0,
-         "04508f27",
+         "8bde3aec",
          null,
          null,
          false
@@ -131,7 +133,7 @@
          "TO",
          [
             26,
-            "009404508f276939eb436835af417631e2422420ee5e683fee43"
+            "00948bde3aece6b75e88e7bb1a8af9bf5789abae5b95e7b15b88"
          ],
          false
       ],
@@ -144,7 +146,7 @@
          0,
          true,
          0,
-         "38b3359f",
+         "763c2539",
          null,
          null,
          false
@@ -153,7 +155,7 @@
          "TO",
          [
             6,
-            "808038b3359f"
+            "8080763c2539"
          ],
          false
       ],
@@ -164,8 +166,49 @@
       [
          "RO",
          [
-            24,
-            "010000146d6964646c65206672616d65207061796c6f6164"
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "TF",
+         [
+            0,
+            ""
+         ],
+         10,
+         true,
+         0,
+         "abbb8a03",
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            6,
+            "8a80abbb8a03"
+         ],
+         false
+      ],
+      [
+         "RO",
+         [
+            2,
+            "0100"
          ]
       ],
       [
@@ -179,6 +222,13 @@
          0,
          false,
          null
+      ],
+      [
+         "RO",
+         [
+            22,
+            "00146d6964646c65206672616d65207061796c6f6164"
+         ]
       ],
       [
          "RF",
@@ -220,7 +270,7 @@
          8,
          true,
          0,
-         "0f3e2ac2",
+         "5286c126",
          null,
          null,
          false
@@ -229,7 +279,7 @@
          "TO",
          [
             8,
-            "88820f3e2ac20cd6"
+            "88825286c126516e"
          ],
          false
       ],

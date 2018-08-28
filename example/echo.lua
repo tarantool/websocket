@@ -1,28 +1,24 @@
 #!/usr/bin/env tarantool
 
 local log = require('log')
-local socket = require('socket')
-socket = require('websocket.ssl')
+local ssl = require('websocket.ssl')
 local websocket = require('websocket')
 local json = require('json')
 
-local ctx = socket.ctx()
-if not socket.ctx_use_private_key_file(ctx, './certificate.pem') then
+local ctx = ssl.ctx()
+if not ssl.ctx_use_private_key_file(ctx, './certificate.pem') then
     log.info('Error private key')
     return
 end
 
-if not socket.ctx_use_certificate_file(ctx, './certificate.pem') then
+if not ssl.ctx_use_certificate_file(ctx, './certificate.pem') then
     log.info('Error certificate')
     return
 end
 
-socket.tcp_server(
-    '0.0.0.0',
-    8080,
-    function(sock)
-        local wspeer = websocket.new(sock, 15)
-
+websocket.server(
+    'wss://0.0.0.0:8443/',
+    function(wspeer)
         while true do
             local message, err = wspeer:read()
             if message then
@@ -41,8 +37,10 @@ socket.tcp_server(
             end
         end
     end,
-    60*60*24*10,
-    ctx
+    {
+        ping_timeout = 120,
+        ctx = ctx
+    }
 )
 
 local console = require('console')

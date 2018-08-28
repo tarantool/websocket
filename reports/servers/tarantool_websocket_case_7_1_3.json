@@ -21,8 +21,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: g9Q/h6P8h48Q6Wq+SBqfNg==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: ne/w+qPtp7MriWaY0BCgvv1mZvE=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: v3dlFtrk8G8DqAJ3CiOuig==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: BG53AzufTn/ceJddg/HMno2DSAw=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.1.3",
    "isServer": false,
    "localCloseCode": 1000,
@@ -35,13 +35,15 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "4": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:57.161Z",
+   "started": "2018-08-28T11:51:28.419Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1,
@@ -70,7 +72,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a206e652f772b715074 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2042473533417a7566 ..."
          ]
       ],
       [
@@ -82,7 +84,7 @@
          8,
          true,
          0,
-         "bf2430d2",
+         "54034116",
          null,
          null,
          false
@@ -91,7 +93,7 @@
          "TO",
          [
             8,
-            "8882bf2430d2bccc"
+            "88825403411657eb"
          ],
          false
       ],
@@ -104,7 +106,7 @@
          9,
          true,
          0,
-         "dfaa9f95",
+         "5d904039",
          null,
          null,
          false
@@ -113,13 +115,32 @@
          "TO",
          [
             6,
-            "8980dfaa9f95"
+            "89805d904039"
          ],
          false
       ],
       [
          "KL",
          1
+      ],
+      [
+         "RO",
+         [
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
       ],
       [
          "RO",

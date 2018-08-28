@@ -22,8 +22,8 @@
       "requireClean": true
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: IjhRYewV5cijT9Hj7fCuQA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: pHoe1ju9ilC2BykDRqp6/x8x+nI=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: iNRMKr0zWlonhIx8vrRxaA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: LH4EJJMO4Q2Tm3eDQKhW7POc74A=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "7.7.3",
    "isServer": false,
    "localCloseCode": 1002,
@@ -36,13 +36,15 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "4": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:50:00.231Z",
+   "started": "2018-08-28T11:51:31.547Z",
    "trafficStats": null,
    "txFrameStats": {
       "8": 1
@@ -69,7 +71,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a2070486f65316a7539 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a204c4834454a4a4d4f ..."
          ]
       ],
       [
@@ -81,7 +83,7 @@
          8,
          true,
          0,
-         "f9048891",
+         "921f93f3",
          null,
          null,
          false
@@ -90,13 +92,32 @@
          "TO",
          [
             8,
-            "8882f9048891faee"
+            "8882921f93f391f5"
          ],
          false
       ],
       [
          "KL",
          1
+      ],
+      [
+         "RO",
+         [
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
       ],
       [
          "RO",

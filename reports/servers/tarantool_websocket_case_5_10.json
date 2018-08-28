@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Send unfragmented Text Message after Continuation Frame with FIN = true, where there is nothing to continue, sent in per-frame chops.",
    "droppedByMe": false,
-   "duration": 1,
+   "duration": 2,
    "expectation": "The connection is failed immediately, since there is no message to continue.",
    "expected": {
       "OK": []
@@ -21,8 +21,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: /UXQ894mQkt9ya6J0kf1yw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: DofzDW55EHDjmt7y4SjAN+T+kRc=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: +b9iiN8ToscwY7YxN/UBYA==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: S5cyUUn2Dxf5mufh5G1nVAqyIkk=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "5.10",
    "isServer": false,
    "localCloseCode": 1000,
@@ -35,20 +35,24 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "41": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:49.829Z",
+   "started": "2018-08-28T11:51:20.732Z",
    "trafficStats": null,
    "txFrameStats": {
       "0": 1,
       "1": 1,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
+      "6": 1,
       "8": 1,
       "19": 1,
       "30": 1,
@@ -72,7 +76,7 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20446f667a44573535 ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a205335637955556e32 ..."
          ]
       ],
       [
@@ -84,7 +88,7 @@
          0,
          true,
          0,
-         "8421bf23",
+         "a84767a2",
          null,
          null,
          true
@@ -93,7 +97,7 @@
          "TO",
          [
             30,
-            "80988421bf23ea4ed10ee74ed157ed4fca42f048d04da451de5ae84ede47"
+            "8098a84767a2c628098fcb2809d6c12912c3dc2e08cc883706dbc42806c6"
          ],
          true
       ],
@@ -106,7 +110,7 @@
          1,
          true,
          0,
-         "be28ca31",
+         "9c9f0e90",
          null,
          null,
          true
@@ -116,12 +120,53 @@
          1
       ],
       [
+         "RO",
+         [
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "TF",
+         [
+            0,
+            ""
+         ],
+         10,
+         true,
+         0,
+         "5cd522c2",
+         null,
+         null,
+         false
+      ],
+      [
          "TO",
          [
             19,
-            "818dbe28ca31f64da65dd104ea46d15aa6559f"
+            "818d9c9f0e90d4fa62fcf3b32ee7f3ed62f4bd"
          ],
          true
+      ],
+      [
+         "TO",
+         [
+            6,
+            "8a805cd522c2"
+         ],
+         false
       ],
       [
          "RO",
@@ -151,7 +196,7 @@
          8,
          true,
          0,
-         "7b595232",
+         "083c0705",
          null,
          null,
          false
@@ -160,7 +205,7 @@
          "TO",
          [
             8,
-            "88827b59523278b1"
+            "8882083c07050bd4"
          ],
          false
       ]

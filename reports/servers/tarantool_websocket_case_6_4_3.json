@@ -1,6 +1,6 @@
 {
    "agent": "Tarantool websocket",
-   "behavior": "NON-STRICT",
+   "behavior": "OK",
    "behaviorClose": "OK",
    "case": 76,
    "closedByMe": false,
@@ -8,7 +8,7 @@
    "createWirelog": true,
    "description": "Same as Case 6.4.1, but we send message not in 3 frames, but in 3 chops of the same message frame.\n<br><br>MESSAGE PARTS:<br>\nPART1 = cebae1bdb9cf83cebcceb5<br>\nPART2 = f4908080<br>\nPART3 = 656469746564<br>\n",
    "droppedByMe": false,
-   "duration": 2009,
+   "duration": 1003,
    "expectation": "The first chop is accepted, we expect to timeout on the first wait. The 2nd chop should be rejected immediately (fail fast on UTF-8). If we timeout, we expect the connection is failed at least then, since the complete message payload is not valid UTF-8.",
    "expected": {
       "NON-STRICT": [
@@ -37,8 +37,8 @@
       "requireClean": false
    },
    "failedByMe": false,
-   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8080\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: QwwhUE+h0er9ENyTvRWigQ==\r\nSec-WebSocket-Version: 13\r\n\r\n",
-   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 09vWi0OzDMlJeIDiTw2ikLh+KkM=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
+   "httpRequest": "GET / HTTP/1.1\r\nUser-Agent: AutobahnTestSuite/0.8.0-0.10.9\r\nHost: 127.0.0.1:8443\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nPragma: no-cache\r\nCache-Control: no-cache\r\nSec-WebSocket-Key: BnL7EEkKho/TXMqHZ2rjOw==\r\nSec-WebSocket-Version: 13\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nSec-WebSocket-Accept: 7Mjyam6Ii36wa8f+Sw0+R+Upncg=\r\nUpgrade: websocket\r\nConnection: Upgrade\r\n\r\n",
    "id": "6.4.3",
    "isServer": false,
    "localCloseCode": 1000,
@@ -47,10 +47,6 @@
       [
          "timeout",
          "A"
-      ],
-      [
-         "timeout",
-         "B"
       ]
    ],
    "remoteCloseCode": 1007,
@@ -60,21 +56,23 @@
    "result": "Actual events match at least one expected.",
    "resultClose": "Connection was properly closed",
    "rxFrameStats": {
-      "8": 1
+      "8": 1,
+      "9": 1
    },
    "rxOctetStats": {
+      "2": 1,
       "21": 1,
       "129": 1
    },
-   "started": "2018-08-04T16:49:52.889Z",
+   "started": "2018-08-28T11:51:23.848Z",
    "trafficStats": null,
    "txFrameStats": {
-      "0": 1,
-      "8": 1
+      "8": 1,
+      "10": 1
    },
    "txOctetStats": {
       "4": 1,
-      "6": 3,
+      "6": 2,
       "8": 1,
       "11": 1,
       "240": 1
@@ -97,14 +95,14 @@
          "RO",
          [
             129,
-            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a203039765769304f7a ..."
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365632d576562536f636b65742d4163636570743a20374d6a79616d3649 ..."
          ]
       ],
       [
          "TO",
          [
             6,
-            "0195f6885e5d"
+            "0195f1d8fce2"
          ],
          false
       ],
@@ -112,7 +110,7 @@
          "TO",
          [
             11,
-            "3832bfe04f47dd934a46eb"
+            "3f621d5f48177f2c4d1649"
          ],
          false
       ],
@@ -120,6 +118,47 @@
          "CT",
          1,
          "A"
+      ],
+      [
+         "RO",
+         [
+            2,
+            "8900"
+         ]
+      ],
+      [
+         "RF",
+         [
+            0,
+            ""
+         ],
+         9,
+         true,
+         0,
+         false,
+         null
+      ],
+      [
+         "TF",
+         [
+            0,
+            ""
+         ],
+         10,
+         true,
+         0,
+         "d28a94d6",
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            6,
+            "8a80d28a94d6"
+         ],
+         false
       ],
       [
          "CTE",
@@ -129,7 +168,7 @@
          "TO",
          [
             4,
-            "a96608de"
+            "1661587c"
          ],
          false
       ],
@@ -137,44 +176,6 @@
          "CT",
          1,
          "B"
-      ],
-      [
-         "CTE",
-         "B"
-      ],
-      [
-         "TO",
-         [
-            6,
-            "3892e12a3892"
-         ],
-         false
-      ],
-      [
-         "TF",
-         [
-            0,
-            ""
-         ],
-         0,
-         true,
-         0,
-         "3dcf2701",
-         null,
-         null,
-         false
-      ],
-      [
-         "TO",
-         [
-            6,
-            "80803dcf2701"
-         ],
-         false
-      ],
-      [
-         "KL",
-         1
       ],
       [
          "RO",
@@ -204,7 +205,7 @@
          8,
          true,
          0,
-         "6debc6c0",
+         "d6526481",
          null,
          null,
          false
@@ -213,7 +214,7 @@
          "TO",
          [
             8,
-            "88826debc6c06e03"
+            "8882d6526481d5ba"
          ],
          false
       ]
