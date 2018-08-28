@@ -72,6 +72,9 @@ ffi.cdef[[
  int SSL_write(SSL *ssl, const void *buf, int num);
  int SSL_read(SSL *ssl, void *buf, int num);
 
+ int SSL_pending(const SSL *ssl);
+ int SSL_has_pending(const SSL *s);
+
  void ERR_clear_error(void);
  char *ERR_error_string(unsigned long e, char *buf);
  unsigned long ERR_peek_last_error(void);
@@ -156,57 +159,6 @@ sslsocket.__index = sslsocket
 
 local WAIT_FOR_READ =1
 local WAIT_FOR_WRITE =2
-
-function sslsocket.sslread(self, size, timeout)
-    local start = clock.time()
-
-    size = size or buffer.READAHEAD
-    local buf = buffer.IBUF_SHARED
-    buf:reset()
-    local p = buf:alloc(size)
-
-    local mode = WAIT_FOR_READ
-
-    while true do
-        local rc = nil
-        if mode == WAIT_FOR_READ then
-            rc = self.sock:readable(slice_wait(timeout, start))
-        elseif mode == WAIT_FOR_WRITE then
-            rc = self.sock:writable(slice_wait(timeout, start))
-        else
-            assert(false)
-        end
-
-        if not rc then
-            return nil, 'Timeout exceeded'
-        end
-
-        ffi.C.ERR_clear_error()
-        local num = ffi.C.SSL_read(self.ssl, p, size);
-        if num <= 0 then
-            local ssl_error = ffi.C.SSL_get_error(self.ssl, num);
-            if ssl_error == SSL_ERROR_WANT_WRITE then
-                log.info('read want write')
-                mode = WAIT_FOR_READ
-            elseif ssl_error == SSL_ERROR_WANT_READ then
-                log.info('read want read')
-                mode = WAIT_FOR_WRITE
-            elseif ssl_error == SSL_ERROR_SYSCALL then
-                return nil, self.sock:error()
-            elseif ssl_error == SSL_ERROR_ZERO_RETURN then
-                return nil, 'TLS channel closed'
-            else
-                local error_string = ffi.string(ffi.C.ERR_error_string(ssl_error, nil))
-                buf:recycle()
-                return nil, error_string
-            end
-        else
-            local str = ffi.string(p, num)
-            buf:recycle()
-            return str
-        end
-    end
-end
 
 function sslsocket.write(self, data, timeout)
     local start = clock.time()
@@ -308,7 +260,11 @@ local function sysread(self, charptr, size, timeout)
     while true do
         local rc = nil
         if mode == WAIT_FOR_READ then
-            rc = self.sock:readable(slice_wait(timeout, start))
+            if ffi.C.SSL_pending(self.ssl) > 0 then
+                rc = true
+            else
+                rc = self.sock:readable(slice_wait(timeout, start))
+            end
         elseif mode == WAIT_FOR_WRITE then
             rc = self.sock:writable(slice_wait(timeout, start))
         else
@@ -325,10 +281,10 @@ local function sysread(self, charptr, size, timeout)
             local ssl_error = ffi.C.SSL_get_error(self.ssl, num);
             if ssl_error == SSL_ERROR_WANT_WRITE then
                 log.info('read want write')
-                mode = WAIT_FOR_READ
+                mode = WAIT_FOR_WRITE
             elseif ssl_error == SSL_ERROR_WANT_READ then
                 log.info('read want read')
-                mode = WAIT_FOR_WRITE
+                mode = WAIT_FOR_READ
             elseif ssl_error == SSL_ERROR_SYSCALL then
                 return nil, self.sock:error()
             elseif ssl_error == SSL_ERROR_ZERO_RETURN then
@@ -367,6 +323,7 @@ local function read(self, limit, timeout, check, ...)
         local to_read = math.min(limit - rbuf:size(), buffer.READAHEAD)
         local data = rbuf:reserve(to_read)
         assert(rbuf:unused() >= to_read)
+
         local res, err = sysread(self, data, rbuf:unused(), slice_wait(timeout, start))
         if res == 0 then -- eof
             local len = rbuf:size()

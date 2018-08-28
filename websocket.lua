@@ -175,7 +175,6 @@ function wspeer.check_client_handshake(self, timeout)
     local request = table.copy(self.client_request)
     request = handshake.upgrade_request(request)
     local packet = handshake.reduce_request(request)
-    log.info(packet)
 
     local rc = self.peer:write(packet,
                                frame.slice_wait(timeout, starttime))
@@ -211,7 +210,6 @@ function wspeer.check_client_handshake(self, timeout)
                         return true
                     end
                 end
-                log.info(response)
                 log.debug('Websocket handshake response error')
                 self.peer:shutdown(socket.SHUT_RDWR,
                                    frame.slice_wait(timeout, starttime))
@@ -613,16 +611,59 @@ function wspeer.connect(url, request, options)
             return sock, err
         end
     else
-        sock, err = socket.tcp_connect(url.host, tonumber(url.service),
-                                       options.timeout)
+        sock = socket.tcp_connect(url.host, tonumber(url.service),
+                                  options.timeout)
         if not sock then
-            return sock, err
+            return sock, errno.strerror()
         end
     end
 
-    options.ping_timeout = options.ping_timeout or 120
-    local self = wspeer.new(sock, options.ping_timeout, true, false, request)
+    local self = wspeer.new(sock, nil, true, false, request)
     return self
+end
+
+function wspeer.server(url, handler, options)
+    options = options or {}
+
+    url = uri.parse(url)
+    if not url then
+        error('Websocket invalid url: '..url)
+    end
+
+    url.scheme = url.scheme or 'ws'
+    url.host = url.host or 'localhost'
+
+    if not url.service then
+        if url.scheme == 'ws' then
+            url.service = '80'
+        elseif url.scheme == 'wss' then
+            url.service = '443'
+        else
+            url.service = '80'
+        end
+    end
+
+    local sslon = (url.scheme == 'wss') or (options.ctx ~= nil)
+
+    options.ping_timeout = options.ping_timeout or 120
+    if sslon then
+        ssl.tcp_server(
+            url.host, tonumber(url.service),
+            function (sock)
+                local client = wspeer.new(sock, options.ping_timeout)
+                return handler(client)
+            end,
+            options.timeout,
+            options.ctx)
+    else
+        socket.tcp_server(
+            url.host, tonumber(url.service),
+            function (sock)
+                local client = wspeer.new(sock, options.ping_timeout)
+                return handler(client)
+            end,
+            options.timeout)
+    end
 end
 
 return wspeer
