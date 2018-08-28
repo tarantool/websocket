@@ -32,34 +32,20 @@ end
 local function upgrade_request(req)
     req = req or {}
 
-    local key = digest.base64_encode(digest.urandom(14))
-    local lines = {
-        ('GET %s HTTP/1.1'):format(req.uri or '/'),
-        'Upgrade: websocket',
-        'Connection: Upgrade',
-        ('Sec-WebSocket-Key: %s'):format(req.key or key),
-        'Sec-WebSocket-Version: 13',
-    }
-    if req.protocols ~= nil then
-        table.insert(lines,
-                     ('Sec-WebSocket-Protocol: %s')
-                         :format(table.concat(req.protocols,', ')))
-    end
-    if req.origin then
-        table.insert(lines, ('Origin: %s'):format(req.origin))
-    end
-    if req.host then
-        local host
-        if req.port and req.port ~= 80 then
-            host = ('Host: %s:%d'):format(req.host, req.port)
-        else
-            host = ('Host: %s'):format(req.host)
-        end
-        table.insert(lines, host)
-    end
+    req.method = req.method or 'GET'
+    req.path = req.path or '/'
+    req.version = req.version or 'HTTP/1.1'
 
-    table.insert(lines,'\r\n')
-    return table.concat(lines,'\r\n')
+
+    req.headers = req.headers or {}
+    req.headers['Connection'] = req.headers['Connection'] or 'Upgrade'
+    req.headers['Upgrade'] = req.headers['Upgrade'] or 'websocket'
+    req.headers['Sec-WebSocket-Version'] = req.headers['Sec-WebSocket-Version']
+        or '13'
+    req.headers['Sec-WebSocket-Key'] = req.headers['Sec-WebSocket-Key']
+        or digest.base64_encode(digest.urandom(16))
+
+    return req
 end
 
 local function validate_request(request)
@@ -96,12 +82,25 @@ end
 
 local function reduce_response(response)
     local lines = {
-        string.format('%s %s %s', response.version, response.code, response.status),
+        string.format('%s %s %s', response.version or 'HTTP/1.1',
+                      response.code or '200', response.status or 'OK'),
     }
     for key, val in pairs(response.headers) do
         table.insert(lines, string.format('%s: %s', key, val))
     end
     table.insert(lines,'\r\n')
+    return table.concat(lines, '\r\n')
+end
+
+local function reduce_request(request)
+    local lines = {
+        string.format('%s %s %s', request.method or 'GET', request.path or '/',
+                      request.version or 'HTTP/1.1')
+    }
+    for key, val in pairs(request.headers) do
+        table.insert(lines, string.format('%s: %s', key, val))
+    end
+    table.insert(lines, '\r\n')
     return table.concat(lines, '\r\n')
 end
 
@@ -111,4 +110,5 @@ return {
     upgrade_request = upgrade_request,
     validate_request = validate_request,
     reduce_response = reduce_response,
+    reduce_request = reduce_request
 }

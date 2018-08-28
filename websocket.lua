@@ -1,11 +1,16 @@
 #!/usr/bin/env tarantool
 
 local errno = require('errno')
+
 local socket = require('socket')
+local ssl = require('websocket.ssl')
+
 local log = require('log')
+local uri = require('uri')
 
 local clock = require('clock')
-local digest = require('digest')
+
+local json = require('json')
 
 local handshake = require('websocket.handshake')
 local frame = require('websocket.frame')
@@ -82,7 +87,7 @@ function wspeer.check_handshake(self, timeout)
     }
 
     while true do
-        local line = self.peer:read({delimiter='\r\n'},
+        local line, err = self.peer:read({delimiter='\r\n'},
             frame.slice_wait(timeout, starttime))
         if line == nil then
             log.debug('Read failed while handshake')
@@ -160,9 +165,6 @@ function wspeer.check_client_handshake(self, timeout)
 
     rawset(self, 'httpstate', HTTPSTATE.RESPONSE)
 
-    local request = table.copy(self.client_request)
-    request.key = request.key or digest.base64_encode(digest.urandom(16))
-
     local response = {
         version='',
         code='',
@@ -170,7 +172,12 @@ function wspeer.check_client_handshake(self, timeout)
         headers={}
     }
 
-    local rc = self.peer:write(handshake.upgrade_request(request),
+    local request = table.copy(self.client_request)
+    request = handshake.upgrade_request(request)
+    local packet = handshake.reduce_request(request)
+    log.info(packet)
+
+    local rc = self.peer:write(packet,
                                frame.slice_wait(timeout, starttime))
     if rc == nil then
         return false, 'Connection closed: error'
@@ -198,16 +205,17 @@ function wspeer.check_client_handshake(self, timeout)
         elseif self.httpstate == HTTPSTATE.HEADERS then
             if line == '\r\n' then
                 if response.code == '101' then
-                    local respkey = handshake.sec_websocket_accept(request.key)
+                    local respkey = handshake.sec_websocket_accept(request.headers['Sec-WebSocket-Key'])
                     if respkey == response.headers['sec-websocket-accept'] then
                         rawset(self, 'handshaked', true)
                         return true
                     end
                 end
+                log.info(response)
                 log.debug('Websocket handshake response error')
                 self.peer:shutdown(socket.SHUT_RDWR,
                                    frame.slice_wait(timeout, starttime))
-                return false, 'Handshake error'
+                return false, 'Handshake error: ' .. json.encode(response)
             else
                 local _, _, name, value = line:find('^([^:]+)%s*:%s*(.+)')
                 if name == nil or value == nil then
@@ -542,6 +550,79 @@ end
 
 function wspeer.error(self)
     return self.peer:error()
+end
+
+function wspeer.errno(self)
+    return self.peer:errno()
+end
+
+function wspeer.connect(url, request, options)
+    options = options or {}
+
+    url = uri.parse(url)
+    if not url then
+        error('Websocket invalid url: '..url)
+    end
+
+    url.scheme = url.scheme or 'ws'
+    url.host = url.host or 'localhost'
+
+    if not url.service then
+        if url.scheme == 'ws' then
+            url.service = '80'
+        elseif url.scheme == 'wss' then
+            url.service = '443'
+        else
+            url.service = '80'
+        end
+    end
+
+    request = request or {}
+    request.method = 'GET'
+    if not request.path then
+        if url.path then
+            request.path = url.path
+            if url.query then
+                request.path = request.path .. '?' .. url.query
+            end
+            if url.fragment then
+                request.path = request.path .. '#' .. url.fragment
+            end
+        else
+            request.path = '/'
+        end
+    end
+    request.version = request.version or 'HTTP/1.1'
+
+    request.headers = request.headers or {}
+    if not request.headers['Host'] then
+        if url.service then
+            request.headers['Host'] = url.host .. ':' .. url.service
+        else
+            request.headers['Host'] = url.host
+        end
+    end
+
+    local sslon = (url.scheme == 'wss') or (options.ctx ~= nil)
+
+    local sock, err
+    if sslon then
+        sock, err = ssl.tcp_connect(url.host, tonumber(url.service),
+                                    options.timeout, options.ctx)
+        if not sock then
+            return sock, err
+        end
+    else
+        sock, err = socket.tcp_connect(url.host, tonumber(url.service),
+                                       options.timeout)
+        if not sock then
+            return sock, err
+        end
+    end
+
+    options.ping_timeout = options.ping_timeout or 120
+    local self = wspeer.new(sock, options.ping_timeout, true, false, request)
+    return self
 end
 
 return wspeer

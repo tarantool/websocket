@@ -2,8 +2,20 @@
 
 local log = require('log')
 local socket = require('socket')
+socket = require('websocket.ssl')
 local websocket = require('websocket')
 local json = require('json')
+
+local ctx = socket.ctx()
+if not socket.ctx_use_private_key_file(ctx, './certificate.pem') then
+    log.info('Error private key')
+    return
+end
+
+if not socket.ctx_use_certificate_file(ctx, './certificate.pem') then
+    log.info('Error certificate')
+    return
+end
 
 socket.tcp_server(
     '0.0.0.0',
@@ -28,7 +40,10 @@ socket.tcp_server(
                 break
             end
         end
-end)
+    end,
+    60*60*24*10,
+    ctx
+)
 
 local console = require('console')
 console.start()

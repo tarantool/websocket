@@ -1,11 +1,10 @@
 #!/usr/bin/env tarantool
 
 local log = require('log')
-local socket = require('socket')
 local websocket = require('websocket')
 local json = require('json')
-local fiber = require('fiber')
 
+local base = 'wss://localhost:9001'
 local agent = 'Tarantool/1.10'
 
 local cases = {
@@ -40,33 +39,25 @@ while true do
     end
 
     if limit == nil then
-        url = '/getCaseCount?'
+        url = base .. '/getCaseCount?'
     else
         if i > limit then
-            url = '/updateReports?'
+            url = base .. '/updateReports?'
             i = nil
         else
-            url = ('/runCase?case=%d&'):format(i)
+            url = base .. ('/runCase?case=%d&'):format(i)
             i = i + 1
         end
     end
     url = url .. 'agent='..agent
 
     if found  then
-        local sock, err = socket.tcp_connect('127.0.0.1', 9001)
-        if not sock then
-            log.info(sock)
+        local ws, err = websocket.connect(url, nil, {timeout=3,
+                                                     ping_timeout=15})
+        if not ws then
             log.info(err)
-            break
+            return
         end
-
-        log.info(url)
-        local request = {
-            uri = url,
-            host = 'localhost:9001',
-        }
-
-        local ws = websocket.new(sock, 15, true, false, request)
 
         while true do
             local message, err = ws:read()
@@ -98,6 +89,5 @@ while true do
 
         ws:shutdown()
 
-        --fiber.sleep(0.1)
     end
 end
