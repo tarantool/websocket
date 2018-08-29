@@ -441,8 +441,8 @@ local function wrap_accepted_socket(sock, sslctx)
     local ssl = ffi.gc(ffi.C.SSL_new(sslctx),
                        ffi.C.SSL_free)
     if ssl == nil then
-        log.info('SSL_new failed')
-        return nil
+        sock:close()
+        return nil, 'SSL_new failed'
     end
 
     sock:nonblock(true)
@@ -451,8 +451,7 @@ local function wrap_accepted_socket(sock, sslctx)
     local rc = ffi.C.SSL_set_fd(ssl, sock:fd())
     if rc == 0 then
         sock:close()
-        log.info('SSL_set_fd failed')
-        return nil
+        return nil, 'SSL_set_fd failed'
     end
 
     ffi.C.ERR_clear_error()
@@ -470,9 +469,12 @@ local function tcp_server(host, port, handler_function, timeout, sslctx)
 
     local handler = function (sock, from)
 
-        local self = wrap_accepted_socket(sock, sslctx)
-
-        handler_function(self, from)
+        local self, err = wrap_accepted_socket(sock, sslctx)
+        if not self then
+            log.info(err)
+        else
+            handler_function(self, from)
+        end
     end
 
     return socket.tcp_server(host, port, handler, timeout)
