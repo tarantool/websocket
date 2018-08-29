@@ -8,6 +8,7 @@ local ffi = require('ffi')
 local socket = require('socket')
 local buffer = require('buffer')
 local clock = require('clock')
+local errno = require('errno')
 
 ffi.cdef[[
 
@@ -179,6 +180,7 @@ function sslsocket.write(self, data, timeout)
         end
 
         if not rc then
+            self.sock._errno = errno.ETIMEDOUT
             return nil, 'Timeout exceeded'
         end
 
@@ -187,10 +189,8 @@ function sslsocket.write(self, data, timeout)
         if num <= 0 then
             local ssl_error = ffi.C.SSL_get_error(self.ssl, num);
             if ssl_error == SSL_ERROR_WANT_WRITE then
-                log.info('write want write')
                 mode = WAIT_FOR_WRITE
             elseif ssl_error == SSL_ERROR_WANT_READ then
-                log.info('write want read')
                 mode = WAIT_FOR_READ
             elseif ssl_error == SSL_ERROR_SYSCALL then
                 return nil, self.sock:error()
@@ -272,6 +272,7 @@ local function sysread(self, charptr, size, timeout)
         end
 
         if not rc then
+            self.sock._errno = errno.ETIMEDOUT
             return nil, 'Timeout exceeded'
         end
 
@@ -280,10 +281,8 @@ local function sysread(self, charptr, size, timeout)
         if num <= 0 then
             local ssl_error = ffi.C.SSL_get_error(self.ssl, num);
             if ssl_error == SSL_ERROR_WANT_WRITE then
-                log.info('read want write')
                 mode = WAIT_FOR_WRITE
             elseif ssl_error == SSL_ERROR_WANT_READ then
-                log.info('read want read')
                 mode = WAIT_FOR_READ
             elseif ssl_error == SSL_ERROR_SYSCALL then
                 return nil, self.sock:error()
@@ -435,40 +434,48 @@ local function tcp_connect(host, port, timeout, sslctx)
     return self
 end
 
+local function wrap_accepted_socket(sock, sslctx)
+    sslctx = sslctx or default_ctx
+
+    ffi.C.ERR_clear_error()
+    local ssl = ffi.gc(ffi.C.SSL_new(sslctx),
+                       ffi.C.SSL_free)
+    if ssl == nil then
+        log.info('SSL_new failed')
+        return nil
+    end
+
+    sock:nonblock(true)
+
+    ffi.C.ERR_clear_error()
+    local rc = ffi.C.SSL_set_fd(ssl, sock:fd())
+    if rc == 0 then
+        sock:close()
+        log.info('SSL_set_fd failed')
+        return nil
+    end
+
+    ffi.C.ERR_clear_error()
+    ffi.C.SSL_set_accept_state(ssl);
+
+    local self = setmetatable({}, sslsocket)
+    rawset(self, 'sock', sock)
+    rawset(self, 'ctx', sslctx)
+    rawset(self, 'ssl', ssl)
+    return self
+end
+
 local function tcp_server(host, port, handler_function, timeout, sslctx)
     sslctx = sslctx or default_ctx
 
     local handler = function (sock, from)
-        ffi.C.ERR_clear_error()
-        local ssl = ffi.gc(ffi.C.SSL_new(sslctx),
-                           ffi.C.SSL_free)
-        if ssl == nil then
-            log.info('SSL_new failed')
-            return nil
-        end
 
-        sock:nonblock(true)
-
-        ffi.C.ERR_clear_error()
-        local rc = ffi.C.SSL_set_fd(ssl, sock:fd())
-        if rc == 0 then
-            sock:close()
-            log.info('SSL_set_fd failed')
-            return nil
-        end
-
-        ffi.C.ERR_clear_error()
-        ffi.C.SSL_set_accept_state(ssl);
-
-        local self = setmetatable({}, sslsocket)
-        rawset(self, 'sock', sock)
-        rawset(self, 'ctx', sslctx)
-        rawset(self, 'ssl', ssl)
+        local self = wrap_accepted_socket(sock, sslctx)
 
         handler_function(self, from)
     end
 
-    socket.tcp_server(host, port, handler, timeout)
+    return socket.tcp_server(host, port, handler, timeout)
 end
 
 return {
@@ -483,4 +490,6 @@ return {
     SHUT_RDWR = socket.SHUT_RDWR,
     SHUT_RD = socket.SHUT_RD,
     SHUT_WR = socket.SHUT_WR,
+
+    wrap_accepted_socket = wrap_accepted_socket,
 }

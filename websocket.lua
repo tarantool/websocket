@@ -22,6 +22,8 @@ local HTTPSTATE = {
 }
 
 local wspeer = {
+    TEXT = frame.TEXT,
+    BINARY = frame.BINARY,
     __newindex = function(table, key, value)
         error("Attempt to modify read-only wspeer properties")
     end,
@@ -238,7 +240,7 @@ function wspeer.shutdown(self, code, reason, timeout)
               reason)
     local packet = frame.encode(frame.encode_close(code, reason),
                                 frame.CLOSE, self.is_client, true)
-    local rc = self.peer:write(packet, frame.slice_wait(timeout))
+    local rc = self.peer:write(packet, frame.slice_wait(timeout, starttime))
     if not rc then
         return nil, self.peer:error()
     end
@@ -438,10 +440,12 @@ function wspeer.read(self, timeout)
             end
 
             local corrected = frame.slice_wait(timeout, starttime)
-            if corrected == nil and self.ping_freq ~= nil then
-                corrected = self.ping_freq
-            elseif corrected > self.ping_freq then
-                corrected = self.ping_freq
+            if self.ping_freq ~= nil then
+                if corrected == nil then
+                    corrected = self.ping_freq
+                elseif corrected > self.ping_freq then
+                    corrected = self.ping_freq
+                end
             end
 
             tuple, err = frame.decode_from(self.peer, corrected)
@@ -645,25 +649,71 @@ function wspeer.server(url, handler, options)
 
     local sslon = (url.scheme == 'wss') or (options.ctx ~= nil)
 
-    options.ping_timeout = options.ping_timeout or 120
+    options.ping_frequency = options.ping_frequency or 120
     if sslon then
-        ssl.tcp_server(
+        return ssl.tcp_server(
             url.host, tonumber(url.service),
             function (sock)
-                local client = wspeer.new(sock, options.ping_timeout)
+                local client = wspeer.new(sock, options.ping_frequency)
                 return handler(client)
             end,
             options.timeout,
             options.ctx)
     else
-        socket.tcp_server(
+        return socket.tcp_server(
             url.host, tonumber(url.service),
             function (sock)
-                local client = wspeer.new(sock, options.ping_timeout)
+                local client = wspeer.new(sock, options.ping_frequency)
                 return handler(client)
             end,
             options.timeout)
     end
+end
+
+function wspeer.bind(url, options)
+    options = options or {}
+
+    url = uri.parse(url)
+    if not url then
+        error('Websocket invalid url: '..url)
+    end
+
+    url.scheme = url.scheme or 'ws'
+    url.host = url.host or 'localhost'
+
+    if not url.service then
+        if url.scheme == 'ws' then
+            url.service = '80'
+        elseif url.scheme == 'wss' then
+            url.service = '443'
+        else
+            url.service = '80'
+        end
+    end
+
+    local sslon = (url.scheme == 'wss') or (options.ctx ~= nil)
+
+    local serv = socket('AF_INET', 'SOCK_STREAM', 'tcp')
+    if not serv then
+        return nil, 'socket() failed'
+    end
+    serv:setsockopt('SOL_SOCKET', 'SO_REUSEADDR', 1)
+    local rc = serv:bind(url.host, tonumber(url.service))
+    if not rc then
+        return rc, serv:error()
+    end
+
+    options.ping_frequency = options.ping_frequency or 120
+    local old_accept = serv.accept
+    local function new_accept(self)
+        local result = old_accept(self)
+        if sslon then
+            result = ssl.wrap_accepted_socket(result, options.ctx)
+        end
+        return wspeer.new(result, options.ping_frequency)
+    end
+    serv.accept = new_accept
+    return serv
 end
 
 return wspeer
