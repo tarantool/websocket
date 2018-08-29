@@ -211,9 +211,7 @@ function sslsocket.getaddrinfo(self)
 end
 
 function sslsocket.shutdown(self, how)
-    log.info('0000')
     self.sock:shutdown(how)
-    log.info('1111')
     return self.sock:shutdown(how)
 end
 

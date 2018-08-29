@@ -159,7 +159,7 @@ local function decode_from(client, timeout)
     local starttime = clock.time()
 
     local header, payload
-    header = client:read({chunk=1}, timeout)
+    header = client:read({chunk=1}, slice_wait(timeout, starttime))
     if header == nil then
         return nil, client:error()
     elseif header == '' then
