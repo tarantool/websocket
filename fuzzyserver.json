@@ -7,5 +7,5 @@
         "13.*"],
     "exclude-agent-cases": {},
     "cert": "certificate.pem",
-    "key": "key.pem"
+    "key": "certificate.pem"
 }

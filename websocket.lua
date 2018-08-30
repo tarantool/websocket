@@ -31,7 +31,7 @@ local wspeer = {
 
 wspeer.__index = wspeer
 
-function wspeer.new(peer, ping_freq, is_client, handshaked, client_request)
+function wspeer.new(peer, ping_freq, is_client, is_handshaked, client_request)
     local self = setmetatable({}, wspeer)
 
     peer:nonblock(true)
@@ -46,7 +46,7 @@ function wspeer.new(peer, ping_freq, is_client, handshaked, client_request)
     rawset(self, 'client_request', client_request)
 
     rawset(self, 'handshake_packets', nil)
-    rawset(self, 'handshaked', handshaked)
+    rawset(self, 'handshaked', is_handshaked)
 
     rawset(self, 'proxy_handshake', nil)
 

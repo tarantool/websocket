@@ -469,7 +469,6 @@ local function tcp_server(host, port, handler_function, timeout, sslctx)
     sslctx = sslctx or default_ctx
 
     local handler = function (sock, from)
-
         local self, err = wrap_accepted_socket(sock, sslctx)
         if not self then
             log.info(err)
