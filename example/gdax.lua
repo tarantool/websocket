@@ -5,7 +5,7 @@ local websocket = require('websocket')
 local json = require('json')
 
 local ws, err = websocket.connect(
-    'wss://ws-feed.pro.coinbase.com', nil, {timeout=3, ping_timeout=15})
+    'wss://ws-feed.pro.coinbase.com', nil, {timeout=3})
 
 if not ws then
     log.info(err)

@@ -9,9 +9,34 @@
     + [`wspeer:shutdown(code, reason[, timeout])`](#wspeershutdowncode-reason-timeout)
     + [`wspeer:close()`](#wspeerclose)
 
-# Library to build simple websocket server.
+# Library to use websocket channels.
 
 ## Example
+
+### Client to echo
+
+`./example/client.lua`
+
+``` lua
+#!/usr/bin/env tarantool
+
+local log = require('log')
+local websocket = require('websocket')
+local json = require('json')
+
+local ws, err = websocket.connect('wss://echo.websocket.org',
+                                  nil, {timeout=3})
+
+if not ws then
+    log.info(err)
+    return
+end
+
+ws:write('HELLO')
+local response = ws:read()
+log.info(response)
+assert(response.data == 'HELLO')
+```
 
 ### Client to exchange ticker
 
@@ -25,7 +50,7 @@ local websocket = require('websocket')
 local json = require('json')
 
 local ws, err = websocket.connect(
-    'wss://ws-feed.pro.coinbase.com', nil, {timeout=3, ping_timeout=15})
+    'wss://ws-feed.pro.coinbase.com', nil, {timeout=3})
 
 if not ws then
     log.info(err)
@@ -54,7 +79,7 @@ end
 Load echo server
 
 ``` shell
-./example/echo.lua
+./example/echo_server.lua
 ```
 
 ``` shell
@@ -84,7 +109,7 @@ wstest -m fuzzingserver -s fuzzyserver.json
 Start client
 
 ``` shell
-./example/client.lua
+./example/echo_client.lua
 ```
 
 Open reports `open reports/clients/index.html`
