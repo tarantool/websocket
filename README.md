@@ -1,15 +1,33 @@
-- [Library to build simple websocket server.](#library-to-build-simple-websocket-server)
-  * [Restrictions](#restrictions)
-  * [Tests](#tests)
+- [Library to use websocket channels.](#library-to-use-websocket-channels)
   * [Example](#example)
+    + [Client to echo](#client-to-echo)
+    + [Client to exchange ticker](#client-to-exchange-ticker)
+  * [Tests](#tests)
+    + [Server](#server)
+    + [Client](#client)
+  * [SSL API](#ssl-api)
+    + [`ssl.methods`](#sslmethods)
+    + [`ssl.ctx(method)`](#sslctxmethod)
+    + [`ssl.ctx_use_private_key_file(ctx, filepath)`](#sslctx_use_private_key_filectx-filepath)
+    + [`ssl.ctx_use_certificate_file(ctx, filepath)`](#sslctx_use_certificate_filectx-filepath)
   * [API](#api)
-    + [`websocket.new(socket, ping_frequency, handshaked)`](#websocketnewsocket-ping_frequency-handshaked)
+    + [`websocket.server(url, handler, options)`](#websocketserverurl-handler-options)
+    + [`wspeer.connect(url, request, options)`](#wspeerconnecturl-request-options)
+    + [`websocket.new(peer, ping_freq, is_client, is_handshaked, client_request)`](#websocketnewpeer-ping_freq-is_client-is_handshaked-client_request)
     + [`wspeer:read([timeout])`](#wspeerreadtimeout)
     + [`wspeer:write(frame[, timeout])`](#wspeerwriteframe-timeout)
     + [`wspeer:shutdown(code, reason[, timeout])`](#wspeershutdowncode-reason-timeout)
     + [`wspeer:close()`](#wspeerclose)
 
 # Library to use websocket channels.
+
+## Installation
+
+### master
+
+``` shell
+tarantoolctl rocks install https://github.com/tarantool/websocket/raw/master/websocket-scm-1.rockspec
+```
 
 ## Example
 
@@ -70,6 +88,55 @@ while packet ~= nil do
     log.info(packet)
     packet = ws:read()
 end
+```
+
+### Server with ssl
+
+``` lua
+#!/usr/bin/env tarantool
+
+local log = require('log')
+local ssl = require('websocket.ssl')
+local websocket = require('websocket')
+local json = require('json')
+
+local ctx = ssl.ctx()
+if not ssl.ctx_use_private_key_file(ctx, './certificate.pem') then
+    log.info('Error private key')
+    return
+end
+
+if not ssl.ctx_use_certificate_file(ctx, './certificate.pem') then
+    log.info('Error certificate')
+    return
+end
+
+websocket.server(
+    'wss://0.0.0.0:8443/',
+    function(wspeer)
+        while true do
+            local message, err = wspeer:read()
+            if message then
+                if message.opcode == nil then
+                    log.info('Normal close')
+                    break
+                end
+                log.info('echo ' .. json.encode(message))
+                wspeer:write(message)
+            else
+                log.info('Exception close ' .. tostring(err))
+                if wspeer:error() then
+                    log.info('Socket error '..wspeer:error())
+                end
+                break
+            end
+        end
+    end,
+    {
+        ping_timeout = 120,
+        ctx = ctx
+    }
+)
 ```
 
 ## Tests
@@ -139,7 +206,11 @@ local ssl = require('websocket.ssl')
      - `ping_frequency` - ping frequency in seconds
      - `ctx` - ssl context
 
-### `wspeer.connect(url, request, options)`
+**Returns:**
+
+   - server socket
+
+### `websocket.connect(url, request, options)`
 
    - `url` url for connect (e.g. `ws://echo.websocket.org`)
    - `request`
@@ -150,6 +221,23 @@ local ssl = require('websocket.ssl')
    - `options`
      - `timeout` connect timeout
      - `ctx` ssl context
+
+**Returns:**
+
+   - wspeer (socket like object)
+
+### `websocket.bind(url, options)`
+
+   - `url` url for serving (e.g. `wss://127.0.0.1:8443/endpoint`)
+   - `options`
+     - `timeout` - accept timeout
+     - `ping_frequency` - ping frequency in seconds
+     - `ctx` - ssl context
+
+**Returns:**
+
+   - server socket
+
 
 ### `websocket.new(peer, ping_freq, is_client, is_handshaked, client_request)`
 
