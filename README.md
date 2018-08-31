@@ -159,7 +159,7 @@ virtualenv test # -p python2
 cd test
 source bin/activate
 pip install autobahntestsuite
-wstest -m fuzzingclient -s fuzzingclient.json
+wstest -m fuzzingclient -s fuzzyclient.json
 ```
 
 Open reports `open reports/servers/index.html`
