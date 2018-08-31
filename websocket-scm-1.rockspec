@@ -27,6 +27,7 @@ build = {
     type = "builtin",
     modules = {
         ["websocket.init"] = "websocket.lua",
+        ["websocket.ssl"] = "websocket/ssl.lua",
         ["websocket.frame"] = "websocket/frame.lua",
         ["websocket.handshake"] = "websocket/handshake.lua",
         ["websocket.utf8_validator"] = "websocket/utf8_validator.lua",
