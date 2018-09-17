@@ -480,6 +480,15 @@ local function tcp_server(host, port, handler_function, timeout, sslctx)
     return socket.tcp_server(host, port, handler, timeout)
 end
 
+local function accept(server, ctx)
+    local sock = server:accept()
+    if sock == nil then
+        return nil
+    end
+
+    return wrap_accepted_socket(sock, ctx)
+end
+
 return {
     methods = methods,
     ctx = ctx,
@@ -494,4 +503,5 @@ return {
     SHUT_WR = socket.SHUT_WR,
 
     wrap_accepted_socket = wrap_accepted_socket,
+    accept = accept,
 }

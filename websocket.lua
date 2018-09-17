@@ -3,7 +3,8 @@
 local errno = require('errno')
 
 local socket = require('socket')
-local ssl = require('websocket.ssl')
+-- lazy loading, only if user
+local ssl = nil
 
 local log = require('log')
 local uri = require('uri')
@@ -74,18 +75,11 @@ function wspeer.check_handshake(self, timeout)
 
     rawset(self, 'httpstate', HTTPSTATE.REQUEST)
 
-    local success = false
     local request = {
         method='',
         uri='',
         version='',
         headers={}
-    }
-    local response = {
-        version='',
-        code='',
-        status='',
-        headers=''
     }
 
     while true do
@@ -123,7 +117,7 @@ function wspeer.check_handshake(self, timeout)
                 end
 
                 if valid then
-                    response = handshake.accept_upgrade(request)
+                    local response = handshake.accept_upgrade(request)
                     if self.proxy_handshake then
                         response = self:proxy_handshake(request, response)
                     end
@@ -136,7 +130,7 @@ function wspeer.check_handshake(self, timeout)
                     end
 
                     rawset(self, 'httpstate', HTTPSTATE.REQUEST)
-                    success = (tonumber(response.code) == 101)
+                    local success = (tonumber(response.code) == 101)
                     if success then
                         rawset(self, 'handshake_packets', {request, response})
                         rawset(self, 'handshaked', true)
@@ -609,6 +603,7 @@ function wspeer.connect(url, request, options)
 
     local sock, err
     if sslon then
+        ssl = require('websocket.ssl')
         sock, err = ssl.tcp_connect(url.host, tonumber(url.service),
                                     options.timeout, options.ctx)
         if not sock then
@@ -651,6 +646,7 @@ function wspeer.server(url, handler, options)
 
     options.ping_frequency = options.ping_frequency or 120
     if sslon then
+        ssl = require('websocket.ssl')
         return ssl.tcp_server(
             url.host, tonumber(url.service),
             function (sock)
@@ -708,6 +704,7 @@ function wspeer.bind(url, options)
     local function new_accept(self)
         local result = old_accept(self)
         if sslon then
+            ssl = require('websocket.ssl')
             result = ssl.wrap_accepted_socket(result, options.ctx)
         end
         return wspeer.new(result, options.ping_frequency)
