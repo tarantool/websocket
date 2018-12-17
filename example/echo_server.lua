@@ -1,6 +1,9 @@
 #!/usr/bin/env tarantool
 
 local log = require('log')
+
+local ffi = require('ffi')
+ffi.load('ssl')
 local ssl = require('websocket.ssl')
 local websocket = require('websocket')
 local json = require('json')
