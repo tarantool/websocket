@@ -1,30 +1,45 @@
-- [Library to use websocket channels.](#library-to-use-websocket-channels)
-  * [Installation](#installation)
-    + [master](#master)
-  * [Example](#example)
-    + [Client to echo](#client-to-echo)
-    + [Client to exchange ticker](#client-to-exchange-ticker)
-    + [Echo server](#echo-server)
-    + [Server with ssl](#server-with-ssl)
-  * [Tests](#tests)
-    + [Server](#server)
-    + [Client](#client)
-  * [SSL API](#ssl-api)
-    + [`ssl.methods`](#sslmethods)
-    + [`ssl.ctx(method)`](#sslctxmethod)
-    + [`ssl.ctx_use_private_key_file(ctx, filepath)`](#sslctx_use_private_key_filectx-filepath)
-    + [`ssl.ctx_use_certificate_file(ctx, filepath)`](#sslctx_use_certificate_filectx-filepath)
-  * [API](#api)
-    + [`websocket.server(url, handler, options)`](#websocketserverurl-handler-options)
-    + [`websocket.connect(url, request, options)`](#websocketconnecturl-request-options)
-    + [`websocket.bind(url, options)`](#websocketbindurl-options)
-    + [`websocket.new(peer, ping_freq, is_client, is_handshaked, client_request)`](#websocketnewpeer-ping_freq-is_client-is_handshaked-client_request)
-    + [`wspeer:read([timeout])`](#wspeerreadtimeout)
-    + [`wspeer:write(frame[, timeout])`](#wspeerwriteframe-timeout)
-    + [`wspeer:shutdown(code, reason[, timeout])`](#wspeershutdowncode-reason-timeout)
-    + [`wspeer:close()`](#wspeerclose)
+- [Library to use websocket channels](#library-to-use-websocket-channels)
+  - [Use cases](#use-cases)
+  - [Installation](#installation)
+    - [master](#master)
+  - [Example](#example)
+    - [Client to echo](#client-to-echo)
+    - [Client to exchange ticker](#client-to-exchange-ticker)
+    - [Echo server](#echo-server)
+    - [Server with ssl](#server-with-ssl)
+  - [Tests](#tests)
+    - [Server](#server)
+    - [Client](#client)
+  - [SSL API](#ssl-api)
+    - [`ssl.methods`](#sslmethods)
+    - [`ssl.ctx(method)`](#sslctxmethod)
+    - [`ssl.ctx_use_private_key_file(ctx, filepath)`](#sslctxuseprivatekeyfilectx-filepath)
+    - [`ssl.ctx_use_certificate_file(ctx, filepath)`](#sslctxusecertificatefilectx-filepath)
+  - [API](#api)
+    - [`websocket.server(url, handler, options)`](#websocketserverurl-handler-options)
+    - [`websocket.connect(url, request, options)`](#websocketconnecturl-request-options)
+    - [`websocket.bind(url, options)`](#websocketbindurl-options)
+    - [`websocket.new(peer, ping_freq, is_client, is_handshaked, client_request)`](#websocketnewpeer-pingfreq-isclient-ishandshaked-clientrequest)
+    - [`wspeer:read([timeout])`](#wspeerreadtimeout)
+    - [`wspeer:write(frame[, timeout])`](#wspeerwriteframe-timeout)
+    - [`wspeer:shutdown(code, reason[, timeout])`](#wspeershutdowncode-reason-timeout)
+    - [`wspeer:close()`](#wspeerclose)
 
-# Library to use websocket channels.
+# Library to use websocket channels
+
+## Use cases
+
+The advantages of this library are:
+
+* persistent connection (no need to reconnect)
+* full-duplex data transmission
+
+For example, it can help when you want to:
+
+* make a chat
+* send financial quotes
+* write a backend for a rich internet application
+* send push-notifications to your users
 
 ## Installation
 
