@@ -116,6 +116,24 @@ end
 #!/usr/bin/env tarantool
 
 local ws = require('websocket')
+
+ws.server('ws://0.0.0.0:8080', function (ws_peer)
+    while true do
+        local message, err = ws_peer:read()
+        if not message or message.opcode == nil then
+            break
+        end
+	ws_peer:write(message.data)
+    end
+end)
+```
+
+### Send a message to all connected clients 
+
+``` lua
+#!/usr/bin/env tarantool
+
+local ws = require('websocket')
 local json = require('json')
 local ws_peers = {}
 
