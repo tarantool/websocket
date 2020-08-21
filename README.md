@@ -6,6 +6,7 @@
     - [Client to echo](#client-to-echo)
     - [Client to exchange ticker](#client-to-exchange-ticker)
     - [Echo server](#echo-server)
+    - [Send a message to all connected clients](#send-a-message-to-all-connected-clients)
     - [Server with ssl](#server-with-ssl)
   - [Tests](#tests)
     - [Server](#server)
