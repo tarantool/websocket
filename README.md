@@ -6,6 +6,7 @@
     - [Client to echo](#client-to-echo)
     - [Client to exchange ticker](#client-to-exchange-ticker)
     - [Echo server](#echo-server)
+    - [Send a message to all connected clients](#send-a-message-to-all-connected-clients)
     - [Server with ssl](#server-with-ssl)
   - [Tests](#tests)
     - [Server](#server)
@@ -111,6 +112,24 @@ end
 ```
 
 ### Echo server
+
+``` lua
+#!/usr/bin/env tarantool
+
+local ws = require('websocket')
+
+ws.server('ws://0.0.0.0:8080', function (ws_peer)
+    while true do
+        local message, err = ws_peer:read()
+        if not message or message.opcode == nil then
+            break
+        end
+	ws_peer:write(message.data)
+    end
+end)
+```
+
+### Send a message to all connected clients 
 
 ``` lua
 #!/usr/bin/env tarantool
