@@ -20,8 +20,14 @@ ws:write(
                    {name="ticker",
                     product_ids={"ETH-BTC","ETH-USD"}}}}))
 
-local packet = ws:read()
+local packet, err = ws:read()
+if err ~= nil then
+   log.info(err)
+end
 while packet ~= nil do
     log.info(packet)
-    packet = ws:read()
+    packet, err = ws:read()
+    if err ~= nil then
+       log.info(err)
+    end
 end

@@ -105,6 +105,7 @@ end)
 
 
 local methods = {
+    tls = ffi.C.TLS_method(),
     tlsv1 = ffi.C.TLSv1_method(),
     tlsv11 = ffi.C.TLSv1_1_method(),
     tlsv12 = ffi.C.TLSv1_2_method(),
@@ -119,12 +120,12 @@ local function slice_wait(timeout, starttime)
     return timeout - (clock.time() - starttime)
 end
 
-local X509_FILETYPE_PEM       =1
-local X509_FILETYPE_ASN1      =2
-local X509_FILETYPE_DEFAULT   =3
+local X509_FILETYPE_PEM       = 1
+local X509_FILETYPE_ASN1      = 2
+local X509_FILETYPE_DEFAULT   = 3
 
 local function ctx(method)
-    method = method or methods['tlsv1']
+    method = method or methods['tls']
 
     ffi.C.ERR_clear_error()
     local newctx =
@@ -149,15 +150,15 @@ end
 
 local default_ctx = ctx(methods.sslv23)
 
-local SSL_ERROR_NONE                  =0
-local SSL_ERROR_SSL                   =1
-local SSL_ERROR_WANT_READ             =2
-local SSL_ERROR_WANT_WRITE            =3
-local SSL_ERROR_WANT_X509_LOOKUP      =4
-local SSL_ERROR_SYSCALL               =5 -- look at error stack/return value/errno
-local SSL_ERROR_ZERO_RETURN           =6
-local SSL_ERROR_WANT_CONNECT          =7
-local SSL_ERROR_WANT_ACCEPT           =8
+local SSL_ERROR_NONE                  = 0
+local SSL_ERROR_SSL                   = 1
+local SSL_ERROR_WANT_READ             = 2
+local SSL_ERROR_WANT_WRITE            = 3
+local SSL_ERROR_WANT_X509_LOOKUP      = 4
+local SSL_ERROR_SYSCALL               = 5 -- look at error stack/return value/errno
+local SSL_ERROR_ZERO_RETURN           = 6
+local SSL_ERROR_WANT_CONNECT          = 7
+local SSL_ERROR_WANT_ACCEPT           = 8
 
 local sslsocket = {
     __newindex = function(table, key, value)
@@ -166,8 +167,8 @@ local sslsocket = {
 }
 sslsocket.__index = sslsocket
 
-local WAIT_FOR_READ =1
-local WAIT_FOR_WRITE =2
+local WAIT_FOR_READ = 1
+local WAIT_FOR_WRITE = 2
 
 function sslsocket.write(self, data, timeout)
     local start = clock.time()
