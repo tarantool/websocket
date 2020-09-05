@@ -129,7 +129,7 @@ ws.server('ws://0.0.0.0:8080', function (ws_peer)
 end)
 ```
 
-### Send a message to all connected clients 
+### Send a message to all connected clients
 
 ``` lua
 #!/usr/bin/env tarantool
@@ -222,8 +222,9 @@ Load echo server
 
 ``` shell
 # python2
-virtualenv test # -p python2
-cd test
+virtualenv ptest # -p python2
+cp test/fuzzyclient.json ptest/
+cd ptest
 source bin/activate
 pip install autobahntestsuite
 wstest -m fuzzingclient -s fuzzyclient.json
@@ -237,8 +238,9 @@ Load test server
 
 ``` shell
 # python2
-virtualenv test # -p python2
-cd test
+virtualenv ptest # -p python2
+cp test/fuzzyserver.json ptest/
+cd ptest
 source bin/activate
 pip install autobahntestsuite
 wstest -m fuzzingserver -s fuzzyserver.json

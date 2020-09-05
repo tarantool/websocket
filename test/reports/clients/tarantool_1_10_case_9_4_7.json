@@ -1,0 +1,84 @@
+{
+   "agent": "Tarantool/1.10",
+   "behavior": "FAILED",
+   "behaviorClose": "UNCLEAN",
+   "case": 274,
+   "closedByMe": true,
+   "createStats": true,
+   "createWirelog": false,
+   "description": "Send fragmented binary message message with message payload of length 4 * 2**20 (4M). Sent out in fragments of 256k.",
+   "droppedByMe": true,
+   "duration": 450,
+   "expectation": "Receive echo'ed binary message (with payload as sent).",
+   "expected": {},
+   "expectedClose": {
+      "closeCode": [
+         1000
+      ],
+      "closedByMe": true,
+      "requireClean": true
+   },
+   "failedByMe": true,
+   "httpRequest": "GET /runCase?case=274&agent=Tarantool/1.10 HTTP/1.1\r\nHost: localhost:9001\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Version: 13\r\nSec-WebSocket-Key: hHXFR1a/ViL3pt0iOepaUA==\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nServer: AutobahnTestSuite/0.8.1-0.10.9\r\nX-Powered-By: AutobahnPython/0.10.9\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: elmu/rlgwS0cx08kLlr128w8iZg=\r\n\r\n",
+   "id": "9.4.7",
+   "isServer": true,
+   "localCloseCode": 1002,
+   "localCloseReason": "RSV = 4 and no extension negotiated",
+   "received": [],
+   "remoteCloseCode": null,
+   "remoteCloseReason": null,
+   "reportCompressionRatio": false,
+   "reportTime": true,
+   "result": "Did not receive message within 100 seconds.",
+   "resultClose": "The spec requires the connection to be failed cleanly here",
+   "rxFrameStats": {
+      "2": 1
+   },
+   "rxOctetStats": {
+      "6": 1,
+      "8": 1,
+      "14": 16,
+      "190": 1,
+      "16384": 256
+   },
+   "started": "2020-09-05T15:21:11.988Z",
+   "trafficStats": null,
+   "txFrameStats": {
+      "0": 16,
+      "2": 1,
+      "8": 1
+   },
+   "txOctetStats": {
+      "2": 1,
+      "39": 1,
+      "206": 1,
+      "262154": 16
+   },
+   "wasClean": false,
+   "wasCloseHandshakeTimeout": false,
+   "wasNotCleanReason": null,
+   "wasOpenHandshakeTimeout": false,
+   "wasServerConnectionDropTimeout": false,
+   "wirelog": [
+      [
+         "RO",
+         [
+            190,
+            "474554202f72756e436173653f636173653d323734266167656e743d546172616e746f6f6c2f312e313020485454502f312e310d0a486f73743a206c6f63616c ..."
+         ]
+      ],
+      [
+         "TO",
+         [
+            206,
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365727665723a204175746f6261686e5465737453756974652f302e382e ..."
+         ],
+         false
+      ],
+      [
+         "TI",
+         100
+      ]
+   ]
+}

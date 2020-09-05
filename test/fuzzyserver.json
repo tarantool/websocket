@@ -1,0 +1,13 @@
+{
+    "url": "wss://127.0.0.1:9001",
+    "key": "../test/certificate.pem",
+    "cert": "../test/certificate.pem",
+
+    "options": {"failByDrop": false},
+    "outdir": "./reports/clients",
+    "webport": 8080,
+
+    "cases": ["*"],
+    "exclude-cases": [],
+    "exclude-agent-cases": {}
+}

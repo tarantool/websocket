@@ -1,0 +1,559 @@
+{
+   "agent": "Tarantool/1.10",
+   "behavior": "FAILED",
+   "behaviorClose": "UNCLEAN",
+   "case": 285,
+   "closedByMe": true,
+   "createStats": true,
+   "createWirelog": true,
+   "description": "Send binary message message with payload of length 1 * 2**20 (1M). Sent out data in chops of 256 octets.",
+   "droppedByMe": true,
+   "duration": 406,
+   "expectation": "Receive echo'ed text message (with payload as sent).",
+   "expected": {},
+   "expectedClose": {
+      "closeCode": [
+         1000
+      ],
+      "closedByMe": true,
+      "requireClean": true
+   },
+   "failedByMe": true,
+   "httpRequest": "GET /runCase?case=285&agent=Tarantool/1.10 HTTP/1.1\r\nHost: localhost:9001\r\nUpgrade: websocket\r\nConnection: Upgrade\r\nSec-WebSocket-Version: 13\r\nSec-WebSocket-Key: xZPv1feuVNNZOpOSWM2fqg==\r\n\r\n",
+   "httpResponse": "HTTP/1.1 101 Switching Protocols\r\nServer: AutobahnTestSuite/0.8.1-0.10.9\r\nX-Powered-By: AutobahnPython/0.10.9\r\nUpgrade: WebSocket\r\nConnection: Upgrade\r\nSec-WebSocket-Accept: 9C0T8coRnJtNkJcCsx6FVdA1WGA=\r\n\r\n",
+   "id": "9.6.3",
+   "isServer": true,
+   "localCloseCode": 1000,
+   "localCloseReason": null,
+   "received": [],
+   "remoteCloseCode": null,
+   "remoteCloseReason": null,
+   "reportCompressionRatio": false,
+   "reportTime": true,
+   "result": "Expected binary message with payload of length 1048576, but got 80.",
+   "resultClose": "The spec requires the connection to be failed cleanly here",
+   "rxFrameStats": {
+      "2": 1
+   },
+   "rxOctetStats": {
+      "8": 1,
+      "14": 1,
+      "190": 1,
+      "16384": 64
+   },
+   "started": "2020-09-05T15:21:18.520Z",
+   "trafficStats": null,
+   "txFrameStats": {
+      "2": 1,
+      "8": 1
+   },
+   "txOctetStats": {
+      "4": 1,
+      "10": 1,
+      "206": 1,
+      "256": 4096
+   },
+   "wasClean": false,
+   "wasCloseHandshakeTimeout": false,
+   "wasNotCleanReason": null,
+   "wasOpenHandshakeTimeout": false,
+   "wasServerConnectionDropTimeout": false,
+   "wirelog": [
+      [
+         "RO",
+         [
+            190,
+            "474554202f72756e436173653f636173653d323835266167656e743d546172616e746f6f6c2f312e313020485454502f312e310d0a486f73743a206c6f63616c ..."
+         ]
+      ],
+      [
+         "TO",
+         [
+            206,
+            "485454502f312e312031303120537769746368696e672050726f746f636f6c730d0a5365727665723a204175746f6261686e5465737453756974652f302e382e ..."
+         ],
+         false
+      ],
+      [
+         "TI",
+         1000
+      ],
+      [
+         "TF",
+         [
+            2,
+            "0x03e8"
+         ],
+         8,
+         true,
+         0,
+         null,
+         null,
+         null,
+         false
+      ],
+      [
+         "TO",
+         [
+            4,
+            "880203e8"
+         ],
+         false
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "fd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe4 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c7 ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            16384,
+            "24961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1afd9cebe42045e114de98381e2e66e5c724961b1a ..."
+         ]
+      ],
+      [
+         "RO",
+         [
+            14,
+            "fd9cebe42045e114de98381e2e66"
+         ]
+      ],
+      [
+         "RO",
+         [
+            8,
+            "88827723102674cb"
+         ]
+      ]
+   ]
+}

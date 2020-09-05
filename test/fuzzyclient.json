@@ -1,0 +1,10 @@
+{
+    "options": {"failByDrop": false},
+    "outdir": "./reports/servers",
+
+    "servers": [{"agent": "AutobahnServer", "url": "wss://127.0.0.1:8443", "options": {"version": 18}}],
+
+    "cases": ["*"],
+    "exclude-cases": ["6.2.4", "6.4.*"],
+    "exclude-agent-cases": {}
+}
