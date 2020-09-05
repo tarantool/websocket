@@ -11,7 +11,6 @@ local clock = require('clock')
 local errno = require('errno')
 
 ffi.cdef[[
-
  typedef struct SSL_METHOD {} SSL_METHOD;
  typedef struct SSL_CTX {} SSL_CTX;
  typedef struct SSL {} SSL;
@@ -19,14 +18,6 @@ ffi.cdef[[
  const SSL_METHOD *TLS_method(void);
  const SSL_METHOD *TLS_server_method(void);
  const SSL_METHOD *TLS_client_method(void);
-
- const SSL_METHOD *SSLv23_method(void);
- const SSL_METHOD *SSLv23_server_method(void);
- const SSL_METHOD *SSLv23_client_method(void);
-
- const SSL_METHOD *SSLv3_method(void);
- const SSL_METHOD *SSLv3_server_method(void);
- const SSL_METHOD *SSLv3_client_method(void);
 
  const SSL_METHOD *TLSv1_method(void);
  const SSL_METHOD *TLSv1_server_method(void);
@@ -52,12 +43,11 @@ ffi.cdef[[
  const SSL_METHOD *DTLSv1_2_server_method(void);
  const SSL_METHOD *DTLSv1_2_client_method(void);
 
- int SSL_library_init(void);
- void SSL_load_error_strings(void);
-
  SSL_CTX *SSL_CTX_new(const SSL_METHOD *method);
  int SSL_CTX_up_ref(SSL_CTX *ctx);
  void SSL_CTX_free(SSL_CTX *);
+
+ int SSL_shutdown(SSL *ssl);
 
  int SSL_CTX_use_certificate_file(SSL_CTX *ctx, const char *file, int type);
  int SSL_CTX_use_PrivateKey_file(SSL_CTX *ctx, const char *file, int type);
@@ -93,15 +83,33 @@ ffi.cdef[[
         const void *needle, size_t needlelen);
 ]]
 
-ffi.C.SSL_library_init()
-ffi.C.SSL_load_error_strings()
+pcall(
+    function()
+        ffi.cdef([[
+          int SSL_library_init(void);
+          void SSL_load_error_strings(void);
+
+          const SSL_METHOD *SSLv23_method(void);
+          const SSL_METHOD *SSLv23_server_method(void);
+          const SSL_METHOD *SSLv23_client_method(void);
+
+          const SSL_METHOD *SSLv3_method(void);
+          const SSL_METHOD *SSLv3_server_method(void);
+          const SSL_METHOD *SSLv3_client_method(void);
+
+        ]])
+
+        ffi.C.SSL_library_init()
+        ffi.C.SSL_load_error_strings()
+end)
+
 
 local methods = {
-    sslv23 = ffi.C.SSLv23_method(),
-    sslv3 = ffi.C.SSLv3_method(),
     tlsv1 = ffi.C.TLSv1_method(),
     tlsv11 = ffi.C.TLSv1_1_method(),
+    tlsv12 = ffi.C.TLSv1_2_method(),
 }
+
 
 local function slice_wait(timeout, starttime)
     if timeout == nil then
@@ -116,7 +124,7 @@ local X509_FILETYPE_ASN1      =2
 local X509_FILETYPE_DEFAULT   =3
 
 local function ctx(method)
-    method = method or ffi.C.SSLv23_method()
+    method = method or methods[tlsv1]
 
     ffi.C.ERR_clear_error()
     local newctx =
@@ -195,7 +203,7 @@ function sslsocket.write(self, data, timeout)
             elseif ssl_error == SSL_ERROR_SYSCALL then
                 return nil, self.sock:error()
             elseif ssl_error == SSL_ERROR_ZERO_RETURN then
-                return nil, 'TLS channel closed'
+                return 0
             else
                 local error_string = ffi.string(ffi.C.ERR_error_string(ssl_error, nil))
                 return nil, error_string
@@ -206,13 +214,50 @@ function sslsocket.write(self, data, timeout)
     end
 end
 
-function sslsocket.getaddrinfo(self)
-    return self.sock:getaddrinfo()
-end
+function sslsocket.shutdown(self, timeout)
+    local start = clock.time()
 
-function sslsocket.shutdown(self, how)
-    self.sock:shutdown(how)
-    return self.sock:shutdown(how)
+    ffi.C.ERR_clear_error()
+    local rc = ffi.C.SSL_shutdown(self.ssl) -- ignore result
+    while rc < 0 do
+        local mode
+        local ssl_error = ffi.C.SSL_get_error(self.ssl, rc);
+        if ssl_error == SSL_ERROR_WANT_WRITE then
+            mode = WAIT_FOR_WRITE
+        elseif ssl_error == SSL_ERROR_WANT_READ then
+            mode = WAIT_FOR_READ
+        elseif ssl_error == SSL_ERROR_SYSCALL then
+            return nil, self.sock:error()
+        elseif ssl_error == SSL_ERROR_ZERO_RETURN then
+            return 0
+        else
+            local error_string = ffi.string(ffi.C.ERR_error_string(ssl_error, nil))
+            return nil, error_string
+        end
+
+        local waited = nil
+        if mode == WAIT_FOR_READ then
+            waited = self.sock:readable(slice_wait(timeout, start))
+        elseif mode == WAIT_FOR_WRITE then
+            waited = self.sock:writable(slice_wait(timeout, start))
+        else
+            assert(false)
+        end
+
+        if not waited then
+            self.sock._errno = errno.ETIMEDOUT
+            return nil, 'Timeout exceeded'
+        end
+
+        rc = ffi.C.SSL_shutdown(self.ssl) -- ignore result
+    end
+    -- TODO Is this possible case for async socket?
+    if rc == 0 then
+        ffi.C.SSL_shutdown(self.ssl)
+    end
+
+    self.sock:shutdown(socket.SHUT_RDWR)
+    return true
 end
 
 function sslsocket.close(self)
@@ -257,7 +302,9 @@ end
 local function sysread(self, charptr, size, timeout)
     local start = clock.time()
 
-    local mode = WAIT_FOR_READ
+    local mode = rawget(self, 'first_state') or WAIT_FOR_READ
+    rawset(self, 'first_state', nil)
+
     while true do
         local rc = nil
         if mode == WAIT_FOR_READ then
@@ -288,7 +335,7 @@ local function sysread(self, charptr, size, timeout)
             elseif ssl_error == SSL_ERROR_SYSCALL then
                 return nil, self.sock:error()
             elseif ssl_error == SSL_ERROR_ZERO_RETURN then
-                return nil, 'TLS channel closed'
+                return 0
             else
                 local error_string = ffi.string(ffi.C.ERR_error_string(ssl_error, nil))
                 return nil, error_string
@@ -431,6 +478,7 @@ local function tcp_connect(host, port, timeout, sslctx)
     rawset(self, 'sock', sock)
     rawset(self, 'ctx', sslctx)
     rawset(self, 'ssl', ssl)
+    rawset(self, 'first_state', WAIT_FOR_WRITE)
 
     return self
 end
@@ -468,25 +516,25 @@ end
 local function tcp_server(host, port, handler_function, timeout, sslctx)
     sslctx = sslctx or default_ctx
 
-    local handler = function (sock, from)
+    local wrapper = function (sock, from)
         local self, err = wrap_accepted_socket(sock, sslctx)
         if not self then
-            log.info(err)
+            log.info('sslsocket.tcp_server error: %s ', err)
         else
             handler_function(self, from)
         end
     end
 
-    return socket.tcp_server(host, port, handler, timeout)
+    return socket.tcp_server(host, port, wrapper, timeout)
 end
 
-local function accept(server, ctx)
+local function accept(server, sslctx)
     local sock = server:accept()
     if sock == nil then
         return nil
     end
 
-    return wrap_accepted_socket(sock, ctx)
+    return wrap_accepted_socket(sock, sslctx)
 end
 
 return {
@@ -497,10 +545,6 @@ return {
 
     tcp_connect = tcp_connect,
     tcp_server = tcp_server,
-
-    SHUT_RDWR = socket.SHUT_RDWR,
-    SHUT_RD = socket.SHUT_RD,
-    SHUT_WR = socket.SHUT_WR,
 
     wrap_accepted_socket = wrap_accepted_socket,
     accept = accept,
