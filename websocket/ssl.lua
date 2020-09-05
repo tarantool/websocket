@@ -124,7 +124,7 @@ local X509_FILETYPE_ASN1      =2
 local X509_FILETYPE_DEFAULT   =3
 
 local function ctx(method)
-    method = method or methods[tlsv1]
+    method = method or methods['tlsv1']
 
     ffi.C.ERR_clear_error()
     local newctx =
