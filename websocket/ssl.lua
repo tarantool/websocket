@@ -72,6 +72,29 @@ ffi.cdef[[
 
  int SSL_get_error(const SSL *s, int ret_code);
 
+ long SSL_CTX_set_options(SSL_CTX *ctx, long options);
+ long SSL_CTX_clear_options(SSL_CTX *ctx, long options);
+ long SSL_CTX_get_options(SSL_CTX *ctx);
+ long SSL_set_options(SSL *ssl, long options);
+
+ typedef struct ssl_conf_ctx_st SSL_CONF_CTX;
+ SSL_CONF_CTX *SSL_CONF_CTX_new(void);
+ int SSL_CONF_CTX_finish(SSL_CONF_CTX *cctx);
+ void SSL_CONF_CTX_free(SSL_CONF_CTX *cctx);
+ unsigned int SSL_CONF_CTX_set_flags(SSL_CONF_CTX *cctx, unsigned int flags);
+ unsigned int SSL_CONF_CTX_clear_flags(SSL_CONF_CTX *cctx, unsigned int flags);
+ int SSL_CONF_CTX_set1_prefix(SSL_CONF_CTX *cctx, const char *pre);
+
+ void SSL_CONF_CTX_set_ssl(SSL_CONF_CTX *cctx, SSL *ssl);
+ void SSL_CONF_CTX_set_ssl_ctx(SSL_CONF_CTX *cctx, SSL_CTX *ctx);
+ long SSL_CTX_ctrl(SSL_CTX *ctx, int cmd, long larg, void *parg);
+
+ int SSL_CONF_cmd(SSL_CONF_CTX *cctx, const char *cmd, const char *value);
+
+ long SSL_ctrl(SSL *ssl, int cmd, long larg, void *parg);
+
+int SSL_CTX_set_ciphersuites(SSL_CTX *ctx, const char *str);
+
  typedef socklen_t uint32;
  int getsockopt(int sockfd, int level, int optname, void *optval,
                 socklen_t *optlen);
@@ -83,7 +106,7 @@ ffi.cdef[[
         const void *needle, size_t needlelen);
 ]]
 
-pcall(
+local rc, res = pcall(
     function()
         ffi.cdef([[
           int SSL_library_init(void);
@@ -102,6 +125,9 @@ pcall(
         ffi.C.SSL_library_init()
         ffi.C.SSL_load_error_strings()
 end)
+if not rc then
+   log.debug("SSL: %s", res)
+end
 
 
 local methods = {
@@ -125,7 +151,9 @@ local X509_FILETYPE_ASN1      = 2
 local X509_FILETYPE_DEFAULT   = 3
 
 local function ctx(method)
-    method = method or methods['tls']
+    if method == nil then
+      method = methods['tls']
+    end
 
     ffi.C.ERR_clear_error()
     local newctx =
@@ -449,9 +477,13 @@ function sslsocket.read(self, opts, timeout)
 end
 
 local function tcp_connect(host, port, timeout, sslctx)
-    sslctx = sslctx or default_ctx
+    if sslctx == nil then
+        sslctx = default_ctx
+    end
 
     ffi.C.ERR_clear_error()
+    log.info(sslctx)
+    log.info('sdadf')
     local ssl = ffi.gc(ffi.C.SSL_new(sslctx),
                        ffi.C.SSL_free)
     if ssl == nil then
@@ -472,14 +504,28 @@ local function tcp_connect(host, port, timeout, sslctx)
         return nil, 'SSL_set_fd failed'
     end
 
+    local SSL_OP_NO_TLSv1 = tonumber64('0x04000000')
+    local SSL_OP_NO_TLSv1_2 = tonumber64('0x08000000')
+    local SSL_OP_NO_TLSv1_1 = tonumber64('0x10000000')
+
+    ffi.C.SSL_set_options(ssl, SSL_OP_NO_TLSv1)
+    ffi.C.SSL_set_options(ssl, SSL_OP_NO_TLSv1_1)
+    ffi.C.SSL_set_options(ssl, SSL_OP_NO_TLSv1_2)
+
     ffi.C.ERR_clear_error()
     ffi.C.SSL_set_connect_state(ssl);
 
+    local SSL_CTRL_SET_MIN_PROTO_VERSION = 123
+    local TLS1_3_VERSION = 0x0304
+    ffi.C.SSL_ctrl(ssl, SSL_CTRL_SET_MIN_PROTO_VERSION, TLS1_3_VERSION,
+                   box.NULL)
+
+    log.info(sslctx)
     local self = setmetatable({}, sslsocket)
     rawset(self, 'sock', sock)
     rawset(self, 'ctx', sslctx)
     rawset(self, 'ssl', ssl)
-    rawset(self, 'first_state', WAIT_FOR_WRITE)
+    rawset(self, 'first_state', WAIT_FOR_READ)
 
     return self
 end
