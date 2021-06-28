@@ -23,7 +23,7 @@ local function is_table_eq(t1,t2)
     return true
 end
 
-local function make_server_client(url, sslon)
+local function make_server_client(url, sslon, max_receive_payload)
     local client1 = nil
 
     local ctx = nil
@@ -43,7 +43,7 @@ local function make_server_client(url, sslon)
         end
     end
 
-    local server, err = websocket.bind(url, {ctx=ctx})
+    local server, err = websocket.bind(url, {ctx=ctx, max_receive_payload=max_receive_payload})
     if not server then
         log.info(err)
         return
@@ -53,7 +53,7 @@ local function make_server_client(url, sslon)
         return
     end
 
-    local client2 = websocket.connect(url)
+    local client2 = websocket.connect(url, nil, {max_receive_payload=max_receive_payload})
     client1 = server:accept()
 
     server:close()
@@ -129,3 +129,27 @@ g.test_basic_echo = function()
       client1:close()
    end
 end
+
+g.test_max_payload = function()
+    local urls = {
+       {url='ws://127.0.0.1:8080/asdf'},
+       {url='wss://127.0.0.1:8443/asdf', ssl=true}
+    }
+ 
+    for _, url in ipairs(urls) do
+       local client1, client2 = make_server_client(url.url, url.ssl, 65)
+
+       local message = {opcode=websocket.TEXT, data=('x'):rep(90), fin=true, rsv=0}
+       local stop = false
+       local worker = fiber.create(function ()
+             while client1:read() and not stop do
+                client1:write(message)
+             end
+       end)
+ 
+       client2:write('send me test')
+       t.assert_error_msg_contains('limit', client2.read, client2)
+       client2:close()
+       client1:close()
+    end
+ end

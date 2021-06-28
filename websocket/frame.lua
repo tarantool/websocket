@@ -212,6 +212,12 @@ local function decode_from(client, timeout)
         end
     end
 
+    if client.max_receive_payload ~= nil 
+      and payload > client.max_receive_payload then
+        error('Payload size limit reached')
+        client:close()
+    end
+
     local m1,m2,m3,m4
     local mask
     if ismasked then

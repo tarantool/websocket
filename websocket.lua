@@ -32,7 +32,7 @@ local wspeer = {
 
 wspeer.__index = wspeer
 
-function wspeer.new(peer, ping_freq, is_client, is_handshaked, client_request)
+function wspeer.new(peer, ping_freq, is_client, is_handshaked, client_request, max_receive_payload)
     local self = setmetatable({}, wspeer)
 
     peer:nonblock(true)
@@ -62,6 +62,8 @@ function wspeer.new(peer, ping_freq, is_client, is_handshaked, client_request)
 
     -- validation state
     rawset(self, 'last_opcode', nil)
+
+    rawset(self.peer, 'max_receive_payload', max_receive_payload)
 
     return self
 end
@@ -617,7 +619,7 @@ function wspeer.connect(url, request, options)
         end
     end
 
-    local self = wspeer.new(sock, nil, true, false, request)
+    local self = wspeer.new(sock, nil, true, false, request, options.max_receive_payload)
     return self
 end
 
@@ -650,7 +652,7 @@ function wspeer.server(url, handler, options)
         return ssl.tcp_server(
             url.host, tonumber(url.service),
             function (sock)
-                local client = wspeer.new(sock, options.ping_frequency)
+                local client = wspeer.new(sock, options.ping_frequency, nil, nil, nil, options.max_receive_payload)
                 return handler(client)
             end,
             options.timeout,
@@ -659,7 +661,7 @@ function wspeer.server(url, handler, options)
         return socket.tcp_server(
             url.host, tonumber(url.service),
             function (sock)
-                local client = wspeer.new(sock, options.ping_frequency)
+                local client = wspeer.new(sock, options.ping_frequency, nil, nil, nil, options.max_receive_payload)
                 return handler(client)
             end,
             options.timeout)
@@ -707,7 +709,7 @@ function wspeer.bind(url, options)
             ssl = require('websocket.ssl')
             result = ssl.wrap_accepted_socket(result, options.ctx)
         end
-        return wspeer.new(result, options.ping_frequency)
+        return wspeer.new(result, options.ping_frequency, nil, nil, nil, options.max_receive_payload)
     end
     serv.accept = new_accept
     return serv
