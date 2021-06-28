@@ -278,6 +278,7 @@ local ssl = require('websocket.ssl')
      - `timeout` - accept timeout
      - `ping_frequency` - ping frequency in seconds
      - `ctx` - ssl context
+     - `max_receive_payload` — payload size limit
 
 **Returns:**
 
@@ -294,6 +295,7 @@ local ssl = require('websocket.ssl')
    - `options`
      - `timeout` connect timeout
      - `ctx` ssl context
+     - `max_receive_payload` — payload size limit
 
 **Returns:**
 
@@ -306,19 +308,21 @@ local ssl = require('websocket.ssl')
      - `timeout` - accept timeout
      - `ping_frequency` - ping frequency in seconds
      - `ctx` - ssl context
+     - `max_receive_payload` — payload size limit
 
 **Returns:**
 
    - server socket
 
 
-### `websocket.new(peer, ping_freq, is_client, is_handshaked, client_request)`
+### `websocket.new(peer, ping_freq, is_client, is_handshaked, client_request, max_receive_payload)`
 
    - `peer` tarantool socket object
    - `ping_freq` ping frequency in seconds
    - `is_client` is client side
    - `is_handshaked` whether socket already http handshaked or not
    - `client_request` http client handshake request
+   - `max_receive_payload` payload size limit
 
 **Returns:**
 
