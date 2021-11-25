@@ -176,7 +176,7 @@ local function ctx_use_certificate_file(ctx, pem_file)
     return true
 end
 
-local default_ctx = ctx(methods.sslv23)
+local default_ctx = ctx()
 
 local SSL_ERROR_NONE                  = 0
 local SSL_ERROR_SSL                   = 1
